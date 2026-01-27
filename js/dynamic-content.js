@@ -6,8 +6,9 @@
  * All sections are now managed through the Admin Panel
  */
 
-// API Base URL - Make sure the server is running on port 3000
-const API_BASE = 'http://localhost:3000/api';
+// API Base URL - Uses relative path for Vercel compatibility
+// For local development with Express server, change to: 'http://localhost:3000/api'
+const API_BASE = '/api';
 
 // Flag to track if API is available
 let apiAvailable = false;

@@ -5,8 +5,9 @@
  * Simple, beginner-friendly admin functionality
  */
 
-// API Base URL - Change this if your server runs on a different port
-const API_URL = 'http://localhost:3000/api';
+// API Base URL - Uses relative path for Vercel compatibility
+// For local development with Express server, change to: 'http://localhost:3000/api'
+const API_URL = '/api';
 
 // ========================================
 // UTILITY FUNCTIONS
