@@ -1,12 +1,4 @@
-/**
- * ========================================
- * TASHU'S STUDIO - ADMIN PANEL JAVASCRIPT
- * ========================================
- * Simple, beginner-friendly admin functionality
- */
 
-// API Base URL - Uses relative path for Vercel compatibility
-// For local development with Express server, change to: 'http://localhost:3000/api'
 const API_URL = '/api';
 
 // ========================================
@@ -57,23 +49,17 @@ function setupImagePreview(inputId, previewId) {
 // AUTHENTICATION
 // ========================================
 
-// Check if user is logged in
+// Check if user is logged in (using localStorage for Vercel compatibility)
 async function checkAuth() {
-  try {
-    const response = await fetch(`${API_URL}/auth/check`, {
-      credentials: 'include'
-    });
-    const data = await response.json();
+  // Check localStorage for login state (Vercel serverless doesn't support sessions)
+  const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+  const storedUsername = localStorage.getItem('adminUsername');
 
-    if (data.isLoggedIn) {
-      showDashboard();
-      document.getElementById('welcomeUser').textContent = `Welcome, ${data.username}`;
-      loadDashboardData();
-    } else {
-      showLogin();
-    }
-  } catch (error) {
-    console.error('Auth check failed:', error);
+  if (isLoggedIn && storedUsername) {
+    showDashboard();
+    document.getElementById('welcomeUser').textContent = `Welcome, ${storedUsername}`;
+    loadDashboardData();
+  } else {
     showLogin();
   }
 }
@@ -140,7 +126,12 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         localStorage.removeItem('rememberedUsername');
       }
 
+      // Store login state in localStorage (for Vercel serverless compatibility)
+      localStorage.setItem('adminLoggedIn', 'true');
+      localStorage.setItem('adminUsername', data.username || username);
+
       showToast('Login successful!');
+      document.getElementById('welcomeUser').textContent = `Welcome, ${data.username || username}`;
       showDashboard();
       loadDashboardData();
     } else {
@@ -173,11 +164,16 @@ document.getElementById('logoutBtn').addEventListener('click', async function ()
       method: 'POST',
       credentials: 'include'
     });
-    showToast('Logged out successfully');
-    showLogin();
   } catch (error) {
     console.error('Logout error:', error);
   }
+
+  // Clear login state from localStorage
+  localStorage.removeItem('adminLoggedIn');
+  localStorage.removeItem('adminUsername');
+
+  showToast('Logged out successfully');
+  showLogin();
 });
 
 // ========================================

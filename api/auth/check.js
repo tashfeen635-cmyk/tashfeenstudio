@@ -8,11 +8,10 @@ module.exports = (req, res) => {
     return res.status(200).end();
   }
 
-  // For Vercel deployment, admin panel runs in read-only mode
-  // Return logged in status to show dashboard
+  // For Vercel serverless, we don't have persistent sessions
+  // Return not logged in so user sees login form
   return res.status(200).json({
-    isLoggedIn: true,
-    username: 'admin',
-    message: 'Running in read-only mode on Vercel'
+    isLoggedIn: false,
+    message: 'Please login to access admin panel'
   });
 };
