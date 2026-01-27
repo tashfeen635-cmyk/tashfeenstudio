@@ -1,0 +1,37 @@
+[
+  {
+    "id": "story001",
+    "title": "K2 - The Savage Mountain",
+    "content": "The world's second highest peak, standing tall in my homeland. K2, also known as Mount Godwin-Austen, is the second-highest mountain on Earth at 8,611 meters above sea level. Located in the Karakoram range on the border between Pakistan and China, it's considered one of the most difficult and dangerous mountains to climb.",
+    "image": "K2.webp",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "story002",
+    "title": "Mountain Spirit",
+    "content": "The resilient people of the peaks. The mountain communities of Gilgit-Baltistan have lived in harmony with these towering giants for centuries, developing unique cultures, traditions, and ways of life adapted to the high-altitude environment.",
+    "image": "man.webp",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "story003",
+    "title": "Ancient Glaciers",
+    "content": "Where ice meets sky in Gilgit-Baltistan. The region is home to some of the longest glaciers outside the polar regions, including the Baltoro Glacier and Biafo Glacier. These ancient rivers of ice have shaped the landscape over millennia.",
+    "image": "glashier.webp",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "story004",
+    "title": "Crystal Waters",
+    "content": "Pristine alpine lakes of the north. The lakes of Gilgit-Baltistan, fed by glacial meltwater, are known for their stunning turquoise and emerald colors. These natural wonders attract visitors from around the world.",
+    "image": "lake.webp",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "story005",
+    "title": "Journey Through Mountains",
+    "content": "Roads that connect dreams to reality. The Karakoram Highway, one of the highest paved international roads in the world, winds through these mountains, connecting Pakistan to China and offering breathtaking views at every turn.",
+    "image": "road.webp",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]

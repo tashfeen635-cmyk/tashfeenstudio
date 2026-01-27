@@ -1,0 +1,19 @@
+{
+  "name": "tashu-studio-admin",
+  "version": "1.0.0",
+  "description": "Simple Admin Panel for Tashu's Studio Portfolio",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1"
+  },
+  "author": "Tashfeen Riaz",
+  "license": "MIT"
+}

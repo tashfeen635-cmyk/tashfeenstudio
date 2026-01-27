@@ -1,0 +1,75 @@
+[
+  {
+    "id": "port001",
+    "title": "Brand Identity",
+    "description": "Visual Design",
+    "category": "branding",
+    "image": "/uploads/1769549131826-emile-perron-xrvdyzrgdw4-unsplash.jpg",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-27T21:25:50.614Z"
+  },
+  {
+    "id": "port002",
+    "title": "Creative Artwork",
+    "description": "Illustration",
+    "category": "illustration",
+    "image": "images/work_2_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port003",
+    "title": "Package Design",
+    "description": "Branding",
+    "category": "branding",
+    "image": "images/work_3_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port004",
+    "title": "Web Design",
+    "description": "UI/UX Design",
+    "category": "web",
+    "image": "images/work_4_full.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port005",
+    "title": "Digital Art",
+    "description": "Illustration",
+    "category": "illustration",
+    "image": "images/work_5_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port006",
+    "title": "Brand Strategy",
+    "description": "Visual Identity",
+    "category": "branding",
+    "image": "images/work_6_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port007",
+    "title": "Product Design",
+    "description": "Packaging",
+    "category": "packaging",
+    "image": "images/work_7_a_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "port008",
+    "title": "Web Development",
+    "description": "Frontend Design",
+    "category": "web",
+    "image": "images/work_8_md.webp",
+    "link": "",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]

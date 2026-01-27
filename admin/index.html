@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Tashu's Studio</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/png" href="../faviconn.png">
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="login-page">
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Tashu's Studio</h1>
+        <p>Admin Panel</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Login</button>
+        <p id="loginError" class="error-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="adminDashboard" class="admin-dashboard hidden">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Tashu's Studio</h2>
+        <span class="admin-badge">Admin</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">&#9632;</span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item" data-section="portfolio">
+          <span class="nav-icon">&#9733;</span>
+          Portfolio
+        </a>
+        <a href="#" class="nav-item" data-section="about">
+          <span class="nav-icon">&#9786;</span>
+          About
+        </a>
+        <a href="#" class="nav-item" data-section="services">
+          <span class="nav-icon">&#9881;</span>
+          Services
+        </a>
+        <a href="#" class="nav-item" data-section="skills">
+          <span class="nav-icon">&#9998;</span>
+          Skills
+        </a>
+        <a href="#" class="nav-item" data-section="stories">
+          <span class="nav-icon">&#9993;</span>
+          Stories
+        </a>
+        <a href="#" class="nav-item" data-section="messages">
+          <span class="nav-icon">&#9993;</span>
+          Messages
+          <span id="unreadBadge" class="badge hidden">0</span>
+        </a>
+        <a href="#" class="nav-item" data-section="settings">
+          <span class="nav-icon">&#9881;</span>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../index.html" target="_blank" class="btn btn-outline">View Website</a>
+        <button id="logoutBtn" class="btn btn-danger">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="content-header">
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="header-actions">
+          <span id="welcomeUser">Welcome, Admin</span>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboardSection" class="section active">
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon">&#9733;</div>
+              <div class="stat-info">
+                <h3 id="portfolioCount">0</h3>
+                <p>Portfolio Items</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">&#9881;</div>
+              <div class="stat-info">
+                <h3 id="servicesCount">0</h3>
+                <p>Services</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">&#9998;</div>
+              <div class="stat-info">
+                <h3 id="skillsCount">0</h3>
+                <p>Skills</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">&#9993;</div>
+              <div class="stat-info">
+                <h3 id="messagesCount">0</h3>
+                <p>Messages</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+              <button class="btn btn-primary" onclick="showSection('portfolio')">Add Portfolio</button>
+              <button class="btn btn-primary" onclick="showSection('services')">Add Service</button>
+              <button class="btn btn-primary" onclick="showSection('skills')">Add Skill</button>
+              <button class="btn btn-primary" onclick="showSection('messages')">View Messages</button>
+            </div>
+          </div>
+
+          <div class="restore-section">
+            <h2>Data Management</h2>
+            <p class="restore-description">Accidentally deleted content? Restore all data to the original defaults with one click.</p>
+            <button class="btn btn-warning" onclick="restoreDefaults()">Restore Default Data</button>
+          </div>
+        </section>
+
+        <!-- PORTFOLIO SECTION -->
+        <section id="portfolioSection" class="section">
+          <div class="section-header">
+            <h2>Portfolio Management</h2>
+            <button class="btn btn-primary" onclick="openModal('portfolioModal')">+ Add New</button>
+          </div>
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="portfolioTable">
+                <!-- Dynamic content -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="aboutSection" class="section">
+          <div class="section-header">
+            <h2>About Information</h2>
+          </div>
+          <form id="aboutForm" class="form-container">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="aboutName">Full Name</label>
+                <input type="text" id="aboutName" name="name" placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="aboutTitle">Title/Role</label>
+                <input type="text" id="aboutTitle" name="title" placeholder="Web Designer & Developer">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="aboutLocation">Location</label>
+              <input type="text" id="aboutLocation" name="location" placeholder="Gilgit, Pakistan">
+            </div>
+            <div class="form-group">
+              <label for="aboutBio">Bio/Description</label>
+              <textarea id="aboutBio" name="bio" rows="5" placeholder="Write about yourself..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="aboutImage">Profile Image</label>
+              <input type="file" id="aboutImage" name="image" accept="image/*">
+              <div id="aboutImagePreview" class="image-preview"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="servicesSection" class="section">
+          <div class="section-header">
+            <h2>Services Management</h2>
+            <button class="btn btn-primary" onclick="openModal('serviceModal')">+ Add New</button>
+          </div>
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="servicesTable">
+                <!-- Dynamic content -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skillsSection" class="section">
+          <div class="section-header">
+            <h2>Skills Management</h2>
+            <button class="btn btn-primary" onclick="openModal('skillModal')">+ Add New</button>
+          </div>
+          <div class="skills-grid" id="skillsGrid">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
+        <!-- STORIES SECTION -->
+        <section id="storiesSection" class="section">
+          <div class="section-header">
+            <h2>Stories Management</h2>
+            <button class="btn btn-primary" onclick="openModal('storyModal')">+ Add New</button>
+          </div>
+          <div class="cards-grid" id="storiesGrid">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
+        <!-- MESSAGES SECTION -->
+        <section id="messagesSection" class="section">
+          <div class="section-header">
+            <h2>Contact Messages</h2>
+          </div>
+          <div class="messages-list" id="messagesList">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
+        <!-- SETTINGS SECTION -->
+        <section id="settingsSection" class="section">
+          <div class="section-header">
+            <h2>Site Settings</h2>
+          </div>
+          <form id="settingsForm" class="form-container">
+            <p class="settings-description">Customize your website section headings. Changes will appear on the live website.</p>
+
+            <div class="form-group">
+              <label for="storiesHeading">Stories Section Heading</label>
+              <input type="text" id="storiesHeading" name="storiesHeading" placeholder="From the land of peaks">
+            </div>
+            <div class="form-group">
+              <label for="portfolioHeading">Portfolio Section Heading</label>
+              <input type="text" id="portfolioHeading" name="portfolioHeading" placeholder="Selected Works">
+            </div>
+            <div class="form-group">
+              <label for="servicesHeading">Services Section Heading</label>
+              <input type="text" id="servicesHeading" name="servicesHeading" placeholder="What I Do">
+            </div>
+            <div class="form-group">
+              <label for="skillsHeading">Skills Section Heading</label>
+              <input type="text" id="skillsHeading" name="skillsHeading" placeholder="My Skills">
+            </div>
+            <div class="form-group">
+              <label for="contactHeading">Contact Section Heading</label>
+              <input type="text" id="contactHeading" name="contactHeading" placeholder="Get In Touch">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </form>
+
+          <!-- ACCOUNT SECTION - USERNAME CHANGE -->
+          <div class="account-section">
+            <h3>Change Username</h3>
+            <p class="settings-description">Update your admin panel login username.</p>
+            <form id="usernameForm">
+              <div class="form-group">
+                <label for="newUsername">New Username</label>
+                <input type="text" id="newUsername" name="newUsername" required placeholder="Enter new username" minlength="3">
+              </div>
+              <div class="form-group">
+                <label for="usernamePassword">Current Password (for verification)</label>
+                <input type="password" id="usernamePassword" name="password" required placeholder="Enter your password">
+              </div>
+              <button type="submit" class="btn btn-primary">Change Username</button>
+            </form>
+          </div>
+
+          <!-- PASSWORD CHANGE SECTION -->
+          <div class="password-section">
+            <h3>Change Password</h3>
+            <p class="settings-description">Update your admin panel login password.</p>
+            <form id="passwordForm">
+              <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" name="currentPassword" required placeholder="Enter current password">
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="newPassword" required placeholder="Enter new password" minlength="6">
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm new password">
+              </div>
+              <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Portfolio Modal -->
+  <div id="portfolioModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="portfolioModalTitle">Add Portfolio Item</h3>
+        <button class="close-btn" onclick="closeModal('portfolioModal')">&times;</button>
+      </div>
+      <form id="portfolioForm">
+        <input type="hidden" id="portfolioId" name="id">
+        <div class="form-group">
+          <label for="portfolioTitle">Title *</label>
+          <input type="text" id="portfolioTitle" name="title" required placeholder="Project title">
+        </div>
+        <div class="form-group">
+          <label for="portfolioCategory">Category</label>
+          <select id="portfolioCategory" name="category">
+            <option value="web">Web Design</option>
+            <option value="branding">Branding</option>
+            <option value="illustration">Illustration</option>
+            <option value="packaging">Packaging</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="portfolioDescription">Description</label>
+          <textarea id="portfolioDescription" name="description" rows="3" placeholder="Project description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="portfolioLink">Project Link</label>
+          <input type="url" id="portfolioLink" name="link" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label for="portfolioImage">Image</label>
+          <input type="file" id="portfolioImage" name="image" accept="image/*">
+          <div id="portfolioImagePreview" class="image-preview"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeModal('portfolioModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Service Modal -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="serviceModalTitle">Add Service</h3>
+        <button class="close-btn" onclick="closeModal('serviceModal')">&times;</button>
+      </div>
+      <form id="serviceForm">
+        <input type="hidden" id="serviceId" name="id">
+        <div class="form-group">
+          <label for="serviceName">Service Name *</label>
+          <input type="text" id="serviceName" name="name" required placeholder="e.g., Web Design">
+        </div>
+        <div class="form-group">
+          <label for="serviceDescription">Description *</label>
+          <textarea id="serviceDescription" name="description" rows="3" required placeholder="Service description"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeModal('serviceModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Skill Modal -->
+  <div id="skillModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="skillModalTitle">Add Skill</h3>
+        <button class="close-btn" onclick="closeModal('skillModal')">&times;</button>
+      </div>
+      <form id="skillForm">
+        <input type="hidden" id="skillId" name="id">
+        <div class="form-group">
+          <label for="skillName">Skill Name *</label>
+          <input type="text" id="skillName" name="name" required placeholder="e.g., JavaScript">
+        </div>
+        <div class="form-group">
+          <label for="skillLevel">Level: <span id="skillLevelValue">50</span>%</label>
+          <input type="range" id="skillLevel" name="level" min="0" max="100" value="50"
+                 oninput="document.getElementById('skillLevelValue').textContent = this.value">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeModal('skillModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Story Modal -->
+  <div id="storyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="storyModalTitle">Add Story</h3>
+        <button class="close-btn" onclick="closeModal('storyModal')">&times;</button>
+      </div>
+      <form id="storyForm">
+        <input type="hidden" id="storyId" name="id">
+        <div class="form-group">
+          <label for="storyTitle">Title *</label>
+          <input type="text" id="storyTitle" name="title" required placeholder="Story title">
+        </div>
+        <div class="form-group">
+          <label for="storyContent">Content *</label>
+          <textarea id="storyContent" name="content" rows="5" required placeholder="Write your story..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="storyImage">Image</label>
+          <input type="file" id="storyImage" name="image" accept="image/*">
+          <div id="storyImagePreview" class="image-preview"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeModal('storyModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

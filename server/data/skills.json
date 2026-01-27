@@ -1,0 +1,44 @@
+[
+  {
+    "id": "skill001",
+    "name": "WordPress",
+    "level": 90,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill002",
+    "name": "HTML/CSS",
+    "level": 99,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill003",
+    "name": "Shopify/Liquid",
+    "level": 95,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill004",
+    "name": "UI/UX Design",
+    "level": 100,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill005",
+    "name": "JavaScript",
+    "level": 85,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill007",
+    "name": "Figma",
+    "level": 88,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skill008",
+    "name": "Bootstrap",
+    "level": 92,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]

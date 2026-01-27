@@ -1,0 +1,37 @@
+[
+  {
+    "id": "svc002",
+    "name": "Web Design",
+    "description": "Designing clean, modern websites that combine creativity, usability, and seamless user experiences",
+    "icon": "images/svg/002-chat.svg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "svc003",
+    "name": "User Experience",
+    "description": "Crafting intuitive, engaging experiences that connect users with meaningful and seamless digital journeys",
+    "icon": "images/svg/003-contact-book.svg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "svc004",
+    "name": "Web Development",
+    "description": "Building fast, responsive websites that combine clean code, functionality, and seamless design",
+    "icon": "images/svg/004-percentage.svg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "svc005",
+    "name": "WordPress Solutions",
+    "description": "Creating custom WordPress solutions that are flexible, user-friendly, and tailored to goals",
+    "icon": "images/svg/006-goal.svg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "svc006",
+    "name": "Mobile Applications",
+    "description": "Designing and developing mobile applications that are intuitive, fast, and user-friendly",
+    "icon": "images/svg/005-line-chart.svg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]
