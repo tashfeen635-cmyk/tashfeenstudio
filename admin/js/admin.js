@@ -96,6 +96,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
+  const rememberMe = document.getElementById('rememberMe').checked;
   const errorEl = document.getElementById('loginError');
 
   try {
@@ -109,6 +110,13 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const data = await response.json();
 
     if (response.ok) {
+      // Handle Remember Me
+      if (rememberMe) {
+        localStorage.setItem('rememberedUsername', username);
+      } else {
+        localStorage.removeItem('rememberedUsername');
+      }
+
       showToast('Login successful!');
       showDashboard();
       loadDashboardData();
@@ -1098,6 +1106,53 @@ document.querySelectorAll('[onclick^="openModal"]').forEach(btn => {
     modal.querySelectorAll('.image-preview').forEach(el => el.innerHTML = '');
   });
 });
+
+// ========================================
+// PASSWORD TOGGLE FUNCTIONALITY
+// ========================================
+const togglePasswordBtn = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
+const eyeIcon = document.getElementById('eyeIcon');
+const eyeOffIcon = document.getElementById('eyeOffIcon');
+
+if (togglePasswordBtn && passwordInput) {
+  togglePasswordBtn.addEventListener('click', function() {
+    // Toggle password visibility
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Toggle eye icons
+    eyeIcon.classList.toggle('hidden');
+    eyeOffIcon.classList.toggle('hidden');
+  });
+}
+
+// ========================================
+// FORGOT PASSWORD HANDLER
+// ========================================
+const forgotPasswordLink = document.getElementById('forgotPassword');
+
+if (forgotPasswordLink) {
+  forgotPasswordLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    showToast('Please contact the administrator to reset your password.', false);
+  });
+}
+
+// ========================================
+// REMEMBER ME FUNCTIONALITY
+// ========================================
+const rememberMeCheckbox = document.getElementById('rememberMe');
+const usernameInput = document.getElementById('username');
+
+// Load remembered username on page load
+if (rememberMeCheckbox && usernameInput) {
+  const rememberedUsername = localStorage.getItem('rememberedUsername');
+  if (rememberedUsername) {
+    usernameInput.value = rememberedUsername;
+    rememberMeCheckbox.checked = true;
+  }
+}
 
 // Check authentication on page load
 checkAuth();
