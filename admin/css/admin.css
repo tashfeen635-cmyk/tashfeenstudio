@@ -1091,3 +1091,60 @@ a {
     align-self: flex-end;
   }
 }
+
+/* ========================================
+   LOGIN BUTTON - LOADING STATE
+   ======================================== */
+
+/* Button text and spinner containers */
+.btn-text,
+.btn-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-spinner.hidden {
+  display: none;
+}
+
+.btn-text.hidden {
+  display: none;
+}
+
+/* Spinner animation */
+.spinner {
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Disabled button state during loading */
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+.error-message {
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  margin-top: 15px;
+  text-align: center;
+  min-height: 20px;
+}
+
+.error-message:empty {
+  margin-top: 0;
+}

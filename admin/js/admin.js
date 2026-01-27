@@ -91,13 +91,36 @@ function showDashboard() {
 }
 
 // Handle login form submission
+let isLoggingIn = false; // Prevent multiple submissions
+
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const username = document.getElementById('username').value;
+  // Prevent multiple submissions
+  if (isLoggingIn) return;
+
+  const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value;
   const rememberMe = document.getElementById('rememberMe').checked;
   const errorEl = document.getElementById('loginError');
+  const loginBtn = document.getElementById('loginBtn');
+  const btnText = loginBtn.querySelector('.btn-text');
+  const btnSpinner = loginBtn.querySelector('.btn-spinner');
+
+  // Clear previous error
+  errorEl.textContent = '';
+
+  // Validate inputs
+  if (!username || !password) {
+    errorEl.textContent = 'Please enter both username and password.';
+    return;
+  }
+
+  // Show loading state
+  isLoggingIn = true;
+  loginBtn.classList.add('loading');
+  btnText.classList.add('hidden');
+  btnSpinner.classList.remove('hidden');
 
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
@@ -121,11 +144,25 @@ document.getElementById('loginForm').addEventListener('submit', async function (
       showDashboard();
       loadDashboardData();
     } else {
-      errorEl.textContent = data.error || 'Login failed';
+      // Show specific error messages
+      if (response.status === 401) {
+        errorEl.textContent = 'Invalid username or password. Please try again.';
+      } else if (response.status === 429) {
+        errorEl.textContent = 'Too many login attempts. Please wait and try again.';
+      } else {
+        errorEl.textContent = data.error || 'Login failed. Please check your credentials.';
+      }
     }
   } catch (error) {
-    errorEl.textContent = 'Connection error. Please try again.';
+    // Handle connection errors
+    errorEl.textContent = 'Connection Error. Please try again.';
     console.error('Login error:', error);
+  } finally {
+    // Reset loading state
+    isLoggingIn = false;
+    loginBtn.classList.remove('loading');
+    btnText.classList.remove('hidden');
+    btnSpinner.classList.add('hidden');
   }
 });
 

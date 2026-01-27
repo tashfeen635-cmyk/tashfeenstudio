@@ -45,7 +45,15 @@
           </label>
           <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Login</button>
+        <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+          <span class="btn-text">Login</span>
+          <span class="btn-spinner hidden">
+            <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="31.4 31.4" />
+            </svg>
+            Logging in...
+          </span>
+        </button>
         <p id="loginError" class="error-message"></p>
       </form>
     </div>
