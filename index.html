@@ -824,10 +824,64 @@
     <script src="js/main.js"></script>
     <!-- Dynamic content loader - connects to Admin Panel API -->
     <script src="js/dynamic-content.js"></script>
-    <!-- Instagram-style Image Viewer -->
-    <script>console.log('Inline script test - before image-viewer.js');</script>
-    <script src="js/image-viewer.js"></script>
-    <script>console.log('Inline script test - after image-viewer.js');</script>
+    <!-- Instagram-style Image Viewer (inline for reliability) -->
+    <script>
+    (function() {
+      console.log('Image viewer inline script loading...');
+
+      function initImageViewer() {
+        console.log('Initializing image viewer...');
+        var items = document.querySelectorAll('.portfolio-item[data-viewer]');
+        console.log('Found', items.length, 'portfolio items');
+
+        items.forEach(function(item, index) {
+          item.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Clicked item', index);
+            var modal = document.getElementById('imageViewerModal');
+            var img = document.getElementById('viewerImage');
+            var src = item.getAttribute('data-image');
+            var title = item.getAttribute('data-caption') || 'Image';
+            console.log('Image src:', src);
+            if (modal && img && src) {
+              img.src = src;
+              var titleEl = document.getElementById('viewerTitle');
+              if (titleEl) titleEl.textContent = title.split(' - ')[0];
+              modal.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            } else {
+              console.error('Missing:', !modal ? 'modal' : '', !img ? 'img' : '', !src ? 'src' : '');
+            }
+            return false;
+          };
+        });
+
+        // Close handlers
+        var closeBtn = document.getElementById('closeImageViewer');
+        if (closeBtn) closeBtn.onclick = closeModal;
+        var overlay = document.querySelector('.image-viewer-overlay');
+        if (overlay) overlay.onclick = closeModal;
+        document.onkeydown = function(e) {
+          if (e.key === 'Escape') closeModal();
+        };
+
+        function closeModal() {
+          var modal = document.getElementById('imageViewerModal');
+          if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initImageViewer);
+      } else {
+        initImageViewer();
+      }
+    })();
+    </script>
 
   </body>
 </html>
