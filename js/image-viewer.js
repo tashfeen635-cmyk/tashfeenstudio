@@ -9,6 +9,28 @@
 // Immediately log to confirm script is loading
 console.log('Image viewer script loading...');
 
+// Global openImage function for onclick handlers
+window.openImage = function(src, title) {
+  console.log('openImage called:', src, title);
+  var modal = document.getElementById('imageViewerModal');
+  var img = document.getElementById('viewerImage');
+  var titleEl = document.getElementById('viewerTitle');
+  if (modal && img) {
+    img.src = src;
+    if (titleEl) titleEl.textContent = title;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeImage = function() {
+  var modal = document.getElementById('imageViewerModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
+
 (function() {
   'use strict';
 

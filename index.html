@@ -824,41 +824,39 @@
     <script src="js/main.js"></script>
     <!-- Dynamic content loader - connects to Admin Panel API -->
     <script src="js/dynamic-content.js"></script>
-    <!-- Simple Image Viewer -->
+    <!-- Image Viewer with full features -->
+    <script src="js/image-viewer.js?v=2"></script>
+    <!-- Fallback open function for onclick handlers -->
     <script>
-    // Global function for onclick handlers
-    function openImage(src, title) {
-      console.log('openImage called:', src, title);
-      var modal = document.getElementById('imageViewerModal');
-      var img = document.getElementById('viewerImage');
-      var titleEl = document.getElementById('viewerTitle');
-      if (modal && img) {
-        img.src = src;
-        if (titleEl) titleEl.textContent = title;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      } else {
-        alert('Opening: ' + src);
-      }
+    if (typeof openImage === 'undefined') {
+      window.openImage = function(src, title) {
+        var modal = document.getElementById('imageViewerModal');
+        var img = document.getElementById('viewerImage');
+        var titleEl = document.getElementById('viewerTitle');
+        if (modal && img) {
+          img.src = src;
+          if (titleEl) titleEl.textContent = title;
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+      window.closeImage = function() {
+        var modal = document.getElementById('imageViewerModal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      };
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeImage();
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        var closeBtn = document.getElementById('closeImageViewer');
+        if (closeBtn) closeBtn.onclick = closeImage;
+        var overlay = document.querySelector('.image-viewer-overlay');
+        if (overlay) overlay.onclick = closeImage;
+      });
     }
-    function closeImage() {
-      var modal = document.getElementById('imageViewerModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeImage();
-    });
-    // Close button and overlay
-    document.addEventListener('DOMContentLoaded', function() {
-      var closeBtn = document.getElementById('closeImageViewer');
-      if (closeBtn) closeBtn.onclick = closeImage;
-      var overlay = document.querySelector('.image-viewer-overlay');
-      if (overlay) overlay.onclick = closeImage;
-    });
     </script>
 
   </body>
