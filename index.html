@@ -131,7 +131,7 @@
             
             <div id="posts" class="row gutter-isotope-item">
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_1_md.webp" data-caption="Brand Identity - Visual Design">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_1_md.webp" data-caption="Brand Identity - Visual Design" onclick="openImage('images/work_1_md.webp','Brand Identity'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_1_md.webp" class="lazyload img-fluid" alt="Brand Identity Design" />
                     <div class="portfolio-overlay">
@@ -144,7 +144,7 @@
                 </a>
               </div>
               <div class="item branding packaging illustration col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_2_md.webp" data-caption="Creative Artwork - Illustration">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_2_md.webp" data-caption="Creative Artwork - Illustration" onclick="openImage('images/work_2_md.webp','Creative Artwork'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_2_md.webp" class="lazyload img-fluid" alt="Creative Illustration" />
                     <div class="portfolio-overlay">
@@ -158,7 +158,7 @@
               </div>
 
               <div class="item branding packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_3_md.webp" data-caption="Package Design - Branding">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_3_md.webp" data-caption="Package Design - Branding" onclick="openImage('images/work_3_md.webp','Package Design'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_3_md.webp" class="lazyload img-fluid" alt="Packaging Design" />
                     <div class="portfolio-overlay">
@@ -172,7 +172,7 @@
               </div>
 
               <div class="item web packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_4_full.webp" data-caption="Web Design - UI/UX Design">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_4_full.webp" data-caption="Web Design - UI/UX Design" onclick="openImage('images/work_4_full.webp','Web Design'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_4_full.webp" class="lazyload img-fluid" alt="Web Design Project" />
                     <div class="portfolio-overlay">
@@ -186,7 +186,7 @@
               </div>
 
               <div class="item illustration packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_5_md.webp" data-caption="Digital Art - Illustration">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_5_md.webp" data-caption="Digital Art - Illustration" onclick="openImage('images/work_5_md.webp','Digital Art'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_5_md.webp" class="lazyload img-fluid" alt="Digital Illustration" />
                     <div class="portfolio-overlay">
@@ -200,7 +200,7 @@
               </div>
 
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_6_md.webp" data-caption="Brand Strategy - Visual Identity">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_6_md.webp" data-caption="Brand Strategy - Visual Identity" onclick="openImage('images/work_6_md.webp','Brand Strategy'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_6_md.webp" class="lazyload img-fluid" alt="Brand Strategy" />
                     <div class="portfolio-overlay">
@@ -214,7 +214,7 @@
               </div>
 
               <div class="item branding packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_7_a_md.webp" data-caption="Product Design - Packaging">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_7_a_md.webp" data-caption="Product Design - Packaging" onclick="openImage('images/work_7_a_md.webp','Product Design'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_7_a_md.webp" class="lazyload img-fluid" alt="Product Design" />
                     <div class="portfolio-overlay">
@@ -228,7 +228,7 @@
               </div>
 
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
-                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_8_md.webp" data-caption="Web Development - Frontend Design">
+                <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_8_md.webp" data-caption="Web Development - Frontend Design" onclick="openImage('images/work_8_md.webp','Web Development'); return false;">
                   <div class="portfolio-img-wrap">
                     <img data-src="images/work_8_md.webp" class="lazyload img-fluid" alt="Website Development" />
                     <div class="portfolio-overlay">
@@ -824,63 +824,41 @@
     <script src="js/main.js"></script>
     <!-- Dynamic content loader - connects to Admin Panel API -->
     <script src="js/dynamic-content.js"></script>
-    <!-- Instagram-style Image Viewer (inline for reliability) -->
+    <!-- Simple Image Viewer -->
     <script>
-    (function() {
-      console.log('Image viewer inline script loading...');
-
-      function initImageViewer() {
-        console.log('Initializing image viewer...');
-        var items = document.querySelectorAll('.portfolio-item[data-viewer]');
-        console.log('Found', items.length, 'portfolio items');
-
-        items.forEach(function(item, index) {
-          item.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Clicked item', index);
-            var modal = document.getElementById('imageViewerModal');
-            var img = document.getElementById('viewerImage');
-            var src = item.getAttribute('data-image');
-            var title = item.getAttribute('data-caption') || 'Image';
-            console.log('Image src:', src);
-            if (modal && img && src) {
-              img.src = src;
-              var titleEl = document.getElementById('viewerTitle');
-              if (titleEl) titleEl.textContent = title.split(' - ')[0];
-              modal.classList.add('active');
-              document.body.style.overflow = 'hidden';
-            } else {
-              console.error('Missing:', !modal ? 'modal' : '', !img ? 'img' : '', !src ? 'src' : '');
-            }
-            return false;
-          };
-        });
-
-        // Close handlers
-        var closeBtn = document.getElementById('closeImageViewer');
-        if (closeBtn) closeBtn.onclick = closeModal;
-        var overlay = document.querySelector('.image-viewer-overlay');
-        if (overlay) overlay.onclick = closeModal;
-        document.onkeydown = function(e) {
-          if (e.key === 'Escape') closeModal();
-        };
-
-        function closeModal() {
-          var modal = document.getElementById('imageViewerModal');
-          if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initImageViewer);
+    // Global function for onclick handlers
+    function openImage(src, title) {
+      console.log('openImage called:', src, title);
+      var modal = document.getElementById('imageViewerModal');
+      var img = document.getElementById('viewerImage');
+      var titleEl = document.getElementById('viewerTitle');
+      if (modal && img) {
+        img.src = src;
+        if (titleEl) titleEl.textContent = title;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       } else {
-        initImageViewer();
+        alert('Opening: ' + src);
       }
-    })();
+    }
+    function closeImage() {
+      var modal = document.getElementById('imageViewerModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeImage();
+    });
+    // Close button and overlay
+    document.addEventListener('DOMContentLoaded', function() {
+      var closeBtn = document.getElementById('closeImageViewer');
+      if (closeBtn) closeBtn.onclick = closeImage;
+      var overlay = document.querySelector('.image-viewer-overlay');
+      if (overlay) overlay.onclick = closeImage;
+    });
     </script>
 
   </body>
