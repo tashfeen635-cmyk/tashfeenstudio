@@ -73,7 +73,7 @@
     const portfolioItems = document.querySelectorAll('.portfolio-item[data-viewer]');
     images = Array.from(portfolioItems).map((item, index) => ({
       index: index,
-      src: item.getAttribute('href'),
+      src: item.getAttribute('data-image') || item.getAttribute('href'),
       title: item.getAttribute('data-caption') || 'Untitled',
       element: item
     }));
