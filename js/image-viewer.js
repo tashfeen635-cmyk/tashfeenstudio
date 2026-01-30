@@ -175,11 +175,26 @@
   // VIEWER FUNCTIONS
   // ========================================
   function openViewer(index) {
+    console.log('Image viewer: Opening image', index);
+    if (!modal) {
+      console.error('Image viewer: Modal element not found!');
+      return;
+    }
+    if (!images[index]) {
+      console.error('Image viewer: Image not found at index', index);
+      return;
+    }
     currentImageIndex = index;
     updateViewer();
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    console.log('Image viewer: Modal opened');
   }
+
+  // Global function to test viewer manually from console
+  window.testImageViewer = function(index) {
+    openViewer(index || 0);
+  };
 
   function closeViewer() {
     modal.classList.remove('active');
