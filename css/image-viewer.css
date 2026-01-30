@@ -1,0 +1,607 @@
+/**
+ * ========================================
+ * INSTAGRAM-STYLE IMAGE VIEWER
+ * ========================================
+ * Modern, responsive image viewer with
+ * like, comment, and share functionality
+ */
+
+/* ========================================
+   MODAL BASE STYLES
+   ======================================== */
+.image-viewer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-viewer-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.image-viewer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.image-viewer-container {
+  position: relative;
+  width: 95%;
+  max-width: 1200px;
+  height: 90vh;
+  max-height: 800px;
+  z-index: 10001;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   CLOSE BUTTON
+   ======================================== */
+.image-viewer-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10002;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.image-viewer-close:hover {
+  transform: scale(1.1);
+  color: #D63447;
+}
+
+/* ========================================
+   NAVIGATION ARROWS
+   ======================================== */
+.image-viewer-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px 10px;
+  border-radius: 50%;
+  z-index: 10002;
+  transition: all 0.2s ease;
+}
+
+.image-viewer-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.image-viewer-prev {
+  left: -60px;
+}
+
+.image-viewer-next {
+  right: -60px;
+}
+
+/* ========================================
+   MAIN CONTENT LAYOUT
+   ======================================== */
+.image-viewer-content {
+  display: flex;
+  height: 100%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Section */
+.image-viewer-image-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  min-width: 0;
+}
+
+.image-viewer-image-section img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================
+   SIDEBAR STYLES
+   ======================================== */
+.image-viewer-sidebar {
+  width: 350px;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #333;
+}
+
+/* Header */
+.viewer-header {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.viewer-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #D63447;
+}
+
+.viewer-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-username {
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+}
+
+.viewer-location {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Description */
+.viewer-description {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.viewer-description h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.viewer-description p {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Action Buttons */
+.viewer-actions {
+  display: flex;
+  padding: 10px 15px;
+  gap: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.viewer-action-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.viewer-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.viewer-action-btn svg {
+  transition: all 0.2s ease;
+}
+
+/* Like Button Animation */
+.viewer-action-btn.liked .heart-icon {
+  fill: #D63447;
+  stroke: #D63447;
+  animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Save Button */
+.viewer-action-btn.saved svg {
+  fill: #fff;
+}
+
+.viewer-action-btn:last-child {
+  margin-left: auto;
+}
+
+/* Likes Text */
+.viewer-likes {
+  padding: 0 15px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ========================================
+   COMMENTS SECTION
+   ======================================== */
+.viewer-comments {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-username {
+  font-weight: 600;
+  color: #fff;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.comment-text {
+  color: #ddd;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.comment-time {
+  color: #666;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.comment-like {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 11px;
+  margin-left: 10px;
+}
+
+.comment-like:hover {
+  color: #D63447;
+}
+
+/* No Comments State */
+.no-comments {
+  text-align: center;
+  color: #666;
+  padding: 30px;
+  font-size: 14px;
+}
+
+/* Add Comment */
+.viewer-add-comment {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #333;
+  gap: 10px;
+}
+
+.viewer-add-comment input {
+  flex: 1;
+  background: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: background 0.2s ease;
+}
+
+.viewer-add-comment input:focus {
+  background: #444;
+}
+
+.viewer-add-comment input::placeholder {
+  color: #888;
+}
+
+.viewer-add-comment button {
+  background: none;
+  border: none;
+  color: #D63447;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 15px;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.viewer-add-comment button:not(:disabled) {
+  opacity: 1;
+}
+
+.viewer-add-comment button:not(:disabled):hover {
+  color: #ff4757;
+}
+
+/* ========================================
+   SHARE MODAL
+   ======================================== */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10003;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.share-modal.active {
+  display: flex;
+}
+
+.share-modal-content {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  animation: modalSlideIn 0.2s ease;
+}
+
+.share-modal-content h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 15px;
+  background: #333;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.share-option:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.share-option[data-platform="facebook"]:hover {
+  background: #1877f2;
+}
+
+.share-option[data-platform="twitter"]:hover {
+  background: #1da1f2;
+}
+
+.share-option[data-platform="whatsapp"]:hover {
+  background: #25d366;
+}
+
+.share-modal-close {
+  width: 100%;
+  padding: 12px;
+  background: #333;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.share-modal-close:hover {
+  background: #444;
+}
+
+/* ========================================
+   SCROLLBAR STYLES
+   ======================================== */
+.viewer-comments::-webkit-scrollbar {
+  width: 6px;
+}
+
+.viewer-comments::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.viewer-comments::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.viewer-comments::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 900px) {
+  .image-viewer-content {
+    flex-direction: column;
+  }
+
+  .image-viewer-sidebar {
+    width: 100%;
+    max-height: 50%;
+  }
+
+  .image-viewer-image-section {
+    max-height: 50%;
+  }
+
+  .image-viewer-nav {
+    display: none;
+  }
+
+  .viewer-comments {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-viewer-container {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+
+  .image-viewer-content {
+    border-radius: 0;
+  }
+
+  .image-viewer-close {
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+
+  .share-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================================
+   TOAST NOTIFICATION
+   ======================================== */
+.viewer-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #333;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+  z-index: 10004;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.viewer-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+.image-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.image-loading::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 3px solid #333;
+  border-top-color: #D63447;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

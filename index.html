@@ -19,6 +19,8 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Instagram-style Image Viewer -->
+    <link rel="stylesheet" href="css/image-viewer.css">
     <link rel="icon" type="image/png" href="faviconn.png" sizes="32x32">
     <link rel="shortcut icon" type="image/png" href="faviconn.png">
 
@@ -708,10 +710,149 @@
       <div class="site-loader"></div>
     </div>
 
+    <!-- Instagram-Style Image Viewer Modal -->
+    <div id="imageViewerModal" class="image-viewer-modal">
+      <div class="image-viewer-overlay"></div>
+      <div class="image-viewer-container">
+        <!-- Close Button -->
+        <button class="image-viewer-close" id="closeImageViewer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Navigation Arrows -->
+        <button class="image-viewer-nav image-viewer-prev" id="prevImage">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="image-viewer-nav image-viewer-next" id="nextImage">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Main Content -->
+        <div class="image-viewer-content">
+          <!-- Image Section -->
+          <div class="image-viewer-image-section">
+            <img id="viewerImage" src="" alt="Portfolio Image">
+          </div>
+
+          <!-- Sidebar with interactions -->
+          <div class="image-viewer-sidebar">
+            <!-- Header -->
+            <div class="viewer-header">
+              <div class="viewer-user">
+                <img src="images/about.webp" alt="Tashfeen" class="viewer-avatar">
+                <div class="viewer-user-info">
+                  <span class="viewer-username">Tashu's Studio</span>
+                  <span class="viewer-location">Gilgit, Pakistan</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image Title & Description -->
+            <div class="viewer-description">
+              <h3 id="viewerTitle">Image Title</h3>
+              <p id="viewerCaption">Image description goes here...</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="viewer-actions">
+              <button class="viewer-action-btn" id="likeBtn" data-liked="false">
+                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span class="like-count" id="likeCount">0</span>
+              </button>
+              <button class="viewer-action-btn" id="commentBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="comment-count" id="commentCount">0</span>
+              </button>
+              <button class="viewer-action-btn" id="shareBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </button>
+              <button class="viewer-action-btn" id="saveBtn" data-saved="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Like Info -->
+            <div class="viewer-likes">
+              <span id="likesText">Be the first to like this</span>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="viewer-comments" id="commentsSection">
+              <div class="comments-list" id="commentsList">
+                <!-- Comments will be loaded here -->
+              </div>
+            </div>
+
+            <!-- Add Comment (for logged in users) -->
+            <div class="viewer-add-comment">
+              <input type="text" id="commentInput" placeholder="Add a comment..." maxlength="500">
+              <button id="postCommentBtn" disabled>Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="share-modal">
+      <div class="share-modal-content">
+        <h3>Share this image</h3>
+        <div class="share-options">
+          <button class="share-option" data-platform="facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            Facebook
+          </button>
+          <button class="share-option" data-platform="twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+            Twitter
+          </button>
+          <button class="share-option" data-platform="whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </button>
+          <button class="share-option" id="copyLinkBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            Copy Link
+          </button>
+        </div>
+        <button class="share-modal-close" id="closeShareModal">Cancel</button>
+      </div>
+    </div>
+
     <script src="js/scripts-dist.js"></script>
     <script src="js/main.js"></script>
     <!-- Dynamic content loader - connects to Admin Panel API -->
     <script src="js/dynamic-content.js"></script>
+    <!-- Instagram-style Image Viewer -->
+    <script src="js/image-viewer.js"></script>
 
   </body>
 </html>

@@ -701,6 +701,119 @@ app.post('/api/restore-defaults', isAuthenticated, (req, res) => {
 });
 
 // ========================================
+// IMAGE INTERACTIONS API (Likes, Comments, Shares)
+// ========================================
+
+const INTERACTIONS_FILE = path.join(__dirname, 'data', 'interactions.json');
+
+// Read interactions data
+function readInteractions() {
+  try {
+    if (fs.existsSync(INTERACTIONS_FILE)) {
+      return JSON.parse(fs.readFileSync(INTERACTIONS_FILE, 'utf8'));
+    }
+  } catch (e) {
+    console.error('Error reading interactions:', e);
+  }
+  return { images: {}, totalLikes: 0, totalComments: 0 };
+}
+
+// Write interactions data
+function writeInteractions(data) {
+  try {
+    fs.writeFileSync(INTERACTIONS_FILE, JSON.stringify(data, null, 2));
+  } catch (e) {
+    console.error('Error writing interactions:', e);
+  }
+}
+
+// Get interactions for an image
+app.get('/api/interactions/:imageKey', (req, res) => {
+  const data = readInteractions();
+  const imageKey = req.params.imageKey;
+  const imageData = data.images[imageKey] || {
+    likes: 0,
+    comments: []
+  };
+  res.json(imageData);
+});
+
+// Like/Unlike an image
+app.post('/api/interactions/like', (req, res) => {
+  const { imageKey, liked } = req.body;
+
+  if (!imageKey) {
+    return res.status(400).json({ error: 'Image key is required' });
+  }
+
+  const data = readInteractions();
+
+  if (!data.images[imageKey]) {
+    data.images[imageKey] = { likes: 0, comments: [] };
+  }
+
+  if (liked) {
+    data.images[imageKey].likes++;
+    data.totalLikes++;
+  } else {
+    data.images[imageKey].likes = Math.max(0, data.images[imageKey].likes - 1);
+    data.totalLikes = Math.max(0, data.totalLikes - 1);
+  }
+
+  writeInteractions(data);
+
+  res.json({
+    success: true,
+    likes: data.images[imageKey].likes,
+    totalLikes: data.totalLikes
+  });
+});
+
+// Add comment to an image
+app.post('/api/interactions/comment', (req, res) => {
+  const { imageKey, comment } = req.body;
+
+  if (!imageKey || !comment) {
+    return res.status(400).json({ error: 'Image key and comment are required' });
+  }
+
+  const data = readInteractions();
+
+  if (!data.images[imageKey]) {
+    data.images[imageKey] = { likes: 0, comments: [] };
+  }
+
+  const newComment = {
+    id: Date.now().toString(),
+    username: comment.username || 'Guest',
+    text: comment.text,
+    time: new Date().toISOString(),
+    likes: 0
+  };
+
+  data.images[imageKey].comments.push(newComment);
+  data.totalComments++;
+
+  writeInteractions(data);
+
+  res.json({
+    success: true,
+    comment: newComment,
+    totalComments: data.images[imageKey].comments.length
+  });
+});
+
+// Get all interactions stats
+app.get('/api/interactions/stats', (req, res) => {
+  const data = readInteractions();
+  res.json({
+    totalLikes: data.totalLikes,
+    totalComments: data.totalComments,
+    totalImages: Object.keys(data.images).length
+  });
+});
+
+// ========================================
 // START SERVER
 // ========================================
 
