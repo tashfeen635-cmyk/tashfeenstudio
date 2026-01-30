@@ -96,13 +96,20 @@
   // EVENT BINDINGS
   // ========================================
   function bindEvents() {
-    // Portfolio items click handler
-    document.querySelectorAll('.portfolio-item[data-viewer]').forEach((item, index) => {
-      item.addEventListener('click', function(e) {
+    // Portfolio items click handler - use capture phase to ensure we get the click first
+    const portfolioItems = document.querySelectorAll('.portfolio-item[data-viewer]');
+    console.log('Image viewer: Binding click handlers to', portfolioItems.length, 'items');
+
+    portfolioItems.forEach((item, index) => {
+      // Remove any existing href behavior
+      item.onclick = function(e) {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
+        console.log('Image viewer: Clicked item', index);
         openViewer(index);
-      });
+        return false;
+      };
     });
 
     // Close modal

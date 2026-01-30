@@ -1300,6 +1300,19 @@ figure.dotted-bg:before {
   margin-bottom: 30px !important;
 }
 
+/* Fix portfolio grid layout - ensure no overlap */
+#posts.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#posts .item {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+}
+
 .feature-v1 {
   line-height: 28px;
 }
