@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/favicon.ico",
+      "dest": "/faviconn.png"
+    },
+    {
       "src": "/api/auth/login",
       "dest": "/api/auth/login.js"
     },
