@@ -6,6 +6,9 @@
  * and share functionality
  */
 
+// Immediately log to confirm script is loading
+console.log('Image viewer script loading...');
+
 (function() {
   'use strict';
 
