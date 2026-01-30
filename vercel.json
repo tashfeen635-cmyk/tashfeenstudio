@@ -1,70 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/favicon.ico",
-      "dest": "/faviconn.png"
-    },
-    {
-      "src": "/api/auth/login",
-      "dest": "/api/auth/login.js"
-    },
-    {
-      "src": "/api/auth/logout",
-      "dest": "/api/auth/logout.js"
-    },
-    {
-      "src": "/api/auth/check",
-      "dest": "/api/auth/check.js"
-    },
-    {
-      "src": "/api/portfolio",
-      "dest": "/api/portfolio.js"
-    },
-    {
-      "src": "/api/about",
-      "dest": "/api/about.js"
-    },
-    {
-      "src": "/api/services",
-      "dest": "/api/services.js"
-    },
-    {
-      "src": "/api/skills",
-      "dest": "/api/skills.js"
-    },
-    {
-      "src": "/api/stories",
-      "dest": "/api/stories.js"
-    },
-    {
-      "src": "/api/settings",
-      "dest": "/api/settings.js"
-    },
-    {
-      "src": "/api/messages",
-      "dest": "/api/messages.js"
-    },
-    {
-      "src": "/admin",
-      "dest": "/admin/index.html"
-    },
-    {
-      "src": "/admin/",
-      "dest": "/admin/index.html"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/faviconn.png" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" }
   ]
 }
