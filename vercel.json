@@ -4,16 +4,48 @@
     {
       "src": "api/**/*.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/auth/login",
+      "dest": "/api/auth/login.js"
+    },
+    {
+      "src": "/api/auth/logout",
+      "dest": "/api/auth/logout.js"
+    },
+    {
+      "src": "/api/auth/check",
+      "dest": "/api/auth/check.js"
+    },
+    {
+      "src": "/api/portfolio",
+      "dest": "/api/portfolio.js"
+    },
+    {
+      "src": "/api/about",
+      "dest": "/api/about.js"
+    },
+    {
+      "src": "/api/services",
+      "dest": "/api/services.js"
+    },
+    {
+      "src": "/api/skills",
+      "dest": "/api/skills.js"
+    },
+    {
+      "src": "/api/stories",
+      "dest": "/api/stories.js"
+    },
+    {
+      "src": "/api/settings",
+      "dest": "/api/settings.js"
+    },
+    {
+      "src": "/api/messages",
+      "dest": "/api/messages.js"
     },
     {
       "src": "/admin",
