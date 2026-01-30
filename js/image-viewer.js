@@ -56,7 +56,7 @@
 
   // Collect all portfolio images
   function collectImages() {
-    const portfolioItems = document.querySelectorAll('.portfolio-item[data-fancybox]');
+    const portfolioItems = document.querySelectorAll('.portfolio-item[data-viewer]');
     images = Array.from(portfolioItems).map((item, index) => ({
       index: index,
       src: item.getAttribute('href'),
@@ -81,7 +81,7 @@
   // ========================================
   function bindEvents() {
     // Prevent default fancybox and use custom viewer
-    document.querySelectorAll('.portfolio-item[data-fancybox]').forEach((item, index) => {
+    document.querySelectorAll('.portfolio-item[data-viewer]').forEach((item, index) => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
