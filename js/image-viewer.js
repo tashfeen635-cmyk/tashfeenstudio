@@ -22,36 +22,50 @@
   let imageData = {}; // Stores likes, comments for each image
 
   // ========================================
-  // DOM ELEMENTS
+  // DOM ELEMENTS (initialized in init())
   // ========================================
-  const modal = document.getElementById('imageViewerModal');
-  const viewerImage = document.getElementById('viewerImage');
-  const viewerTitle = document.getElementById('viewerTitle');
-  const viewerCaption = document.getElementById('viewerCaption');
-  const closeBtn = document.getElementById('closeImageViewer');
-  const prevBtn = document.getElementById('prevImage');
-  const nextBtn = document.getElementById('nextImage');
-  const likeBtn = document.getElementById('likeBtn');
-  const likeCount = document.getElementById('likeCount');
-  const likesText = document.getElementById('likesText');
-  const commentBtn = document.getElementById('commentBtn');
-  const commentCount = document.getElementById('commentCount');
-  const shareBtn = document.getElementById('shareBtn');
-  const saveBtn = document.getElementById('saveBtn');
-  const commentInput = document.getElementById('commentInput');
-  const postCommentBtn = document.getElementById('postCommentBtn');
-  const commentsList = document.getElementById('commentsList');
-  const shareModal = document.getElementById('shareModal');
-  const closeShareModal = document.getElementById('closeShareModal');
-  const copyLinkBtn = document.getElementById('copyLinkBtn');
+  let modal, viewerImage, viewerTitle, viewerCaption, closeBtn;
+  let prevBtn, nextBtn, likeBtn, likeCount, likesText;
+  let commentBtn, commentCount, shareBtn, saveBtn;
+  let commentInput, postCommentBtn, commentsList;
+  let shareModal, closeShareModal, copyLinkBtn;
 
   // ========================================
   // INITIALIZATION
   // ========================================
   function init() {
+    // Get DOM elements after DOM is ready
+    modal = document.getElementById('imageViewerModal');
+    viewerImage = document.getElementById('viewerImage');
+    viewerTitle = document.getElementById('viewerTitle');
+    viewerCaption = document.getElementById('viewerCaption');
+    closeBtn = document.getElementById('closeImageViewer');
+    prevBtn = document.getElementById('prevImage');
+    nextBtn = document.getElementById('nextImage');
+    likeBtn = document.getElementById('likeBtn');
+    likeCount = document.getElementById('likeCount');
+    likesText = document.getElementById('likesText');
+    commentBtn = document.getElementById('commentBtn');
+    commentCount = document.getElementById('commentCount');
+    shareBtn = document.getElementById('shareBtn');
+    saveBtn = document.getElementById('saveBtn');
+    commentInput = document.getElementById('commentInput');
+    postCommentBtn = document.getElementById('postCommentBtn');
+    commentsList = document.getElementById('commentsList');
+    shareModal = document.getElementById('shareModal');
+    closeShareModal = document.getElementById('closeShareModal');
+    copyLinkBtn = document.getElementById('copyLinkBtn');
+
+    // Check if modal exists
+    if (!modal) {
+      console.error('Image viewer modal not found');
+      return;
+    }
+
     collectImages();
     bindEvents();
     loadStoredData();
+    setupDoubleTap();
   }
 
   // Collect all portfolio images
@@ -74,13 +88,15 @@
         element: img.closest('a') || img
       });
     });
+
+    console.log('Image viewer: Found', images.length, 'images');
   }
 
   // ========================================
   // EVENT BINDINGS
   // ========================================
   function bindEvents() {
-    // Prevent default fancybox and use custom viewer
+    // Portfolio items click handler
     document.querySelectorAll('.portfolio-item[data-viewer]').forEach((item, index) => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
@@ -90,48 +106,62 @@
     });
 
     // Close modal
-    closeBtn.addEventListener('click', closeViewer);
-    modal.querySelector('.image-viewer-overlay').addEventListener('click', closeViewer);
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeViewer);
+    }
+
+    const overlay = modal.querySelector('.image-viewer-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', closeViewer);
+    }
 
     // Navigation
-    prevBtn.addEventListener('click', showPrevImage);
-    nextBtn.addEventListener('click', showNextImage);
+    if (prevBtn) prevBtn.addEventListener('click', showPrevImage);
+    if (nextBtn) nextBtn.addEventListener('click', showNextImage);
 
     // Keyboard navigation
     document.addEventListener('keydown', handleKeyboard);
 
     // Like button
-    likeBtn.addEventListener('click', toggleLike);
+    if (likeBtn) likeBtn.addEventListener('click', toggleLike);
 
     // Save button
-    saveBtn.addEventListener('click', toggleSave);
+    if (saveBtn) saveBtn.addEventListener('click', toggleSave);
 
     // Share button
-    shareBtn.addEventListener('click', openShareModal);
-    closeShareModal.addEventListener('click', () => shareModal.classList.remove('active'));
-    shareModal.addEventListener('click', (e) => {
-      if (e.target === shareModal) shareModal.classList.remove('active');
-    });
+    if (shareBtn) shareBtn.addEventListener('click', openShareModal);
+    if (closeShareModal) {
+      closeShareModal.addEventListener('click', () => shareModal.classList.remove('active'));
+    }
+    if (shareModal) {
+      shareModal.addEventListener('click', (e) => {
+        if (e.target === shareModal) shareModal.classList.remove('active');
+      });
+    }
 
     // Share options
     document.querySelectorAll('.share-option[data-platform]').forEach(btn => {
       btn.addEventListener('click', () => shareToplatform(btn.dataset.platform));
     });
-    copyLinkBtn.addEventListener('click', copyImageLink);
+    if (copyLinkBtn) copyLinkBtn.addEventListener('click', copyImageLink);
 
     // Comments
-    commentInput.addEventListener('input', handleCommentInput);
-    postCommentBtn.addEventListener('click', postComment);
-    commentInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && !postCommentBtn.disabled) {
-        postComment();
-      }
-    });
+    if (commentInput) {
+      commentInput.addEventListener('input', handleCommentInput);
+      commentInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && postCommentBtn && !postCommentBtn.disabled) {
+          postComment();
+        }
+      });
+    }
+    if (postCommentBtn) postCommentBtn.addEventListener('click', postComment);
 
     // Comment button - scroll to comments
-    commentBtn.addEventListener('click', () => {
-      commentInput.focus();
-    });
+    if (commentBtn) {
+      commentBtn.addEventListener('click', () => {
+        if (commentInput) commentInput.focus();
+      });
+    }
   }
 
   // ========================================
@@ -154,22 +184,22 @@
     if (!image) return;
 
     // Show loading state
-    viewerImage.style.opacity = '0.5';
-
-    // Update image
-    viewerImage.src = image.src;
-    viewerImage.onload = () => {
-      viewerImage.style.opacity = '1';
-    };
+    if (viewerImage) {
+      viewerImage.style.opacity = '0.5';
+      viewerImage.src = image.src;
+      viewerImage.onload = () => {
+        viewerImage.style.opacity = '1';
+      };
+    }
 
     // Update title and caption
     const titleParts = image.title.split(' - ');
-    viewerTitle.textContent = titleParts[0] || 'Untitled';
-    viewerCaption.textContent = titleParts[1] || 'A creative work from Tashu\'s Studio';
+    if (viewerTitle) viewerTitle.textContent = titleParts[0] || 'Untitled';
+    if (viewerCaption) viewerCaption.textContent = titleParts[1] || 'A creative work from Tashu\'s Studio';
 
     // Update navigation visibility
-    prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
-    nextBtn.style.display = currentImageIndex < images.length - 1 ? 'block' : 'none';
+    if (prevBtn) prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
+    if (nextBtn) nextBtn.style.display = currentImageIndex < images.length - 1 ? 'block' : 'none';
 
     // Load image data (likes, comments)
     loadImageData(image.src);
@@ -190,7 +220,7 @@
   }
 
   function handleKeyboard(e) {
-    if (!modal.classList.contains('active')) return;
+    if (!modal || !modal.classList.contains('active')) return;
 
     switch (e.key) {
       case 'Escape':
@@ -242,13 +272,17 @@
     };
 
     // Update UI
-    likeCount.textContent = data.likes;
+    if (likeCount) likeCount.textContent = data.likes;
     updateLikesText(data.likes);
-    likeBtn.classList.toggle('liked', data.liked);
-    likeBtn.dataset.liked = data.liked;
-    saveBtn.classList.toggle('saved', data.saved);
-    saveBtn.dataset.saved = data.saved;
-    commentCount.textContent = data.comments.length;
+    if (likeBtn) {
+      likeBtn.classList.toggle('liked', data.liked);
+      likeBtn.dataset.liked = data.liked;
+    }
+    if (saveBtn) {
+      saveBtn.classList.toggle('saved', data.saved);
+      saveBtn.dataset.saved = data.saved;
+    }
+    if (commentCount) commentCount.textContent = data.comments.length;
 
     // Render comments
     renderComments(data.comments);
@@ -270,8 +304,8 @@
     data.likes = data.liked ? data.likes + 1 : Math.max(0, data.likes - 1);
 
     // Update UI with animation
-    likeBtn.classList.toggle('liked', data.liked);
-    likeCount.textContent = data.likes;
+    if (likeBtn) likeBtn.classList.toggle('liked', data.liked);
+    if (likeCount) likeCount.textContent = data.likes;
     updateLikesText(data.likes);
 
     // Add heart animation
@@ -286,6 +320,7 @@
   }
 
   function updateLikesText(count) {
+    if (!likesText) return;
     if (count === 0) {
       likesText.textContent = 'Be the first to like this';
     } else if (count === 1) {
@@ -340,7 +375,7 @@
     const data = imageData[key];
     data.saved = !data.saved;
 
-    saveBtn.classList.toggle('saved', data.saved);
+    if (saveBtn) saveBtn.classList.toggle('saved', data.saved);
     saveStoredData();
 
     showToast(data.saved ? 'Saved to collection' : 'Removed from collection');
@@ -350,10 +385,13 @@
   // COMMENT FUNCTIONALITY
   // ========================================
   function handleCommentInput() {
-    postCommentBtn.disabled = commentInput.value.trim().length === 0;
+    if (postCommentBtn && commentInput) {
+      postCommentBtn.disabled = commentInput.value.trim().length === 0;
+    }
   }
 
   function postComment() {
+    if (!commentInput) return;
     const text = commentInput.value.trim();
     if (!text) return;
 
@@ -374,11 +412,11 @@
     };
 
     imageData[key].comments.push(comment);
-    commentCount.textContent = imageData[key].comments.length;
+    if (commentCount) commentCount.textContent = imageData[key].comments.length;
 
     // Clear input
     commentInput.value = '';
-    postCommentBtn.disabled = true;
+    if (postCommentBtn) postCommentBtn.disabled = true;
 
     // Re-render comments
     renderComments(imageData[key].comments);
@@ -390,6 +428,8 @@
   }
 
   function renderComments(comments) {
+    if (!commentsList) return;
+
     if (comments.length === 0) {
       commentsList.innerHTML = '<div class="no-comments">No comments yet. Be the first to comment!</div>';
       return;
@@ -427,7 +467,7 @@
   // SHARE FUNCTIONALITY
   // ========================================
   function openShareModal() {
-    shareModal.classList.add('active');
+    if (shareModal) shareModal.classList.add('active');
   }
 
   function shareToplatform(platform) {
@@ -452,7 +492,7 @@
       window.open(shareUrl, '_blank', 'width=600,height=400');
     }
 
-    shareModal.classList.remove('active');
+    if (shareModal) shareModal.classList.remove('active');
     showToast('Opening share dialog...');
   }
 
@@ -462,7 +502,7 @@
 
     navigator.clipboard.writeText(url).then(() => {
       showToast('Link copied to clipboard!');
-      shareModal.classList.remove('active');
+      if (shareModal) shareModal.classList.remove('active');
     }).catch(() => {
       showToast('Failed to copy link');
     });
@@ -527,23 +567,25 @@
   // ========================================
   // DOUBLE TAP TO LIKE (Mobile)
   // ========================================
-  let lastTap = 0;
-  if (viewerImage) {
-    viewerImage.addEventListener('click', (e) => {
-      const currentTime = new Date().getTime();
-      const tapLength = currentTime - lastTap;
+  function setupDoubleTap() {
+    let lastTap = 0;
+    if (viewerImage) {
+      viewerImage.addEventListener('click', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTap;
 
-      if (tapLength < 300 && tapLength > 0) {
-        // Double tap detected
-        if (!likeBtn.classList.contains('liked')) {
-          toggleLike();
-        } else {
-          createHeartAnimation();
+        if (tapLength < 300 && tapLength > 0) {
+          // Double tap detected
+          if (likeBtn && !likeBtn.classList.contains('liked')) {
+            toggleLike();
+          } else {
+            createHeartAnimation();
+          }
+          e.preventDefault();
         }
-        e.preventDefault();
-      }
-      lastTap = currentTime;
-    });
+        lastTap = currentTime;
+      });
+    }
   }
 
   // ========================================
