@@ -1,10 +1,3 @@
-AOS.init({
- 	duration: 800,
- 	easing: 'ease',
- 	once: true,
- 	offset: -100
-});
-
 jQuery(function($) {
 
 	'use strict';
@@ -22,6 +15,16 @@ jQuery(function($) {
 	contactForm();
 	stickyFillPlugin();
 	animateReveal();
+
+	// Initialize AOS after DOM manipulations are complete
+	setTimeout(function() {
+		AOS.init({
+			duration: 800,
+			easing: 'ease',
+			once: true,
+			offset: -100
+		});
+	}, 100);
 
 });
 
