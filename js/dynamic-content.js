@@ -50,6 +50,7 @@ async function initDynamicContent() {
 async function loadSiteSettings() {
   try {
     const response = await fetch(`${API_BASE}/settings`);
+    if (!response.ok) return; // API not available locally
     const settings = await response.json();
 
     if (settings) {
@@ -121,6 +122,11 @@ async function checkAPIConnection() {
 async function loadAboutSection() {
   try {
     const response = await fetch(`${API_BASE}/about`);
+    if (!response.ok) {
+      // API not available (local dev), use static content
+      console.log('  ℹ About API not available, using static content');
+      return;
+    }
     const about = await response.json();
 
     if (about && about.name) {
@@ -159,6 +165,7 @@ async function loadAboutSection() {
 async function loadServicesSection() {
   try {
     const response = await fetch(`${API_BASE}/services`);
+    if (!response.ok) return; // API not available locally
     const services = await response.json();
 
     if (services && services.length > 0) {
@@ -205,6 +212,7 @@ function formatServiceName(name) {
 async function loadSkillsSection() {
   try {
     const response = await fetch(`${API_BASE}/skills`);
+    if (!response.ok) return; // API not available locally
     const skills = await response.json();
 
     if (skills && skills.length > 0) {
@@ -261,6 +269,7 @@ async function loadSkillsSection() {
 async function loadPortfolioSection() {
   try {
     const response = await fetch(`${API_BASE}/portfolio`);
+    if (!response.ok) return; // API not available locally
     const portfolio = await response.json();
 
     if (portfolio && portfolio.length > 0) {
@@ -304,6 +313,7 @@ async function loadPortfolioSection() {
 async function loadStoriesSection() {
   try {
     const response = await fetch(`${API_BASE}/stories`);
+    if (!response.ok) return; // API not available locally
     const stories = await response.json();
 
     if (stories && stories.length > 0) {

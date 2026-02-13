@@ -19,3 +19,11 @@ npm-debug.log*
 
 # Uploads (optional - uncomment if you don't want to track uploads)
 # uploads/
+
+# Original JPG files (already converted to WebP)
+*.jpg
+!images/*.jpg
+!light/images/*.jpg
+
+# Claude config
+.claude/

@@ -91,6 +91,7 @@ window.closeImage = function() {
     bindEvents();
     loadStoredData();
     setupDoubleTap();
+    checkUrlForSharedImage();
   }
 
   // Collect all portfolio images
@@ -452,7 +453,7 @@ window.closeImage = function() {
     const comment = {
       id: Date.now(),
       username: 'Guest User',
-      avatar: 'images/guest-avatar.png',
+      avatar: 'https://ui-avatars.com/api/?name=Guest+User&background=D63447&color=fff&size=64',
       text: text,
       time: new Date().toISOString(),
       likes: 0
@@ -484,8 +485,8 @@ window.closeImage = function() {
 
     commentsList.innerHTML = comments.map(comment => `
       <div class="comment-item" data-id="${comment.id}">
-        <img src="${comment.avatar || 'images/guest-avatar.png'}" alt="${comment.username}" class="comment-avatar"
-             onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(comment.username)}&background=D63447&color=fff'">
+        <img src="${comment.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(comment.username) + '&background=D63447&color=fff&size=64'}" alt="${comment.username}" class="comment-avatar"
+             onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(comment.username)}&background=D63447&color=fff&size=64'">
         <div class="comment-content">
           <span class="comment-username">${escapeHtml(comment.username)}</span>
           <span class="comment-text">${escapeHtml(comment.text)}</span>
@@ -519,7 +520,9 @@ window.closeImage = function() {
 
   function shareToplatform(platform) {
     const image = images[currentImageIndex];
-    const url = window.location.origin + '/#portfolio-section';
+    const imageKey = getImageKey(image.src);
+    // Deep link URL that opens directly to this image
+    const url = window.location.origin + '/#image=' + imageKey;
     const text = `Check out this amazing work: ${image.title} - Tashu's Studio`;
 
     let shareUrl = '';
@@ -545,7 +548,9 @@ window.closeImage = function() {
 
   function copyImageLink() {
     const image = images[currentImageIndex];
-    const url = window.location.origin + image.src;
+    const imageKey = getImageKey(image.src);
+    // Deep link URL that opens directly to this image
+    const url = window.location.origin + '/#image=' + imageKey;
 
     navigator.clipboard.writeText(url).then(() => {
       showToast('Link copied to clipboard!');
@@ -610,6 +615,62 @@ window.closeImage = function() {
       setTimeout(() => toast.remove(), 300);
     }, 3000);
   }
+
+  // ========================================
+  // DEEP LINKING - Open shared images from URL
+  // ========================================
+  function checkUrlForSharedImage() {
+    const hash = window.location.hash;
+    console.log('Checking URL hash:', hash, 'Images count:', images.length);
+
+    if (hash && hash.startsWith('#image=')) {
+      const imageKey = hash.replace('#image=', '');
+      console.log('Deep link detected for image:', imageKey);
+
+      // Find the image index by matching the key
+      const imageIndex = images.findIndex(img => {
+        const key = getImageKey(img.src);
+        console.log('Comparing:', key, 'with', imageKey);
+        return key === imageKey;
+      });
+
+      console.log('Found image at index:', imageIndex);
+
+      if (imageIndex !== -1) {
+        // Longer delay to ensure page and all scripts are fully loaded
+        setTimeout(() => {
+          console.log('Opening viewer for shared image');
+          openViewer(imageIndex);
+          // Scroll to portfolio section
+          const portfolioSection = document.getElementById('portfolio-section');
+          if (portfolioSection) {
+            portfolioSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 1000);
+      } else {
+        console.log('Image not found for key:', imageKey);
+        // Try again after images might be loaded
+        setTimeout(() => {
+          collectImages();
+          const retryIndex = images.findIndex(img => getImageKey(img.src) === imageKey);
+          if (retryIndex !== -1) {
+            openViewer(retryIndex);
+          }
+        }, 1500);
+      }
+    }
+  }
+
+  // Listen for hash changes (in case user navigates while on page)
+  window.addEventListener('hashchange', function() {
+    checkUrlForSharedImage();
+  });
+
+  // Also check when window fully loads (images, styles, etc.)
+  window.addEventListener('load', function() {
+    console.log('Window fully loaded, checking for shared image');
+    checkUrlForSharedImage();
+  });
 
   // ========================================
   // DOUBLE TAP TO LIKE (Mobile)

@@ -17,17 +17,17 @@ function readData(filename) {
 
 module.exports = (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  if (req.method === 'GET') {
+  try {
     const services = readData('services.json');
     return res.status(200).json(services);
+  } catch (error) {
+    return res.status(200).json([]);
   }
-
-  return res.status(405).json({ error: 'Method not allowed' });
 };

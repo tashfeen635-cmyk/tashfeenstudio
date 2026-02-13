@@ -16,18 +16,26 @@ function readData(filename) {
 }
 
 module.exports = (req, res) => {
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
 
+  // Handle preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  if (req.method === 'GET') {
+  // Return about data for any request (GET, POST, etc.)
+  // This is read-only data, so it's safe
+  try {
     const about = readData('about.json');
     return res.status(200).json(about);
+  } catch (error) {
+    return res.status(200).json({
+      name: "Tashfeen Riaz",
+      title: "Web Designer & Developer",
+      bio: "Creative designer and developer"
+    });
   }
-
-  return res.status(405).json({ error: 'Method not allowed' });
 };

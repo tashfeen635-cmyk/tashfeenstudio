@@ -9,20 +9,45 @@
     <meta name="keywords" content="web designer, web developer, portfolio, Tashfeen Riaz, Gilgit, Pakistan, WordPress, UI/UX, frontend developer">
     <meta name="author" content="Tashfeen Riaz">
 
-    <link rel="stylesheet" href="css/vendor/icomoon/style.css">
-    <link rel="stylesheet" href="css/vendor/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/vendor/animate.min.css">
-    <link rel="stylesheet" href="css/vendor/aos.css">
-    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendor/jquery.fancybox.min.css">
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
+    <!-- Preload LCP image (hero background) -->
+    <link rel="preload" as="image" href="images/cover_bg_2.webp" type="image/webp">
 
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Instagram-style Image Viewer -->
-    <link rel="stylesheet" href="css/image-viewer.css">
-    <link rel="icon" type="image/png" href="faviconn.png" sizes="32x32">
-    <link rel="shortcut icon" type="image/png" href="faviconn.png">
+    <!-- Preload critical fonts -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Arimo:400|Raleway:300,400,700&display=swap">
+
+    <!-- Critical CSS inlined for fast First Contentful Paint -->
+    <style>
+      html,body{overflow-x:hidden}body{font-family:"Raleway",sans-serif;color:#fff;font-size:16px;line-height:30px;font-weight:300;position:relative;margin:0}body,.unslate_co--site-inner{background:#000}a{transition:.3s all ease}a,a:hover{text-decoration:none!important}.unslate_co--site-inner{margin-bottom:400px;position:relative;width:100%;z-index:2}.cover-v1{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;background-repeat:no-repeat}.cover-v1 .container{position:relative;z-index:2}.heading{font-family:"Arimo",sans-serif;font-size:60px;font-weight:400;color:#fff;letter-spacing:10px;text-transform:uppercase}.subheading{font-size:13px;letter-spacing:5px;color:rgba(255,255,255,.7);text-transform:uppercase;font-weight:300}.unslate_co--site-nav{position:fixed;top:0;left:0;right:0;z-index:99;padding:20px 0;transition:.3s all ease}.site-logo{z-index:2}.unslate_co--site-logo{font-size:24px;color:#fff;font-family:"Arimo",sans-serif;letter-spacing:3px;text-transform:uppercase}.site-nav-ul li a{color:rgba(255,255,255,.5);font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:.3s all ease}.site-nav-ul li a:hover{color:#fff}.lines-wrap{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}.lines-inner{max-width:1140px;margin:0 auto;height:100%;position:relative}.lines{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.05);transform:translateX(-50%)}#unslate_co--overlayer{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999}.site-loader-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999}.site-loader{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:991.98px){.unslate_co--site-inner{margin-bottom:auto!important}.d-none{display:none!important}.d-lg-inline-block{display:none!important}.d-inline-block{display:inline-block!important}}
+    </style>
+
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="css/vendor/bootstrap.opt.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/vendor/icomoon/style.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/vendor/owl.carousel.opt.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/vendor/aos.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/vendor/animate.opt.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/vendor/jquery.fancybox.opt.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/image-viewer.min.css" media="print" onload="this.media='all'">
+
+    <!-- Fallback for browsers without JS -->
+    <noscript>
+      <link rel="stylesheet" href="css/vendor/bootstrap.opt.css">
+      <link rel="stylesheet" href="css/vendor/icomoon/style.css">
+      <link rel="stylesheet" href="css/vendor/owl.carousel.opt.css">
+      <link rel="stylesheet" href="css/vendor/aos.min.css">
+      <link rel="stylesheet" href="css/vendor/animate.opt.css">
+      <link rel="stylesheet" href="css/vendor/jquery.fancybox.opt.css">
+      <link rel="stylesheet" href="css/style.min.css">
+      <link rel="stylesheet" href="css/image-viewer.min.css">
+    </noscript>
+
+    <link rel="icon" type="image/webp" href="faviconn.webp" sizes="32x32">
 
     <!-- Lazysizes for lazy loading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
@@ -133,7 +158,7 @@
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_1_md.webp" data-caption="Brand Identity - Visual Design" onclick="openImage('images/work_1_md.webp','Brand Identity'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_1_md.webp" class="lazyload img-fluid" alt="Brand Identity Design" />
+                    <img data-src="images/work_1_md.webp" class="lazyload img-fluid" alt="Brand Identity Design" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Brand Identity</h4>
@@ -146,7 +171,7 @@
               <div class="item branding packaging illustration col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_2_md.webp" data-caption="Creative Artwork - Illustration" onclick="openImage('images/work_2_md.webp','Creative Artwork'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_2_md.webp" class="lazyload img-fluid" alt="Creative Illustration" />
+                    <img data-src="images/work_2_md.webp" class="lazyload img-fluid" alt="Creative Illustration" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Creative Artwork</h4>
@@ -160,7 +185,7 @@
               <div class="item branding packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_3_md.webp" data-caption="Package Design - Branding" onclick="openImage('images/work_3_md.webp','Package Design'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_3_md.webp" class="lazyload img-fluid" alt="Packaging Design" />
+                    <img data-src="images/work_3_md.webp" class="lazyload img-fluid" alt="Packaging Design" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Package Design</h4>
@@ -174,7 +199,7 @@
               <div class="item web packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_4_full.webp" data-caption="Web Design - UI/UX Design" onclick="openImage('images/work_4_full.webp','Web Design'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_4_full.webp" class="lazyload img-fluid" alt="Web Design Project" />
+                    <img data-src="images/work_4_full.webp" class="lazyload img-fluid" alt="Web Design Project" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Web Design</h4>
@@ -188,7 +213,7 @@
               <div class="item illustration packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_5_md.webp" data-caption="Digital Art - Illustration" onclick="openImage('images/work_5_md.webp','Digital Art'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_5_md.webp" class="lazyload img-fluid" alt="Digital Illustration" />
+                    <img data-src="images/work_5_md.webp" class="lazyload img-fluid" alt="Digital Illustration" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Digital Art</h4>
@@ -202,7 +227,7 @@
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_6_md.webp" data-caption="Brand Strategy - Visual Identity" onclick="openImage('images/work_6_md.webp','Brand Strategy'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_6_md.webp" class="lazyload img-fluid" alt="Brand Strategy" />
+                    <img data-src="images/work_6_md.webp" class="lazyload img-fluid" alt="Brand Strategy" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Brand Strategy</h4>
@@ -216,7 +241,7 @@
               <div class="item branding packaging col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_7_a_md.webp" data-caption="Product Design - Packaging" onclick="openImage('images/work_7_a_md.webp','Product Design'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_7_a_md.webp" class="lazyload img-fluid" alt="Product Design" />
+                    <img data-src="images/work_7_a_md.webp" class="lazyload img-fluid" alt="Product Design" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Product Design</h4>
@@ -230,7 +255,7 @@
               <div class="item web branding col-sm-6 col-md-6 col-lg-4 isotope-mb-2">
                 <a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="images/work_8_md.webp" data-caption="Web Development - Frontend Design" onclick="openImage('images/work_8_md.webp','Web Development'); return false;">
                   <div class="portfolio-img-wrap">
-                    <img data-src="images/work_8_md.webp" class="lazyload img-fluid" alt="Website Development" />
+                    <img data-src="images/work_8_md.webp" class="lazyload img-fluid" alt="Website Development" width="1200" height="800" loading="lazy" />
                     <div class="portfolio-overlay">
                       <div class="portfolio-content">
                         <h4>Web Development</h4>
@@ -259,7 +284,7 @@
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">About Me</span></h2>
             <span class="gsap-reveal">
-            <img src="images/divider.webp" alt="divider" width="76">
+            <img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy">
             </span>
           </div>
           
@@ -267,7 +292,7 @@
           <div class="row mt-5 justify-content-between">
             <div class="col-lg-7 mb-5 mb-lg-0">
               <figure class="dotted-bg gsap-reveal-img ">
-                <img src="images/about_me_pic2.webp" alt="Image" class="img-fluid">
+                <img src="images/about_me_pic2.webp" alt="Tashfeen Riaz" class="img-fluid" width="900" height="1190" loading="lazy">
               </figure>
             </div>
             <div class="col-lg-4 pr-lg-5">
@@ -287,14 +312,14 @@
 
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Services</span></h2>
-            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76"></span>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
           </div>
 
           <div class="row gutter-v3">
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="0">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/001-options.svg" alt="Image" width="45">
+                  <img src="images/svg/001-options.svg" alt="Digital Strategy" width="45" height="45" loading="lazy">
                 </div>
                 <h3>Digital <br> Strategy</h3>
                 <p>Crafting smart digital strategies that turn ideas into impactful, user-focused experiences </p>
@@ -303,7 +328,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="100">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/002-chat.svg" alt="Icon" width="45">
+                  <img src="images/svg/002-chat.svg" alt="Web Design" width="45" height="45" loading="lazy">
                 </div>
                 <h3>Web <br> Design</h3>
                 <p>Designing clean, modern websites that combine creativity, usability, and seamless user experiences </p>
@@ -312,7 +337,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="200">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/003-contact-book.svg" alt="Image" class="img-fluid" width="45">
+                  <img src="images/svg/003-contact-book.svg" alt="User Experience" width="45" height="45" loading="lazy">
                 </div>
                 <h3>User <br> Experience</h3>
                 <p>Crafting intuitive, engaging experiences that connect users with meaningful and seamless digital journeys </p>
@@ -322,7 +347,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="0">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/004-percentage.svg" alt="Image" width="45">
+                  <img src="images/svg/004-percentage.svg" alt="Web Development" width="45" height="45" loading="lazy">
                 </div>
                 <h3>Web <br> Development</h3>
                 <p>Building fast, responsive websites that combine clean code, functionality, and seamless design </p>
@@ -331,7 +356,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="100">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/006-goal.svg" alt="Image" width="45">
+                  <img src="images/svg/006-goal.svg" alt="WordPress Solutions" width="45" height="45" loading="lazy">
                 </div>
                 <h3>WordPress <br> Solutions</h3>
                 <p>Creating custom WordPress solutions that are flexible, user-friendly, and tailored to goals </p>
@@ -340,7 +365,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="feature-v1" data-aos="fade-up" data-aos-delay="200">
                 <div class="wrap-icon mb-3">
-                  <img src="images/svg/005-line-chart.svg" alt="Image" width="45">
+                  <img src="images/svg/005-line-chart.svg" alt="Mobile Applications" width="45" height="45" loading="lazy">
                 </div>
                 <h3>Mobile <br> Applications</h3>
                 <p>Designing and developing mobile applications that are intuitive, fast, and user-friendly </p>
@@ -355,7 +380,7 @@
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">My Skills</span></h2>
-            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76"></span>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
           </div>
 
 
@@ -443,7 +468,7 @@
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">What My Clients Say</span> </h2>
-            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76"></span>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
           </div>
         </div>
 
@@ -458,7 +483,7 @@
               </div>
               
               <div class="testimonial-author-info">
-                <img src="images/person_man_1.webp" alt="Image">
+                <img src="images/person_man_1.webp" alt="Eric Ingram" width="600" height="600" loading="lazy">
                 <h3>Eric Ingram</h3>
                 <span class="d-block position">Product Designer @facebook</span>
               </div>
@@ -474,7 +499,7 @@
               </div>
               
               <div class="testimonial-author-info">
-                <img src="images/person_man_2.webp" alt="Image">
+                <img src="images/person_man_2.webp" alt="Ryan Mullins" width="600" height="600" loading="lazy">
                 <h3>Ryan Mullins</h3>
                 <span class="d-block position">Product Designer @Shopify</span>
               </div>
@@ -491,7 +516,7 @@
               </div>
               
               <div class="testimonial-author-info">
-                <img src="images/person_woman_1.webp" alt="Image">
+                <img src="images/person_woman_1.webp" alt="Erica Miller" width="600" height="600" loading="lazy">
                 <h3>Erica Miller</h3>
                 <span class="d-block position">Product Designer @Twitter</span>
               </div>
@@ -507,7 +532,7 @@
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">From the land of peaks</span></h2>
-            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76"></span>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
           </div>
 
           
@@ -520,7 +545,7 @@
                     <p>The world's second highest peak, standing tall in my homeland</p>
                   </div>
                 </div>
-                <img data-src="K2.webp" class="lazyload" alt="K2 Mountain" />
+                <img data-src="K2.webp" class="lazyload" alt="K2 Mountain" width="1600" height="1067" loading="lazy" />
               </a>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 blog-post-entry" data-aos="fade-up" data-aos-delay="100">
@@ -531,7 +556,7 @@
                     <p>The resilient people of the peaks</p>
                   </div>
                 </div>
-                <img data-src="man.webp" class="lazyload" alt="Mountain People" />
+                <img data-src="man.webp" class="lazyload" alt="Mountain People" width="1600" height="975" loading="lazy" />
               </a>
             </div>
 
@@ -543,7 +568,7 @@
                     <p>Where ice meets sky in Gilgit-Baltistan</p>
                   </div>
                 </div>
-                <img data-src="glashier.webp" class="lazyload" alt="Glacier" />
+                <img data-src="glashier.webp" class="lazyload" alt="Glacier" width="1600" height="1200" loading="lazy" />
               </a>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 blog-post-entry" data-aos="fade-up" data-aos-delay="100">
@@ -554,7 +579,7 @@
                     <p>Pristine alpine lakes of the north</p>
                   </div>
                 </div>
-                <img data-src="lake.webp" class="lazyload" alt="Alpine Lake" />
+                <img data-src="lake.webp" class="lazyload" alt="Alpine Lake" width="1600" height="1203" loading="lazy" />
               </a>
             </div>
 
@@ -566,7 +591,7 @@
                     <p>Roads that connect dreams to reality</p>
                   </div>
                 </div>
-                <img data-src="road.webp" class="lazyload" alt="Mountain Road" />
+                <img data-src="road.webp" class="lazyload" alt="Mountain Road" width="1600" height="1069" loading="lazy" />
               </a>
             </div>
 
@@ -581,7 +606,7 @@
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
             <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Get In Touch</span></h2>
-            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76"></span>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
           </div>
 
 
@@ -820,12 +845,8 @@
       </div>
     </div>
 
-    <script src="js/scripts-dist.js"></script>
-    <script src="js/main.js"></script>
-    <!-- Dynamic content loader - connects to Admin Panel API -->
-    <script src="js/dynamic-content.js"></script>
-    <!-- Image Viewer with full features -->
-    <script src="js/image-viewer.js?v=2"></script>
+    <script src="js/scripts-dist.min.js" defer></script>
+    <script src="js/main.min.js" defer></script>
     <!-- Fallback open function for onclick handlers -->
     <script>
     if (typeof openImage === 'undefined') {
