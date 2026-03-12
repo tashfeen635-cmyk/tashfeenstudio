@@ -514,6 +514,18 @@ app.get('/api/stories', (req, res) => {
   res.json(stories);
 });
 
+// Get single story by ID
+app.get('/api/stories/:id', (req, res) => {
+  const stories = readData(DATA_FILES.stories);
+  const story = stories.find(s => s.id === req.params.id);
+
+  if (!story) {
+    return res.status(404).json({ error: 'Story not found' });
+  }
+
+  res.json(story);
+});
+
 // Create story
 app.post('/api/stories', isAuthenticated, upload.single('image'), (req, res) => {
   const stories = readData(DATA_FILES.stories);

@@ -333,7 +333,7 @@ async function loadStoriesSection() {
                     <p>${story.content ? story.content.substring(0, 80) + '...' : ''}</p>
                   </div>
                 </div>
-                <img src="${story.image}" class="lazyload" alt="${story.title}" />
+                <img data-src="${story.image}" class="lazyload" alt="${story.title}" loading="lazy" />
               </a>
             </div>
           `;
