@@ -365,8 +365,14 @@ async function loadPortfolio() {
 // Edit portfolio item
 async function editPortfolio(id) {
   try {
-    const response = await fetch(`${API_URL}/portfolio/${id}`);
-    const item = await response.json();
+    const response = await fetch(`${API_URL}/portfolio`);
+    const portfolio = await response.json();
+    const item = portfolio.find(p => p.id === id);
+
+    if (!item) {
+      showToast('Portfolio item not found', true);
+      return;
+    }
 
     document.getElementById('portfolioId').value = item.id;
     document.getElementById('portfolioTitle').value = item.title;
