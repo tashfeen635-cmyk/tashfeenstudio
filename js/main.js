@@ -556,57 +556,46 @@ var contactForm = function() {
 			},
 			errorElement: 'span',
 			errorLabelContainer: '.form-error',
-			/* submit to Google Sheets and Admin Panel API */
-			submitHandler: function() {
-				var $submit = $('.submitting'),
-					waitText = 'Submitting...';
+/* submit to Google Sheets (static site - no backend) */
+				submitHandler: function() {
+					var $submit = $('.submitting'),
+						waitText = 'Submitting...';
 
-				var scriptURL = 'https://script.google.com/macros/s/AKfycbz5-xLZ7L5Gx0bCoEjIk7QrnUxkPVZJhHs0TeQTl1HSvrlX0GEysnpt_B8huIalgD3b/exec';
+					var scriptURL = 'https://script.google.com/macros/s/AKfycbz5-xLZ7L5Gx0bCoEjIk7QrnUxkPVZJhHs0TeQTl1HSvrlX0GEysnpt_B8huIalgD3b/exec';
 
-				var formData = {
-					name: $('#name').val(),
-					email: $('#email').val(),
-					message: $('#message').val()
-				};
+					var formData = {
+						name: $('#name').val(),
+						email: $('#email').val(),
+						message: $('#message').val()
+					};
 
-				$submit.css('display', 'block').text(waitText);
+					$submit.css('display', 'block').text(waitText);
 
-				// Submit to Google Sheets (backup)
-				fetch(scriptURL, {
-					method: 'POST',
-					body: JSON.stringify(formData),
-					mode: 'no-cors'
-				});
-
-				// Submit to Admin Panel API (for local message storage)
-				fetch('http://localhost:3000/api/messages', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(formData)
-				})
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function() {
-					$('#form-message-warning').hide();
-					$submit.css('display', 'none');
-					$('#contactForm')[0].reset();
-					$('#form-message-success').fadeIn();
-					setTimeout(function(){
-						$('#form-message-success').fadeOut();
-					}, 5000);
-				})
-				.catch(function() {
-					// If API fails, still show success (Google Sheets backup worked)
-					$('#form-message-warning').hide();
-					$submit.css('display', 'none');
-					$('#contactForm')[0].reset();
-					$('#form-message-success').fadeIn();
-					setTimeout(function(){
-						$('#form-message-success').fadeOut();
-					}, 5000);
-				});
-			}
+					// Submit to Google Sheets
+					fetch(scriptURL, {
+						method: 'POST',
+						body: JSON.stringify(formData),
+						mode: 'no-cors'
+					})
+					.then(function() {
+						$('#form-message-warning').hide();
+						$submit.css('display', 'none');
+						$('#contactForm')[0].reset();
+						$('#form-message-success').fadeIn();
+						setTimeout(function(){
+							$('#form-message-success').fadeOut();
+						}, 5000);
+					})
+					.catch(function() {
+						$('#form-message-warning').hide();
+						$submit.css('display', 'none');
+						$('#contactForm')[0].reset();
+						$('#form-message-success').fadeIn();
+						setTimeout(function(){
+							$('#form-message-success').fadeOut();
+						}, 5000);
+					});
+				}
 		});
 	}
 };

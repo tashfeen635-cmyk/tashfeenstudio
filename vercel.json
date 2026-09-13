@@ -1,8 +1,6 @@
 {
   "rewrites": [
-    { "source": "/favicon.ico", "destination": "/faviconn.webp" },
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" }
+    { "source": "/favicon.ico", "destination": "/faviconn.webp" }
   ],
   "headers": [
     {
