@@ -6,8 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="description" content="Tashfeen Riaz - Creative Web Designer & Developer based in Gilgit, Pakistan. Specializing in modern web design, WordPress development, and user-centered digital experiences.">
-    <meta name="keywords" content="web designer, web developer, portfolio, Tashfeen Riaz, Gilgit, Pakistan, WordPress, UI/UX, frontend developer">
+    <meta name="keywords" content="web designer, web developer, portfolio, Tashfeen Riaz, Tashfeen bin Riaz, Gilgit, Pakistan, WordPress, UI/UX, frontend developer">
     <meta name="author" content="Tashfeen Riaz">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://tashfeenriaz.site/">
+
+    <!-- Open Graph (Facebook / WhatsApp / LinkedIn sharing) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Tashfeen Riaz - Tashu's Studio">
+    <meta property="og:title" content="Tashfeen Riaz | Web Designer & Developer | Tashu's Studio">
+    <meta property="og:description" content="Tashfeen Riaz - Creative Web Designer & Developer from Gilgit, Pakistan. Designing clean, modern, and responsive web experiences.">
+    <meta property="og:url" content="https://tashfeenriaz.site/">
+    <meta property="og:image" content="https://tashfeenriaz.site/images/tashfeen-riaz-portrait.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1607">
+    <meta property="og:image:height" content="1791">
+    <meta property="og:image:alt" content="Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan">
+    <meta property="profile:first_name" content="Tashfeen">
+    <meta property="profile:last_name" content="Riaz">
+    <meta property="profile:username" content="tashfeen460">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tashfeen Riaz | Web Designer & Developer | Tashu's Studio">
+    <meta name="twitter:description" content="Tashfeen Riaz - Creative Web Designer & Developer from Gilgit, Pakistan.">
+    <meta name="twitter:image" content="https://tashfeenriaz.site/images/tashfeen-riaz-portrait.webp">
+    <meta name="twitter:image:alt" content="Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan">
+
+    <!-- Structured Data: Person (Google entity recognition for "Tashfeen Riaz" / "Tashfeen bin Riaz") -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tashfeen Riaz",
+      "alternateName": ["Tashfeen", "Tashfeen bin Riaz", "Tashu"],
+      "url": "https://tashfeenriaz.site/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://tashfeenriaz.site/images/tashfeen-riaz-portrait.webp",
+        "width": 1607,
+        "height": 1791,
+        "caption": "Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan"
+      },
+      "jobTitle": "Web Designer & Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Tashu's Studio"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gilgit",
+        "addressRegion": "Gilgit-Baltistan",
+        "addressCountry": "PK"
+      },
+      "nationality": "Pakistani",
+      "knowsAbout": ["Web Design", "Web Development", "WordPress", "UI/UX Design", "JavaScript", "Shopify"],
+      "sameAs": [
+        "https://www.instagram.com/tashfeen460/",
+        "https://www.linkedin.com/in/tashfeen-riaz-39b1a2396/"
+      ]
+    }
+    </script>
 
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -290,7 +349,7 @@
           <div class="row mt-5 justify-content-between">
             <div class="col-lg-7 mb-5 mb-lg-0">
               <figure class="dotted-bg gsap-reveal-img ">
-                <img src="images/about_me_pic2.webp" alt="Tashfeen Riaz Tashfeen bin riaz" class="img-fluid" width="1607" height="1791" loading="lazy">
+                <img src="images/tashfeen-riaz-portrait.webp" alt="Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan" title="Tashfeen Riaz - Tashu's Studio" class="img-fluid" width="1607" height="1791" loading="lazy" fetchpriority="high">
               </figure>
             </div>
             <div class="col-lg-4 pr-lg-5">
@@ -706,7 +765,7 @@
       <div class="site-loader"></div>
     </div>
 
-    <!-- Instagram-Style Image Viewer Modal -->
+    <!-- Image Viewer Modal -->
     <div id="imageViewerModal" class="image-viewer-modal">
       <div class="image-viewer-overlay"></div>
       <div class="image-viewer-container">
@@ -732,114 +791,14 @@
 
         <!-- Main Content -->
         <div class="image-viewer-content">
-          <!-- Image Section -->
           <div class="image-viewer-image-section">
             <img id="viewerImage" src="" alt="Portfolio Image">
-          </div>
-
-          <!-- Sidebar with interactions -->
-          <div class="image-viewer-sidebar">
-            <!-- Header -->
-            <div class="viewer-header">
-              <div class="viewer-user">
-                <img src="images/about_me_pic.webp" alt="Tashfeen" class="viewer-avatar">
-                <div class="viewer-user-info">
-                  <span class="viewer-username">Tashu's Studio</span>
-                  <span class="viewer-location">Gilgit, Pakistan</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Image Title & Description -->
-            <div class="viewer-description">
+            <div class="viewer-caption">
               <h3 id="viewerTitle">Image Title</h3>
-              <p id="viewerCaption">Image description goes here...</p>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="viewer-actions">
-              <button class="viewer-action-btn" id="likeBtn" data-liked="false">
-                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                <span class="like-count" id="likeCount">0</span>
-              </button>
-              <button class="viewer-action-btn" id="commentBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span class="comment-count" id="commentCount">0</span>
-              </button>
-              <button class="viewer-action-btn" id="shareBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="18" cy="5" r="3"></circle>
-                  <circle cx="6" cy="12" r="3"></circle>
-                  <circle cx="18" cy="19" r="3"></circle>
-                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                </svg>
-              </button>
-              <button class="viewer-action-btn" id="saveBtn" data-saved="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Like Info -->
-            <div class="viewer-likes">
-              <span id="likesText">Be the first to like this</span>
-            </div>
-
-            <!-- Comments Section -->
-            <div class="viewer-comments" id="commentsSection">
-              <div class="comments-list" id="commentsList">
-                <!-- Comments will be loaded here -->
-              </div>
-            </div>
-
-            <!-- Add Comment (for logged in users) -->
-            <div class="viewer-add-comment">
-              <input type="text" id="commentInput" placeholder="Add a comment..." maxlength="500">
-              <button id="postCommentBtn" disabled>Post</button>
+              <p id="viewerCaption"><span class="viewer-credit">Tashfeen Riaz</span></p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Share Modal -->
-    <div id="shareModal" class="share-modal">
-      <div class="share-modal-content">
-        <h3>Share this image</h3>
-        <div class="share-options">
-          <button class="share-option" data-platform="facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-            </svg>
-            Facebook
-          </button>
-          <button class="share-option" data-platform="twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-            </svg>
-            Twitter
-          </button>
-          <button class="share-option" data-platform="whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            WhatsApp
-          </button>
-          <button class="share-option" id="copyLinkBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-            </svg>
-            Copy Link
-          </button>
-        </div>
-        <button class="share-modal-close" id="closeShareModal">Cancel</button>
       </div>
     </div>
 
@@ -849,33 +808,93 @@
     <!-- Fallback open function for onclick handlers -->
     <script>
     if (typeof openImage === 'undefined') {
-      window.openImage = function(src, title) {
+      (function() {
         var modal = document.getElementById('imageViewerModal');
         var img = document.getElementById('viewerImage');
         var titleEl = document.getElementById('viewerTitle');
-        if (modal && img) {
-          img.src = src;
-          if (titleEl) titleEl.textContent = title;
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+        var captionEl = document.getElementById('viewerCaption');
+        var prevBtn = document.getElementById('prevImage');
+        var nextBtn = document.getElementById('nextImage');
+        var images = Array.prototype.slice.call(document.querySelectorAll('.portfolio-item[data-viewer]')).map(function(el) {
+          var caption = el.getAttribute('data-caption') || 'Untitled';
+          var parts = caption.split(' - ');
+          return {
+            src: el.getAttribute('data-image'),
+            title: parts[0] || 'Untitled',
+            desc: parts.slice(1).join(' - ')
+          };
+        });
+        var current = -1;
+
+        function escapeHtml(text) {
+          var div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
         }
-      };
-      window.closeImage = function() {
-        var modal = document.getElementById('imageViewerModal');
-        if (modal) {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
+
+        function setCaption(desc) {
+          if (!captionEl) return;
+          var html = '';
+          if (desc) {
+            html += escapeHtml(desc) + ' ';
+          }
+          html += '<span class="viewer-credit">\u2014 Tashfeen Riaz</span>';
+          captionEl.innerHTML = html;
         }
-      };
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeImage();
-      });
-      document.addEventListener('DOMContentLoaded', function() {
-        var closeBtn = document.getElementById('closeImageViewer');
-        if (closeBtn) closeBtn.onclick = closeImage;
-        var overlay = document.querySelector('.image-viewer-overlay');
-        if (overlay) overlay.onclick = closeImage;
-      });
+
+        function show(index) {
+          if (index < 0 || index >= images.length) return;
+          current = index;
+          var item = images[index];
+          if (img) img.src = item.src;
+          if (titleEl) titleEl.textContent = item.title;
+          setCaption(item.desc);
+          if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+
+        window.openImage = function(src, title) {
+          for (var i = 0; i < images.length; i++) {
+            if (images[i].src === src) {
+              show(i);
+              return;
+            }
+          }
+          current = -1;
+          if (img) img.src = src;
+          if (titleEl) titleEl.textContent = title || 'Untitled';
+          setCaption('');
+          if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        };
+
+        window.closeImage = function() {
+          if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); show(current - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); show(current + 1); });
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeImage();
+          if (e.key === 'ArrowLeft') show(current - 1);
+          if (e.key === 'ArrowRight') show(current + 1);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var closeBtn = document.getElementById('closeImageViewer');
+          if (closeBtn) closeBtn.onclick = closeImage;
+          var overlay = document.querySelector('.image-viewer-overlay');
+          if (overlay) overlay.onclick = closeImage;
+        });
+      })();
     }
     </script>
 

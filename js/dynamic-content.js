@@ -22,7 +22,7 @@ var SITE_DATA = {
     title: "Web Designer & Developer",
     location: "Gilgit, Pakistan",
     bio: "I'm Tashfeen Riaz, a passionate web designer and developer based in Gilgit, Pakistan. I design and build clean, modern, and responsive web experiences that balance creativity with functionality. Every project I work on is an opportunity to turn ideas into intuitive interfaces, seamless interactions, and meaningful digital journeys. From concept to code, I focus on clarity, precision, and attention to detail — creating work that is not only visually engaging but also effective and user-friendly.",
-    image: "images/about_me_pic2.webp"
+    image: "images/tashfeen-riaz-portrait.webp"
   },
   services: [
     { "name": "Web Design", "description": "Designing clean, modern websites that combine creativity, usability, and seamless user experiences", "icon": "images/svg/002-chat.svg" },
@@ -146,6 +146,8 @@ function loadAboutSection() {
     var aboutImg = document.querySelector('#about-section .dotted-bg img');
     if (aboutImg) {
       aboutImg.src = about.image;
+      aboutImg.alt = about.name + ' - ' + about.title + ' from ' + about.location;
+      aboutImg.title = about.name + ' - Tashu\'s Studio';
     }
   }
 }
@@ -247,15 +249,17 @@ function loadPortfolioSection() {
   if (!container) return;
 
   container.innerHTML = portfolio.map(function(item) {
-    var link = item.link || '#';
-    var target = item.link ? 'target="_blank"' : '';
+    var imagePath = item.image;
+    var title = item.title;
+    var caption = (item.description || item.category || '') ? ' - ' + (item.description || item.category || '') : '';
+    var safeTitle = String(title).replace(/'/g, "\\'");
     return '<div class="item ' + (item.category || 'web') + ' col-sm-6 col-md-6 col-lg-4 isotope-mb-2">' +
-      '<a href="' + link + '" class="portfolio-item" ' + target + '>' +
+      '<a href="javascript:void(0)" class="portfolio-item" data-viewer="gallery" data-image="' + imagePath + '" data-caption="' + title + caption + '" onclick="openImage(\'' + imagePath + '\',\'' + safeTitle + '\'); return false;">' +
         '<div class="portfolio-img-wrap">' +
-          '<img src="' + item.image + '" class="img-fluid" alt="' + item.title + '" />' +
+          '<img src="' + imagePath + '" class="img-fluid" alt="' + title + '" />' +
           '<div class="portfolio-overlay">' +
             '<div class="portfolio-content">' +
-              '<h4>' + item.title + '</h4>' +
+              '<h4>' + title + '</h4>' +
               '<p>' + (item.description || item.category || '') + '</p>' +
             '</div>' +
           '</div>' +

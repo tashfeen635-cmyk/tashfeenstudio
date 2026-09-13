@@ -605,3 +605,64 @@
     transform: rotate(360deg);
   }
 }
+
+/* ========================================
+   CAPTION OVERLAY (title + description)
+   ======================================== */
+.image-viewer-image-section {
+  position: relative;
+}
+
+.viewer-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 24px 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+  color: #fff;
+  z-index: 2;
+  text-align: left;
+  pointer-events: none;
+}
+
+.viewer-caption h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.viewer-caption p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.viewer-credit {
+  color: #D63447;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 900px) {
+  .image-viewer-image-section {
+    max-height: none;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewer-caption {
+    padding: 24px 14px 12px;
+  }
+
+  .viewer-caption h3 {
+    font-size: 16px;
+  }
+
+  .viewer-caption p {
+    font-size: 12px;
+  }
+}
