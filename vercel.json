@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/favicon.ico", "destination": "/faviconn.webp" }
   ],

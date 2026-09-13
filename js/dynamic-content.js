@@ -19,9 +19,9 @@ var SITE_DATA = {
   },
   about: {
     name: "Tashfeen Riaz",
-    title: "Web Designer & Developer",
+    title: "Full Stack Web Developer",
     location: "Gilgit, Pakistan",
-    bio: "I'm Tashfeen Riaz, a passionate web designer and developer based in Gilgit, Pakistan. I design and build clean, modern, and responsive web experiences that balance creativity with functionality. Every project I work on is an opportunity to turn ideas into intuitive interfaces, seamless interactions, and meaningful digital journeys. From concept to code, I focus on clarity, precision, and attention to detail — creating work that is not only visually engaging but also effective and user-friendly.",
+    bio: "I'm Tashfeen Riaz, a full stack web developer in Gilgit, Gilgit-Baltistan, Pakistan. I design, build, and deploy fast, responsive websites and web applications — from WordPress sites and Shopify stores to custom SaaS platforms and MVPs. I combine clean front-end design (HTML/CSS, JavaScript, UI/UX) with reliable back-end development to deliver projects that balance creativity with functionality. Every project is an opportunity to turn ideas into intuitive interfaces, seamless interactions, and meaningful digital journeys.",
     image: "images/tashfeen-riaz-portrait.webp"
   },
   services: [
