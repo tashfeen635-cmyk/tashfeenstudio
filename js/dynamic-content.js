@@ -41,21 +41,21 @@ var SITE_DATA = {
     { "name": "Bootstrap", "level": 92 }
   ],
   portfolio: [
-    { "title": "Brand Identity", "description": "Visual Design", "category": "branding", "image": "images/work_1_md.webp", "link": "" },
-    { "title": "Creative Artwork", "description": "Illustration", "category": "illustration", "image": "images/work_2_md.webp", "link": "" },
-    { "title": "Package Design", "description": "Branding", "category": "branding", "image": "images/work_3_md.webp", "link": "" },
-    { "title": "Web Design", "description": "UI/UX Design", "category": "web", "image": "images/work_4_full.webp", "link": "" },
-    { "title": "Digital Art", "description": "Illustration", "category": "illustration", "image": "images/work_5_md.webp", "link": "" },
-    { "title": "Brand Strategy", "description": "Visual Identity", "category": "branding", "image": "images/work_6_md.webp", "link": "" },
-    { "title": "Product Design", "description": "Packaging", "category": "packaging", "image": "images/work_7_a_md.webp", "link": "" },
-    { "title": "Web Development", "description": "Frontend Design", "category": "web", "image": "images/work_8_md.webp", "link": "" }
+    { "title": "Brand Identity", "description": "Visual Design", "category": "branding", "image": "images/brand-identity-design.webp", "link": "" },
+    { "title": "Creative Artwork", "description": "Illustration", "category": "illustration", "image": "images/creative-artwork.webp", "link": "" },
+    { "title": "Package Design", "description": "Branding", "category": "branding", "image": "images/package-design.webp", "link": "" },
+    { "title": "Web Design", "description": "UI/UX Design", "category": "web", "image": "images/web-design-uiux.webp", "link": "" },
+    { "title": "Digital Art", "description": "Illustration", "category": "illustration", "image": "images/digital-art.webp", "link": "" },
+    { "title": "Brand Strategy", "description": "Visual Identity", "category": "branding", "image": "images/brand-strategy.webp", "link": "" },
+    { "title": "Product Design", "description": "Packaging", "category": "packaging", "image": "images/product-design.webp", "link": "" },
+    { "title": "Web Development", "description": "Frontend Design", "category": "web", "image": "images/web-development.webp", "link": "" }
   ],
   stories: [
-    { "title": "K2 - The Savage Mountain", "content": "The world's second highest peak, standing tall in my homeland. K2, also known as Mount Godwin-Austen, is the second-highest mountain on Earth at 8,611 meters above sea level. Located in the Karakoram range on the border between Pakistan and China, it's considered one of the most difficult and dangerous mountains to climb.", "image": "K2.webp" },
-    { "title": "Mountain Spirit", "content": "The resilient people of the peaks. The mountain communities of Gilgit-Baltistan have lived in harmony with these towering giants for centuries, developing unique cultures, traditions, and ways of life adapted to the high-altitude environment.", "image": "man.webp" },
-    { "title": "Ancient Glaciers", "content": "Where ice meets sky in Gilgit-Baltistan. The region is home to some of the longest glaciers outside the polar regions, including the Baltoro Glacier and Biafo Glacier. These ancient rivers of ice have shaped the landscape over millennia.", "image": "glashier.webp" },
-    { "title": "Crystal Waters", "content": "Pristine alpine lakes of the north. The lakes of Gilgit-Baltistan, fed by glacial meltwater, are known for their stunning turquoise and emerald colors. These natural wonders attract visitors from around the world.", "image": "lake.webp" },
-    { "title": "Journey Through Mountains", "content": "Roads that connect dreams to reality. The Karakoram Highway, one of the highest paved international roads in the world, winds through these mountains, connecting Pakistan to China and offering breathtaking views at every turn.", "image": "road.webp" }
+    { "title": "K2 - The Savage Mountain", "content": "The world's second highest peak, standing tall in my homeland. K2, also known as Mount Godwin-Austen, is the second-highest mountain on Earth at 8,611 meters above sea level. Located in the Karakoram range on the border between Pakistan and China, it's considered one of the most difficult and dangerous mountains to climb.", "image": "images/K2.webp" },
+    { "title": "Mountain Spirit", "content": "The resilient people of the peaks. The mountain communities of Gilgit-Baltistan have lived in harmony with these towering giants for centuries, developing unique cultures, traditions, and ways of life adapted to the high-altitude environment.", "image": "images/man.webp" },
+    { "title": "Ancient Glaciers", "content": "Where ice meets sky in Gilgit-Baltistan. The region is home to some of the longest glaciers outside the polar regions, including the Baltoro Glacier and Biafo Glacier. These ancient rivers of ice have shaped the landscape over millennia.", "image": "images/glashier.webp" },
+    { "title": "Crystal Waters", "content": "Pristine alpine lakes of the north. The lakes of Gilgit-Baltistan, fed by glacial meltwater, are known for their stunning turquoise and emerald colors. These natural wonders attract visitors from around the world.", "image": "images/lake.webp" },
+    { "title": "Journey Through Mountains", "content": "Roads that connect dreams to reality. The Karakoram Highway, one of the highest paved international roads in the world, winds through these mountains, connecting Pakistan to China and offering breathtaking views at every turn.", "image": "images/road.webp" }
   ]
 };
 
