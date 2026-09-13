@@ -25,6 +25,64 @@
     <meta name="twitter:description" content="Full Stack Web Developer in Gilgit, Pakistan. WordPress, Shopify, SaaS, MVPs and UI/UX web development services.">
     <meta name="twitter:image" content="https://tashfeenriaz.site/images/tashfeen-riaz-portrait.webp">
 
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are you a web developer in Gilgit, Pakistan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Tashfeen Riaz is a full stack web developer and designer based in Gilgit, Gilgit-Baltistan, Pakistan. He designs, builds, and deploys websites and web applications for clients in Gilgit and across Pakistan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What web development services do you offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I offer web design, UI/UX and user experience design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS and MVP development - handling everything from concept and design to code and deployment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a website cost in Gilgit, Pakistan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cost depends on the type of website, the number of pages, and the features you need - a simple business or portfolio site is affordable, while custom eCommerce or SaaS platforms cost more. Contact me with your requirements for an exact quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to build a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical business or portfolio website takes 2 to 3 weeks, while larger projects such as Shopify stores or custom web applications usually take 4 to 6 weeks or more, depending on the scope and features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide website maintenance and support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, I provide ongoing website maintenance, updates, backups, and support so your site stays fast, secure, and up to date after launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build both WordPress and Shopify websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I build custom WordPress websites and blogs, and conversion-focused Shopify stores with custom themes, payment integration, and secure checkout - whichever platform fits your business best."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +106,15 @@
       .feature-v1 h3{color:#fff;font-size:18px;font-weight:600}
       .feature-v1 p{color:#aaa;font-size:15px;line-height:1.6}
       .cta-box{margin-top:40px;text-align:center}
+      .faq-section{margin-top:80px}
+      .faq-item{display:block;background:#111;border:1px solid #2a2a2a;border-radius:8px;margin-bottom:14px;overflow:hidden}
+      .faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;color:#fff;font-family:"Arimo",sans-serif;font-size:15px;position:relative;padding-right:40px}
+      .faq-item summary::-webkit-details-marker{display:none}
+      .faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:#D63447;font-size:22px;line-height:1}
+      .faq-item[open] summary::after{content:"-"}
+      .faq-item[open]{border-color:#D63447}
+      .faq-item p{padding:0 22px 18px;margin:0;color:#aaa;font-size:14px;line-height:1.75}
+      .faq-item p a,.faq-item a{color:#D63447}
       @media(max-width:767.98px){.page-header{padding-top:120px}.page-header .heading-h1{font-size:26px;letter-spacing:2px}}
     </style>
 
@@ -192,6 +259,42 @@
 
             <div class="cta-box">
               <a href="contact.html" class="btn btn-outline-pill btn-custom-light">Get In Touch</a>
+            </div>
+
+            <div class="faq-section">
+              <div class="section-heading-wrap text-center mb-5">
+                <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Frequently Asked Questions</span></h2>
+                <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
+              </div>
+
+              <div class="row justify-content-center">
+                <div class="col-lg-9">
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>Are you a web developer in Gilgit, Pakistan?</summary>
+                    <p>Yes, Tashfeen Riaz is a <strong>full stack web developer</strong> and designer based in Gilgit, Gilgit-Baltistan, Pakistan. He designs, builds, and deploys websites and web applications for clients in Gilgit and across Pakistan.</p>
+                  </details>
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>What web development services do you offer?</summary>
+                    <p>I offer web design, UI/UX and user experience design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS and MVP development - handling everything from concept and design to code and deployment.</p>
+                  </details>
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>How much does a website cost in Gilgit, Pakistan?</summary>
+                    <p>The cost depends on the type of website, the number of pages, and the features you need - a simple business or portfolio site is affordable, while custom eCommerce or SaaS platforms cost more. <a href="contact.html">Contact me</a> with your requirements for an exact quote.</p>
+                  </details>
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>How long does it take to build a website?</summary>
+                    <p>A typical business or portfolio website takes 2 to 3 weeks, while larger projects such as Shopify stores or custom web applications usually take 4 to 6 weeks or more, depending on the scope and features.</p>
+                  </details>
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>Do you provide website maintenance and support?</summary>
+                    <p>Yes, I provide ongoing website maintenance, updates, backups, and support so your site stays fast, secure, and up to date after launch.</p>
+                  </details>
+                  <details class="faq-item" data-aos="fade-up">
+                    <summary>Can you build both WordPress and Shopify websites?</summary>
+                    <p>Yes. I build custom WordPress websites and blogs, and conversion-focused Shopify stores with custom themes, payment integration, and secure checkout - whichever platform fits your business best.</p>
+                  </details>
+                </div>
+              </div>
             </div>
           </div>
         </div>

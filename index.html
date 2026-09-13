@@ -68,6 +68,56 @@
     }
     </script>
 
+    <!-- Structured Data: FAQ (answer engine optimization) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Tashfeen Riaz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tashfeen Riaz (also known as Tashfeen bin Riaz or Tashu) is a full stack web developer and designer from Gilgit, Gilgit-Baltistan, Pakistan. He is the founder of Tashu's Studio and specializes in WordPress, Shopify, UI/UX design, and SaaS development."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Tashfeen Riaz based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tashfeen Riaz is based in Gilgit, Gilgit-Baltistan, Pakistan, and works with clients locally in Gilgit and across Pakistan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services does Tashu's Studio offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tashu's Studio offers web design, UI/UX design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS / MVP development."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Tashfeen Riaz available for freelance projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Tashfeen Riaz is available for freelance web design and development projects. You can reach him via the contact page, email tashfeen635@gmail.com, or WhatsApp at +92 355 5890894."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build a website for a business in Gilgit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, I build fast, responsive websites for businesses in Gilgit, Gilgit-Baltistan and across Pakistan - from simple business sites to WordPress blogs, Shopify stores, and custom web applications."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +132,7 @@
     <!-- Critical CSS inlined for fast First Contentful Paint -->
     <style>
       html,body{overflow-x:hidden}body{font-family:"Raleway",sans-serif;color:#fff;font-size:16px;line-height:30px;font-weight:300;position:relative;margin:0}body,.unslate_co--site-inner{background:#000}a{transition:.3s all ease}a,a:hover{text-decoration:none!important}.unslate_co--site-inner{margin-bottom:400px;position:relative;width:100%;z-index:2}.cover-v1{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;background-repeat:no-repeat}.cover-v1 .container{position:relative;z-index:2}.heading{font-family:"Arimo",sans-serif;font-size:60px;font-weight:400;color:#fff;letter-spacing:10px;text-transform:uppercase}.subheading{font-size:13px;letter-spacing:5px;color:rgba(255,255,255,.7);text-transform:uppercase;font-weight:300}.unslate_co--site-nav{position:absolute;top:0;left:0;right:0;z-index:1002;padding:20px 0;width:100%;font-weight:400;transition:.3s all ease}.site-logo{z-index:99}.unslate_co--site-logo{font-size:24px;color:#fff;font-family:"Arimo",sans-serif;letter-spacing:3px;text-transform:uppercase}.site-nav-ul li a{color:rgba(255,255,255,.5);font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:.3s all ease}.site-nav-ul li a:hover{color:#fff}.lines-wrap{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}.lines-inner{max-width:1140px;margin:0 auto;height:100%;position:relative}.lines{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.05);transform:translateX(-50%)}#unslate_co--overlayer{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999}.site-loader-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999}.site-loader{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:991.98px){.unslate_co--site-inner{margin-bottom:auto!important}.d-none{display:none!important}.d-lg-inline-block{display:none!important}.d-inline-block{display:inline-block!important}}
+    .faq-item{display:block;background:#111;border:1px solid #2a2a2a;border-radius:8px;margin-bottom:14px;overflow:hidden}.faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;color:#fff;font-family:"Arimo",sans-serif;font-size:15px;position:relative;padding-right:40px}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:#D63447;font-size:22px;line-height:1}.faq-item[open] summary::after{content:"-"}.faq-item[open]{border-color:#D63447}.faq-item p{padding:0 22px 18px;margin:0;color:#aaa;font-size:14px;line-height:1.75}.faq-item a{color:#D63447}
     </style>
 
     <!-- Layout-critical CSS loaded synchronously (needed for grid, animations, responsive) -->
@@ -664,6 +715,41 @@
         </div>
       </div>
       <!-- END blog posts -->
+
+      <div class="unslate_co--section" id="faq-section">
+        <div class="container">
+          <div class="section-heading-wrap text-center mb-5">
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Frequently Asked Questions</span></h2>
+            <span class="gsap-reveal"><img src="images/divider.webp" alt="divider" width="76" height="6" loading="lazy"></span>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <details class="faq-item" data-aos="fade-up">
+                <summary>Who is Tashfeen Riaz?</summary>
+                <p><strong>Tashfeen Riaz</strong> (also known as Tashfeen bin Riaz or Tashu) is a <strong>full stack web developer</strong> and designer from Gilgit, Gilgit-Baltistan, Pakistan. He is the founder of Tashu's Studio and specializes in WordPress, Shopify, UI/UX design, and SaaS development.</p>
+              </details>
+              <details class="faq-item" data-aos="fade-up">
+                <summary>Where is Tashfeen Riaz based?</summary>
+                <p>Tashfeen Riaz is based in <strong>Gilgit, Gilgit-Baltistan, Pakistan</strong>, and works with clients locally in Gilgit and across Pakistan.</p>
+              </details>
+              <details class="faq-item" data-aos="fade-up">
+                <summary>What services does Tashu's Studio offer?</summary>
+                <p>Tashu's Studio offers web design, UI/UX design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS / MVP development.</p>
+              </details>
+              <details class="faq-item" data-aos="fade-up">
+                <summary>Is Tashfeen Riaz available for freelance projects?</summary>
+                <p>Yes, Tashfeen Riaz is available for freelance web design and development projects. Reach him via the <a href="contact.html">contact page</a>, email <a href="mailto:tashfeen635@gmail.com">tashfeen635@gmail.com</a>, or WhatsApp at <a href="tel:+923555890894">+92 355 5890894</a>.</p>
+              </details>
+              <details class="faq-item" data-aos="fade-up">
+                <summary>Can you build a website for a business in Gilgit?</summary>
+                <p>Yes, I build fast, responsive websites for businesses in <strong>Gilgit, Gilgit-Baltistan</strong> and across Pakistan - from simple business sites to WordPress blogs, Shopify stores, and custom web applications.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END FAQ -->
 
 
       <div class="unslate_co--section" id="contact-section">
