@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tashfeenriaz.site/sitemap.xml
