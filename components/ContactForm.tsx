@@ -1,36 +1,26 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { FORM_ENDPOINT } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [warning, setWarning] = useState("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) {
       setWarning("Please fill in all fields.");
       return;
     }
     setWarning("");
-    setSubmitting(true);
-    try {
-      await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        body: JSON.stringify({ name, email, message }),
-        mode: "no-cors",
-      });
-      setDone(true);
-    } catch {
-      setDone(true);
-    } finally {
-      setSubmitting(false);
-    }
+    const text = `Hello, I'm ${name.trim()} (${email.trim()}).\n\n${message.trim()}`;
+    const url = `${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    setDone(true);
   };
 
   return (
@@ -71,16 +61,15 @@ export default function ContactForm() {
         />
       </div>
       <div className="form-actions">
-        <button className="btn" type="submit" disabled={submitting}>
-          {submitting ? "Sending ..." : "Send Message"}
+        <button className="btn" type="submit">
+          Send Message
         </button>
-        {submitting && <span className="submitting">Please wait ...</span>}
       </div>
       {warning && <p className="form-message-warning">{warning}</p>}
       {done && (
         <p className="form-message-success">
-          Your message has been sent. Thank you for contacting us - you will be
-          heard back soon.
+          WhatsApp has opened with your message - just press send to deliver it
+          to me.
         </p>
       )}
     </form>

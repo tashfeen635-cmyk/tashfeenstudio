@@ -39,8 +39,7 @@ export const SITE = {
   portraitH: 1791,
 };
 
-export const FORM_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbz5-xLZ7L5Gx0bCoEjIk7QrnUxkPVZJhHs0TeQTl1HSvrlX0GEysnpt_B8huIalgD3b/exec";
+
 
 export const NAV_LEFT = [
   { href: "/work", label: "Portfolio" },
