@@ -518,6 +518,13 @@ export function reviewsJsonLd() {
           name: SITE.name,
           url: `${SITE.url}/about`,
         },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1",
+          reviewCount: TESTIMONIALS.length,
+        },
         review: TESTIMONIALS.map((t) => ({
           "@type": "Review",
           itemReviewed: { "@id": `${SITE.url}/#professional-service` },
