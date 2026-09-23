@@ -21,6 +21,11 @@ export default function Footer() {
             </a>
           </li>
           <li>
+            <a href={SITE.maps} target="_blank" rel="noopener noreferrer">
+              Google Maps
+            </a>
+          </li>
+          <li>
             <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>

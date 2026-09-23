@@ -22,7 +22,9 @@ export default function ContactSection() {
         </div>
         <div className="contact-info-item">
           <span className="contact-info-label">Location</span>
-          <span className="contact-info-val">{SITE.location}</span>
+          <a className="contact-info-val" href={SITE.maps} target="_blank" rel="noopener noreferrer">
+            {SITE.location}
+          </a>
         </div>
         <div className="contact-info-item">
           <span className="contact-info-label">Social</span>
