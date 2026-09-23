@@ -7,11 +7,11 @@ import Testimonials from "@/components/Testimonials";
 import StoriesGrid from "@/components/StoriesGrid";
 import FaqList from "@/components/FaqList";
 import ContactSection from "@/components/ContactSection";
+import SkillsShowcase from "@/components/SkillsShowcase";
 import JsonLd from "@/components/JsonLd";
 import {
   SITE,
   HOME_SERVICES,
-  SKILLS,
   HOME_FAQ,
   faqJsonLd,
   personJsonLd,
@@ -40,12 +40,12 @@ export default function HomePage() {
             {SITE.name}
             <span className="hero-kw">Full Stack Web Developer in Gilgit, Pakistan</span>
           </h1>
-          <p className="hero-sub">Web Developer &amp; Designer — Founder of {SITE.studio}</p>
+          <p className="hero-sub">Senior Full Stack Web Developer &amp; Designer — Founder of {SITE.studio}</p>
           <p className="hero-tags">
-            WordPress · Shopify · SaaS · UI/UX Design
+            Custom Development · SaaS · UI/UX Design
           </p>
-          <div style={{ marginTop: 30 }}>
-            <a className="btn" href="#portfolio">
+          <div className="hero-cta">
+            <a className="btn btn-primary" href="#portfolio">
               View Portfolio
             </a>
             <a className="btn" href="#contact">
@@ -53,14 +53,14 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <a className="hero-scroll" href="#about" aria-hidden="true">
+        <a className="hero-scroll" href="#about" aria-label="Scroll down to the About section">
           <span>Scroll Down</span>
-          <span className="mouse" />
+          <span className="mouse" aria-hidden="true" />
         </a>
       </section>
 
       {/* ===== Portfolio ===== */}
-      <section className="section" id="portfolio" style={{ paddingTop: 90 }}>
+      <section className="section" id="portfolio">
         <div className="container">
           <SectionHeading
             tag="Portfolio"
@@ -82,7 +82,7 @@ export default function HomePage() {
             <Image
               className="about-portrait"
               src={SITE.portrait}
-              alt="Tashfeen Riaz - Web Designer and Developer, Gilgit Pakistan"
+              alt="Tashfeen Riaz - Senior Full Stack Web Developer, Gilgit Pakistan"
               width={SITE.portraitW}
               height={SITE.portraitH}
               sizes="(max-width: 991px) 100vw, 42vw"
@@ -94,23 +94,21 @@ export default function HomePage() {
             <h2>About Me</h2>
             <div className="divider-line" aria-hidden="true" />
             <p>
-              Hello! I&apos;m {SITE.name}, a passionate full stack web developer
+              Hello! I&apos;m {SITE.name}, a senior full stack web developer
               and digital designer based in {SITE.location}. As the founder of{" "}
               {SITE.studio}, I help businesses build fast, modern, and
-              conversion-focused websites — from simple landing pages to
-              full-scale web applications.
+              conversion-focused digital products — from landing pages to
+              full-scale web applications and SaaS platforms.
             </p>
             <p>
-              I specialize in WordPress, Shopify, custom web development, and
-              UI/UX design. My goal is simple: create digital experiences that
-              look great, load fast, and help your business grow.
+              I engineer custom web development, SaaS platforms, and UI/UX design end to end. My goal is simple: ship production-grade experiences that look great, load fast, and help your business grow.
             </p>
             <ul className="about-facts">
               <li>
                 <b>Name</b> <span>{SITE.name}</span>
               </li>
               <li>
-                <b>Role</b> <span>Full Stack Web Developer / Designer</span>
+                <b>Role</b> <span>Senior Full Stack Web Developer / Designer</span>
               </li>
               <li>
                 <b>Based in</b> <span>{SITE.location}</span>
@@ -163,15 +161,12 @@ export default function HomePage() {
       {/* ===== Skills ===== */}
       <section className="section" id="skills" style={{ background: "#0a0a0a" }}>
         <div className="container">
-          <SectionHeading tag="Skills" title="My Skills" />
-          <div className="skills-grid">
-            {SKILLS.map((skill) => (
-              <div key={skill.label}>
-                <span className="skill-number">{skill.value}%</span>
-                <span className="skill-label">{skill.label}</span>
-              </div>
-            ))}
-          </div>
+          <SectionHeading tag="Skills" title="What I Build With" />
+          <p className="section-lead">
+            Technologies I use to design, build, integrate, secure, and ship
+            modern web applications.
+          </p>
+          <SkillsShowcase />
         </div>
       </section>
 

@@ -1,27 +1,28 @@
 export const SITE = {
   url: "https://tashfeenriaz.site",
-  title: "Tashfeen Riaz | Full Stack Web Developer in Gilgit, Pakistan",
+  title: "Tashfeen Riaz | Senior Full Stack Web Developer in Gilgit, Pakistan",
   description:
-    "Tashfeen Riaz - Full Stack Web Developer in Gilgit, Pakistan. Building fast, responsive websites and web apps - WordPress, Shopify, SaaS, and UI/UX design for businesses.",
+    "Tashfeen Riaz - Senior Full Stack Web Developer in Gilgit, Pakistan. Building fast, scalable websites and web apps - custom development, SaaS, and UI/UX design with clean, production-grade code.",
   keywords: [
+    "senior full stack developer gilgit",
     "full stack developer gilgit",
     "web developer gilgit",
     "Tashfeen Riaz",
     "Tashfeen bin Riaz",
     "web design",
     "web development",
+    "custom web development",
+    "web applications",
     "Gilgit",
     "Gilgit-Baltistan",
     "Pakistan",
-    "WordPress",
-    "Shopify",
     "SaaS",
     "UI/UX",
   ].join(", "),
   author: "Tashfeen Riaz",
   name: "Tashfeen Riaz",
   names: ["Tashfeen", "Tashfeen bin Riaz", "Tashu"],
-  role: "Full Stack Web Developer",
+  role: "Senior Full Stack Web Developer",
   studio: "Tashu's Studio",
   email: "tashfeen635@gmail.com",
   phone: "+92 355 5890894",
@@ -129,20 +130,95 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
 ];
 
-export interface Skill {
-  label: string;
-  value: number;
+export interface TechSkill {
+  name: string;
+  note: string;
+  mono: string;
 }
 
-export const SKILLS: Skill[] = [
-  { label: "HTML/CSS", value: 99 },
-  { label: "WordPress", value: 90 },
-  { label: "Shopify/Liquid", value: 95 },
-  { label: "UI/UX Design", value: 100 },
-  { label: "JavaScript", value: 85 },
-  { label: "Responsive Design", value: 90 },
-  { label: "Figma", value: 88 },
-  { label: "Bootstrap", value: 92 },
+export interface SkillCategory {
+  id: string;
+  label: string;
+  blurb: string;
+  techs: TechSkill[];
+}
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    id: "frontend",
+    label: "Frontend",
+    blurb: "Interfaces, performance, and accessibility",
+    techs: [
+      { name: "HTML5", note: "Semantic markup & structure", mono: "H5" },
+      { name: "CSS3", note: "Modern styling & layouts", mono: "C3" },
+      { name: "JavaScript", note: "The language of the web", mono: "JS" },
+      { name: "TypeScript", note: "Typed JavaScript at scale", mono: "TS" },
+      { name: "React", note: "Component-driven interfaces", mono: "Re" },
+      { name: "Next.js", note: "Full-stack React framework", mono: "Ne" },
+      { name: "Tailwind CSS", note: "Utility-first styling", mono: "Tw" },
+      { name: "Bootstrap", note: "Responsive component framework", mono: "Bs" },
+      { name: "Responsive Design", note: "Fluid, mobile-first layouts", mono: "Rd" },
+    ],
+  },
+  {
+    id: "backend",
+    label: "Backend",
+    blurb: "APIs, servers, and application logic",
+    techs: [
+      { name: "Node.js", note: "Server-side JavaScript runtime", mono: "Nd" },
+      { name: "Express.js", note: "Minimal backend framework", mono: "Ex" },
+      { name: "PHP", note: "Server-side scripting", mono: "Ph" },
+      { name: "Laravel", note: "PHP application framework", mono: "La" },
+      { name: "Django", note: "Python web framework", mono: "Dj" },
+      { name: "REST APIs", note: "Structured API design", mono: "API" },
+    ],
+  },
+  {
+    id: "databases",
+    label: "Databases",
+    blurb: "Storing, querying, and modeling data",
+    techs: [
+      { name: "MongoDB", note: "Document database", mono: "Mo" },
+      { name: "MySQL", note: "Relational database", mono: "My" },
+      { name: "PostgreSQL", note: "Advanced SQL database", mono: "Pg" },
+      { name: "Prisma", note: "Type-safe database access", mono: "Pr" },
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI & Automation",
+    blurb: "LLM-powered products and workflows",
+    techs: [
+      { name: "AI APIs", note: "LLM & model integrations", mono: "AI" },
+      { name: "LLM Integration", note: "Language models in products", mono: "LLM" },
+      { name: "AI Chatbots", note: "Conversational interfaces", mono: "CB" },
+      { name: "AI Automation", note: "Workflows powered by AI", mono: "AU" },
+    ],
+  },
+  {
+    id: "design",
+    label: "UI/UX & Design",
+    blurb: "Products people understand and enjoy",
+    techs: [
+      { name: "Figma", note: "Collaborative interface design", mono: "Fi" },
+      { name: "UI/UX Design", note: "User-centered product design", mono: "UX" },
+      { name: "Responsive Interface Design", note: "Interfaces that adapt", mono: "RI" },
+      { name: "Design Systems", note: "Consistent, scalable UI", mono: "DS" },
+    ],
+  },
+  {
+    id: "devops",
+    label: "DevOps & Security",
+    blurb: "Shipping, securing, and maintaining",
+    techs: [
+      { name: "Git", note: "Version control", mono: "Gi" },
+      { name: "GitHub", note: "Code hosting & collaboration", mono: "Gh" },
+      { name: "Docker", note: "Containerized development", mono: "DC" },
+      { name: "Vercel", note: "Modern web deployment", mono: "Ve" },
+      { name: "Web Security", note: "OWASP-aligned hardening", mono: "WS" },
+      { name: "API Security", note: "Authentication & validation", mono: "AS" },
+    ],
+  },
 ];
 
 export interface Testimonial {
@@ -204,12 +280,12 @@ export const HOME_SERVICES: Service[] = [
   {
     icon: "/images/svg/004-percentage.svg",
     title: "Web Development",
-    desc: "Building fast, responsive websites that combine clean code, functionality, and seamless design.",
+    desc: "Building fast, scalable, production-grade websites with clean, maintainable code and seamless design.",
   },
   {
     icon: "/images/svg/006-goal.svg",
-    title: "WordPress Solutions",
-    desc: "Creating custom WordPress solutions that are flexible, user-friendly, and tailored to goals.",
+    title: "Custom Web Apps",
+    desc: "Architecting custom web applications and SaaS platforms engineered to scale with your business.",
   },
   {
     icon: "/images/svg/005-line-chart.svg",
@@ -232,17 +308,17 @@ export const SERVICES: Service[] = [
   {
     icon: "/images/svg/004-percentage.svg",
     title: "Full Stack Web Development",
-    desc: "Building fast, responsive, and scalable web applications with clean code - front-end and back-end handled together for a complete product.",
+    desc: "End-to-end development of fast, responsive, and scalable web applications - architecture, front-end, and back-end engineered together with production-grade code.",
   },
   {
     icon: "/images/svg/006-goal.svg",
-    title: "WordPress Solutions",
-    desc: "Custom WordPress websites that are flexible, user-friendly, and tailored to your goals - themes, plugins, and full site management.",
+    title: "Custom Web Applications",
+    desc: "Enterprise-grade web applications built from scratch - architecture, business logic, and clean code engineered for performance and scale.",
   },
   {
     icon: "/images/svg/001-options.svg",
-    title: "Shopify & eCommerce",
-    desc: "Conversion-focused online stores built on Shopify with custom themes, payment integration, and smooth, secure checkout experiences.",
+    title: "E-Commerce Development",
+    desc: "Conversion-focused online stores and e-commerce solutions with secure checkout and custom integrations, built to fit your brand.",
   },
   {
     icon: "/images/svg/005-line-chart.svg",
@@ -322,7 +398,7 @@ export interface Faq {
 export const HOME_FAQ: Faq[] = [
   {
     q: "Who is Tashfeen Riaz?",
-    a: "Tashfeen Riaz (also known as Tashfeen bin Riaz or Tashu) is a full stack web developer and designer from Gilgit, Gilgit-Baltistan, Pakistan. He is the founder of Tashu's Studio and specializes in WordPress, Shopify, UI/UX design, and SaaS development.",
+    a: "Tashfeen Riaz (also known as Tashfeen bin Riaz or Tashu) is a senior full stack web developer and digital designer from Gilgit, Gilgit-Baltistan, Pakistan. He is the founder of Tashu's Studio and specializes in custom web development, UI/UX design, and SaaS development.",
   },
   {
     q: "Where is Tashfeen Riaz based?",
@@ -330,7 +406,7 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: "What services does Tashu's Studio offer?",
-    a: "Tashu's Studio offers web design, UI/UX design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS / MVP development.",
+    a: "Tashu's Studio offers web design, UI/UX design, full stack web development, custom web applications, e-commerce stores, and SaaS / MVP development.",
   },
   {
     q: "Is Tashfeen Riaz available for freelance projects?",
@@ -338,18 +414,18 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: "Can you build a website for a business in Gilgit?",
-    a: "Yes, I build fast, responsive websites for businesses in Gilgit, Gilgit-Baltistan and across Pakistan - from simple business sites to WordPress blogs, Shopify stores, and custom web applications.",
+    a: "Yes, I build professional, high-performance websites for businesses in Gilgit, Gilgit-Baltistan and across Pakistan - from simple business sites to custom web applications, e-commerce stores, and SaaS platforms.",
   },
 ];
 
 export const SERVICES_FAQ: Faq[] = [
   {
     q: "Are you a web developer in Gilgit, Pakistan?",
-    a: "Yes, Tashfeen Riaz is a full stack web developer and designer based in Gilgit, Gilgit-Baltistan, Pakistan. He designs, builds, and deploys websites and web applications for clients in Gilgit and across Pakistan.",
+    a: "Yes, Tashfeen Riaz is a senior full stack web developer and designer based in Gilgit, Gilgit-Baltistan, Pakistan. He designs, builds, and deploys websites and web applications for clients in Gilgit and across Pakistan.",
   },
   {
     q: "What web development services do you offer?",
-    a: "I offer web design, UI/UX and user experience design, full stack web development, WordPress solutions, Shopify and eCommerce stores, and SaaS and MVP development - handling everything from concept and design to code and deployment.",
+    a: "I offer professional web design, UI/UX and user experience design, full stack web development, custom web applications, e-commerce stores, and SaaS and MVP development - handling everything from concept and design to code, deployment, and ongoing support.",
   },
   {
     q: "How much does a website cost in Gilgit, Pakistan?",
@@ -357,15 +433,15 @@ export const SERVICES_FAQ: Faq[] = [
   },
   {
     q: "How long does it take to build a website?",
-    a: "A typical business or portfolio website takes 2 to 3 weeks, while larger projects such as Shopify stores or custom web applications usually take 4 to 6 weeks or more, depending on the scope and features.",
+    a: "A typical business or portfolio website takes 2 to 3 weeks, while larger projects such as custom web applications or e-commerce stores usually take 4 to 6 weeks or more, depending on the scope and features.",
   },
   {
     q: "Do you provide website maintenance and support?",
     a: "Yes, I provide ongoing website maintenance, updates, backups, and support so your site stays fast, secure, and up to date after launch.",
   },
   {
-    q: "Can you build both WordPress and Shopify websites?",
-    a: "Yes. I build custom WordPress websites and blogs, and conversion-focused Shopify stores with custom themes, payment integration, and secure checkout - whichever platform fits your business best.",
+    q: "Can you build custom websites and web applications?",
+    a: "Yes. I design and build custom websites, e-commerce stores, and web applications from scratch - not template-based - with clean, professional code, secure integrations, and a design that fits your brand and business goals.",
   },
 ];
 
@@ -383,7 +459,7 @@ export function personJsonLd() {
       url: `${SITE.url}/images/tashfeen-riaz-portrait.webp`,
       width: SITE.portraitW,
       height: SITE.portraitH,
-      caption: "Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan",
+      caption: "Tashfeen Riaz - Senior Full Stack Web Developer from Gilgit, Pakistan",
     },
     jobTitle: SITE.role,
     worksFor: { "@type": "Organization", name: SITE.studio },
@@ -399,13 +475,18 @@ export function personJsonLd() {
     knowsAbout: [
       "Web Design",
       "Web Development",
-      "Full Stack Development",
-      "WordPress",
-      "Shopify",
+      "TypeScript",
+      "React/Next.js",
+      "Node.js",
+      "Python",
+      "API Design",
+      "Docker & DevOps",
+      "CI/CD",
+      "Cloud (AWS/GCP/Vercel)",
+      "Web Security",
+      "AI & LLM Integration",
       "SaaS",
       "UI/UX Design",
-      "JavaScript",
-      "HTML/CSS",
     ],
     sameAs: [SITE.instagram, SITE.linkedin],
   };
@@ -432,7 +513,7 @@ export function reviewsJsonLd() {
         "@id": `${SITE.url}/#professional-service`,
         name: SITE.studio,
         url: `${SITE.url}/`,
-        description: `Web design, web development, WordPress, Shopify, SaaS and UI/UX services by ${SITE.name}, ${SITE.role} in ${SITE.location}.`,
+        description: `Web design, web development, custom web applications, SaaS and UI/UX services by ${SITE.name}, ${SITE.role} in ${SITE.location}.`,
         founder: {
           "@type": "Person",
           name: SITE.name,

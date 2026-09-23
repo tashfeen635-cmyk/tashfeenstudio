@@ -7,7 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, PORTFOLIO } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Portfolio - Tashfeen Riaz, Web Designer & Developer in Gilgit",
+  title: "Portfolio - Tashfeen Riaz, Senior Full Stack Web Developer in Gilgit",
   description:
     "Selected works by Tashfeen Riaz: brand identity, web design, UI/UX, digital art, packaging, and web development projects.",
   alternates: { canonical: "/work" },

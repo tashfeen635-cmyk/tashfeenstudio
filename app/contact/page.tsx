@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Tashfeen Riaz - Web Developer in Gilgit, Pakistan",
+  title: "Contact Tashfeen Riaz - Senior Full Stack Web Developer in Gilgit, Pakistan",
   description:
     "Contact Tashfeen Riaz, a full stack web developer in Gilgit, Pakistan. Email, WhatsApp, and a contact form - let's build your website.",
   alternates: { canonical: "/contact" },

@@ -7,9 +7,9 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, personJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Tashfeen Riaz - Web Designer & Developer from Gilgit, Pakistan",
+  title: "About Tashfeen Riaz - Senior Full Stack Web Developer from Gilgit, Pakistan",
   description:
-    "Learn about Tashfeen Riaz, a full stack web developer and digital designer from Gilgit, Pakistan and founder of Tashu's Studio.",
+    "Learn about Tashfeen Riaz, a senior full stack web developer and digital designer from Gilgit, Pakistan and founder of Tashu's Studio.",
   alternates: { canonical: "/about" },
   openGraph: { url: `${SITE.url}/about`, type: "profile" },
 };
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 const FACTS = [
   { k: "Name", v: SITE.name },
   { k: "A.K.A", v: SITE.names.join(" · ") },
-  { k: "Role", v: "Full Stack Web Developer / Designer" },
+  { k: "Role", v: "Senior Full Stack Web Developer / Designer" },
   { k: "Studio", v: SITE.studio },
   { k: "Location", v: SITE.location },
   { k: "Languages", v: "English · Urdu · Shina" },
-  { k: "Experience", v: "50+ Websites and Applications" },
+  { k: "Experience", v: "50+ Websites & Applications Delivered" },
   { k: "Email", v: SITE.email },
   { k: "Phone", v: SITE.phone },
 ];
@@ -29,8 +29,8 @@ const FACTS = [
 const INTERESTS = [
   "Web Development",
   "UI/UX Design",
-  "WordPress",
-  "Shopify",
+  "Custom Applications",
+  "Full Stack",
   "SaaS Products",
   "Branding",
   "Photography",
@@ -44,7 +44,7 @@ export default function AboutPage() {
 
       <PageHeader
         title="About Tashfeen Riaz"
-        lead="Full Stack Web Developer & Designer from Gilgit, Pakistan. I help businesses grow with fast, modern, beautifully designed websites."
+        lead="Senior Full Stack Web Developer & Designer from Gilgit, Pakistan. I help businesses grow with fast, secure, professionally engineered websites."
       />
 
       <section className="section" style={{ paddingTop: 20 }}>
@@ -53,7 +53,7 @@ export default function AboutPage() {
             <Image
               className="about-portrait"
               src={SITE.portrait}
-              alt="Tashfeen Riaz - Full Stack Web Developer in Gilgit, Pakistan"
+              alt="Tashfeen Riaz - Senior Full Stack Web Developer in Gilgit, Pakistan"
               width={SITE.portraitW}
               height={SITE.portraitH}
               sizes="(max-width: 991px) 100vw, 42vw"
@@ -65,22 +65,23 @@ export default function AboutPage() {
             <div className="divider-line" aria-hidden="true" />
             <p>
               I&apos;m {SITE.name} — better known online as{" "}
-              <strong>{SITE.names[2]}</strong> — a self-taught full stack web
-              developer and digital designer from {SITE.location}. I started{" "}
-              {SITE.studio} to bring modern web design and development services
-              to businesses in Gilgit-Baltistan, Pakistan and beyond.
+              <strong>{SITE.names[2]}</strong> — a senior full stack web
+              developer and digital designer from {SITE.location}. I founded{" "}
+              {SITE.studio} to bring professional web design and development
+              services to businesses in Gilgit-Baltistan, Pakistan and beyond.
             </p>
             <p>
-              Over the years I&apos;ve designed and developed websites for
-              startups, tourism companies, and businesses — covering everything
-              from branding and UI/UX to WordPress, Shopify, and custom web
-              applications.
+              I&apos;ve designed and delivered 50+ websites and web
+              applications for startups, tourism companies, and businesses —
+              covering everything from branding and UI/UX to custom web design
+              and full stack development.
             </p>
             <p>
-              My approach is simple: understand the business, design with the
-              user in mind, and build products that are fast, responsive, and
-              easy to maintain. When I&apos;m not coding, you&apos;ll find me
-              exploring the mountains, drawing, or capturing the landscapes of
+              My approach is professional and process-driven: understand the
+              business, design with the user in mind, and engineer products
+              that are fast, secure, scalable, and easy to maintain. When
+              I&apos;m not coding, you&apos;ll find me exploring the
+              mountains, drawing, or capturing the landscapes of
               Gilgit-Baltistan.
             </p>
 

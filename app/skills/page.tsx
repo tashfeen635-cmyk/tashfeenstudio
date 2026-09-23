@@ -1,54 +1,56 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
-import { SITE, SKILLS } from "@/lib/site";
+import SkillsShowcase from "@/components/SkillsShowcase";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Skills - Tashfeen Riaz, Full Stack Web Developer in Gilgit",
+  title: "Skills - Tashfeen Riaz, Senior Full Stack Web Developer in Gilgit",
   description:
-    "Web development and design skills of Tashfeen Riaz: HTML/CSS, WordPress, Shopify, UI/UX, JavaScript, responsive design, Figma, Bootstrap.",
+    "Technologies Tashfeen Riaz uses to build real products: React, Next.js, TypeScript, Node.js, PHP, Laravel, Django, PostgreSQL, MongoDB, Docker, web security, and AI & LLM integration.",
   alternates: { canonical: "/skills" },
   openGraph: { url: `${SITE.url}/skills`, type: "website" },
 };
-
-const TOOLKIT = [
-  { group: "Frontend", items: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "React", "Responsive Design"] },
-  { group: "Backend & Platforms", items: ["WordPress", "Shopify / Liquid", "SaaS Platforms", "Node.js"] },
-  { group: "Design", items: ["Figma", "Adobe Photoshop", "Illustrator", "UI/UX Design", "Wireframing", "Prototyping"] },
-  { group: "Engineering", items: ["SEO", "Website Speed Optimization", "Clean Code", "Cross-Browser Testing"] },
-];
 
 export default function SkillsPage() {
   return (
     <>
       <PageHeader
-        title="My Skills"
-        lead="The tools and technologies I use to design, build, and ship modern websites and web applications."
+        title="What I Build With"
+        lead="Technologies I use to design, build, integrate, secure, and ship modern web applications."
       />
 
       <section className="section" style={{ paddingTop: 20 }}>
         <div className="container">
-          <div className="skills-grid">
-            {SKILLS.map((skill) => (
-              <div key={skill.label}>
-                <span className="skill-number">{skill.value}%</span>
-                <span className="skill-label">{skill.label}</span>
-              </div>
-            ))}
-          </div>
+          <SkillsShowcase />
         </div>
       </section>
 
       <section className="section" style={{ background: "#0a0a0a" }}>
         <div className="container">
-          <SectionHeading tag="Toolkit" title="What I Use" />
+          <SectionHeading tag="Approach" title="How I Work" />
           <div className="features-grid">
-            {TOOLKIT.map((g) => (
-              <div className="feature-card" key={g.group}>
-                <h3>{g.group}</h3>
-                <p>
-                  {g.items.map((i) => `• ${i}`).join(" · ")}
-                </p>
+            {[
+              {
+                icon: "/images/svg/001-options.svg",
+                title: "Build",
+                desc: "I write production-grade, maintainable code - components, APIs, and data models engineered to work together as one product.",
+              },
+              {
+                icon: "/images/svg/006-goal.svg",
+                title: "Integrate & Secure",
+                desc: "Authentication, payments, LLM/AI services, and third-party tools are wired in with security best practices and input validation throughout.",
+              },
+              {
+                icon: "/images/svg/005-line-chart.svg",
+                title: "Ship & Maintain",
+                desc: "Deployment, CI/CD, performance monitoring, and ongoing support so your product stays fast, secure, and up to date after launch.",
+              },
+            ].map((s) => (
+              <div className="feature-card" key={s.title}>
+                <img src={s.icon} alt="" width={45} height={45} loading="lazy" />
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
               </div>
             ))}
           </div>

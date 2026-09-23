@@ -12,9 +12,9 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services in Gilgit - Web Developer Gilgit",
+  title: "Web Design & Development Services in Gilgit - Senior Full Stack Web Developer",
   description:
-    "Web design, full stack development, WordPress, Shopify, SaaS and UI/UX services by Tashfeen Riaz, a web developer in Gilgit, Pakistan.",
+    "Web design, full stack development, custom web applications, SaaS and UI/UX services by Tashfeen Riaz, a web developer in Gilgit, Pakistan.",
   alternates: { canonical: "/services" },
   openGraph: { url: `${SITE.url}/services`, type: "website" },
 };
@@ -45,7 +45,7 @@ export default function ServicesPage() {
 
       <PageHeader
         title="Services"
-        lead="Web design, development, and digital services for businesses in Gilgit, across Pakistan, and worldwide."
+        lead="Professional web design, development, and digital services for businesses in Gilgit, across Pakistan, and worldwide."
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

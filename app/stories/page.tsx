@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, articlesJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Stories From Gilgit-Baltistan - Tashfeen Riaz, Web Developer",
+  title: "Stories From Gilgit-Baltistan - Tashfeen Riaz, Senior Full Stack Developer",
   description:
     "A visual journey through the mountains, glaciers, lakes, and people of Gilgit-Baltistan, Pakistan.",
   alternates: { canonical: "/stories" },
