@@ -25,9 +25,9 @@ export const SITE = {
   role: "Senior Full Stack Web Developer",
   studio: "Tashu's Studio",
   email: "tashfeen635@gmail.com",
-  phone: "+92 355 5890894",
-  phoneRaw: "+923555890894",
-  whatsapp: "https://wa.me/923555890894",
+  phone: "+92 3170885816",
+  phoneRaw: "+923170885816",
+  whatsapp: "https://wa.me/923170885816",
   location: "Gilgit, Gilgit-Baltistan, Pakistan",
   locality: "Gilgit",
   region: "Gilgit-Baltistan",
@@ -410,7 +410,7 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: "Is Tashfeen Riaz available for freelance projects?",
-    a: "Yes, Tashfeen Riaz is available for freelance web design and development projects. Contact him through the contact page, by email at tashfeen635@gmail.com, or on WhatsApp at +92 355 5890894.",
+    a: "Yes, Tashfeen Riaz is available for freelance web design and development projects. Contact him through the contact page, by email at tashfeen635@gmail.com, or on WhatsApp at +92 3170885816.",
   },
   {
     q: "Can you build a website for a business in Gilgit?",
