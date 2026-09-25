@@ -11,6 +11,16 @@ export default function Footer() {
         </p>
         <ul className="footer-social">
           <li>
+            <Link href="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link href="/full-stack-web-developer-pakistan">
+              Full Stack Developer in Pakistan
+            </Link>
+          </li>
+        </ul>
+        <ul className="footer-social">
+          <li>
             <a href={SITE.instagram} target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
@@ -29,9 +39,6 @@ export default function Footer() {
             <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
           </li>
         </ul>
         <p className="footer-copy">

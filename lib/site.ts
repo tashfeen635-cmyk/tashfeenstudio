@@ -1,5 +1,16 @@
 export const LAST_MODIFIED = "2026-09-26";
 
+export const ROUTES = [
+  "",
+  "about",
+  "services",
+  "skills",
+  "stories",
+  "work",
+  "contact",
+  "full-stack-web-developer-pakistan",
+] as const;
+
 export const OG_IMAGE = {
   url: "/opengraph-image",
   width: 1200,
@@ -441,6 +452,41 @@ export const HOME_FAQ: Faq[] = [
   {
     q: "Can you build a website for a business in Gilgit?",
     a: "Yes, I build professional, high-performance websites for businesses in Gilgit, Gilgit-Baltistan and across Pakistan - from simple business sites to custom web applications, e-commerce stores, and SaaS platforms.",
+  },
+];
+
+export const PAKISTAN_FAQ: Faq[] = [
+  {
+    q: "Who is the best full stack web developer in Pakistan?",
+    a: "There is no single best full stack web developer in Pakistan - the right choice depends on your project, budget, and timeline. What matters is whether the developer can own a project end to end: front-end, back-end, database, deployment, and post-launch maintenance. Tashfeen Riaz is a senior full stack web developer based in Gilgit, Gilgit-Baltistan, Pakistan, with 50+ websites and web applications delivered for tourism, corporate, and local businesses across Pakistan and abroad. He works directly with clients rather than through an agency, and every project ships with technical SEO, structured data, and performance tuning included.",
+  },
+  {
+    q: "How much does a full stack web developer in Pakistan cost?",
+    a: "A professional business website built by an experienced full stack developer in Pakistan typically costs between PKR 150,000 and PKR 400,000, depending on page count and functionality. A custom e-commerce store usually starts around PKR 350,000, and a custom web application or SaaS platform with user accounts, dashboards, and integrations starts around PKR 600,000. Because rates vary widely, the most useful step is usually a free consultation and a fixed-price proposal before any work begins.",
+  },
+  {
+    q: "How long does it take to build a website in Pakistan?",
+    a: "A standard business or portfolio website takes 2 to 3 weeks from the first consultation to launch. A larger e-commerce store usually takes 4 to 6 weeks, and a custom web application or multi-tenant SaaS platform takes 6 to 12 weeks depending on scope, integrations, and how quickly feedback and content are supplied by the client.",
+  },
+  {
+    q: "What is the difference between a front-end and a full stack developer?",
+    a: "A front-end developer builds only what a user sees in the browser: layouts, pages, interactions, and styling using HTML, CSS, and JavaScript frameworks. A full stack developer works across the entire application - the front-end, the back-end server and APIs, the database, authentication, and deployment. Hiring a full stack developer means one person owns the project end to end instead of you coordinating two specialists.",
+  },
+  {
+    q: "Can I hire a full stack web developer in Pakistan for remote work?",
+    a: "Yes. The majority of development work is handled remotely, and the entire process - discovery, design, development, reviews, and deployment - is run online. You receive progress updates and can review work without needing to be in the same city or country. Most Pakistani developers work on Pakistan Standard Time (UTC+5), which overlaps well with business hours in the Gulf, the UK, and Europe.",
+  },
+  {
+    q: "Which technologies does a full stack developer in Pakistan use?",
+    a: "The most common stack for modern web development in Pakistan is the MERN stack - MongoDB, Express.js, React, and Node.js - alongside the PERN stack using PostgreSQL, Express, React, and Node.js. In Pakistan's Laravel and PHP ecosystem, full stack developers frequently work with Laravel, PHP, MySQL, Vue.js, and React. For AI and automation work, LLM APIs, retrieval-augmented generation, and chatbot integration are increasingly common additions.",
+  },
+  {
+    q: "Do I need a full stack developer or just a website designer?",
+    a: "If you need a website that looks good and displays information about your business, a designer with a developer is enough. Hire a full stack developer when you need functionality - user accounts, payments, a database, online ordering, booking systems, dashboards, or an admin panel. A full stack developer covers both design and engineering, so you do not have to brief, hire, and coordinate two separate people.",
+  },
+  {
+    q: "Is it cheaper to hire a web developer in Pakistan than in the US or UK?",
+    a: "Yes, substantially. A comparable senior full stack developer typically bills anywhere from 50 to 70 percent less than equivalent freelancers in the United States or United Kingdom, largely due to cost of living. The trade-off is time zone and communication, which for most projects is manageable - though clients who need real-time collaboration during US business hours should confirm availability before starting.",
   },
 ];
 

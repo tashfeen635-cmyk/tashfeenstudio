@@ -117,8 +117,13 @@ export default function ServicesPage() {
           <p className="section-lead">
             Still not sure which service fits? Have a look at the{" "}
             <Link href="/work">projects I have delivered</Link> or read more
-            about <Link href="/about">me and my process</Link> - then ask me
-            directly, the first conversation is free.
+            about <Link href="/about">me and my process</Link>. If you are
+            looking to hire across Pakistan rather than locally, see{" "}
+            <Link href="/full-stack-web-developer-pakistan">
+              full stack web developer services in Pakistan
+            </Link>{" "}
+            for pricing in PKR and timelines - then ask me directly, the first
+            conversation is free.
           </p>
           <div className="cta-row">
             <Link className="btn" href="/contact">
