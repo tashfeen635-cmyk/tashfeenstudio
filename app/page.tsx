@@ -15,7 +15,7 @@ import {
   HOME_FAQ,
   faqJsonLd,
   personJsonLd,
-  reviewsJsonLd,
+  businessJsonLd,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={personJsonLd()} />
-      <JsonLd data={reviewsJsonLd()} />
+      <JsonLd data={businessJsonLd()} />
 
       {/* ===== Hero ===== */}
       <section
@@ -101,7 +101,12 @@ export default function HomePage() {
               full-scale web applications and SaaS platforms.
             </p>
             <p>
-              I engineer custom web development, SaaS platforms, and UI/UX design end to end. My goal is simple: ship production-grade experiences that look great, load fast, and help your business grow.
+              I engineer custom web development, SaaS platforms, and UI/UX design end to end. My goal is simple: ship production-grade experiences that look great, load fast, and help your business grow. Whether you need a{" "}
+              <Link href="/services">business website, an online store, or a custom web application</Link>, the
+              process is the same — understand the goal, design it properly, then build it to last. See the{" "}
+              <Link href="/work">projects I have delivered</Link> and the{" "}
+              <Link href="/skills">technologies I build with</Link> to see what that looks like in
+              practice.
             </p>
             <ul className="about-facts">
               <li>

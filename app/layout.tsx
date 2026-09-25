@@ -3,7 +3,7 @@ import { Arimo, Raleway } from "next/font/google";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SITE } from "@/lib/site";
+import { SITE, OG_IMAGE } from "@/lib/site";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -37,11 +37,13 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
     locale: "en_PK",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,

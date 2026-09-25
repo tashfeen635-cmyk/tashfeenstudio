@@ -1,3 +1,12 @@
+export const LAST_MODIFIED = "2026-09-26";
+
+export const OG_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "Tashfeen Riaz - Senior Full Stack Web Developer and Designer in Gilgit, Pakistan",
+};
+
 export const SITE = {
   url: "https://tashfeenriaz.site",
   title: "Tashfeen Riaz | Senior Full Stack Web Developer in Gilgit, Pakistan",
@@ -61,6 +70,7 @@ export interface PortfolioItem {
   alt: string;
   title: string;
   category: string;
+  blurb: string;
 }
 
 export const PORTFOLIO: PortfolioItem[] = [
@@ -71,6 +81,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Brand Identity Design by Tashfeen Riaz, Web Designer in Gilgit",
     title: "Brand Identity",
     category: "Visual Design",
+    blurb:
+      "A complete visual identity system - logo, colour palette, typography, and brand guidelines - built to stay consistent across print and digital.",
   },
   {
     src: "/images/creative-artwork.webp",
@@ -79,6 +91,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Creative Artwork by Tashfeen Riaz",
     title: "Creative Artwork",
     category: "Illustration",
+    blurb:
+      "Original digital illustration and concept artwork created in Photoshop and Illustrator, developed from initial sketch through to final high-resolution render.",
   },
   {
     src: "/images/package-design.webp",
@@ -87,6 +101,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Package Design by Tashfeen Riaz",
     title: "Package Design",
     category: "Branding",
+    blurb:
+      "Retail packaging design that balances shelf impact with clear product information, delivered as print-ready dielines with accurate colour and finish specifications.",
   },
   {
     src: "/images/web-design-uiux.webp",
@@ -95,6 +111,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Web Design UI/UX by Tashfeen Riaz, Full Stack Developer in Gilgit",
     title: "Web Design",
     category: "UI/UX Design",
+    blurb:
+      "Responsive website design in Figma - wireframes, high-fidelity mockups, and a component library - so you approve the design before a line of code is written.",
   },
   {
     src: "/images/digital-art.webp",
@@ -103,6 +121,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Digital Art Creation by Tashfeen Riaz",
     title: "Digital Art",
     category: "Illustration",
+    blurb:
+      "Digital art and photo manipulation work using layered compositing, colour grading, and retouching techniques to produce publication-ready images.",
   },
   {
     src: "/images/brand-strategy.webp",
@@ -111,6 +131,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Brand Strategy Design by Tashfeen Riaz",
     title: "Brand Strategy",
     category: "Visual Identity",
+    blurb:
+      "Brand strategy work covering positioning, messaging, tone of voice, and a documented identity system that gives a business a clear and defensible point of view.",
   },
   {
     src: "/images/product-design.webp",
@@ -119,6 +141,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Product Packaging Design by Tashfeen Riaz",
     title: "Product Design",
     category: "Packaging",
+    blurb:
+      "Product packaging concepts that communicate value at a glance, from structure and materials through to labelling compliance and production artwork.",
   },
   {
     src: "/images/web-development.webp",
@@ -127,6 +151,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     alt: "Web Development by Tashfeen Riaz, Full Stack Web Developer in Gilgit",
     title: "Web Development",
     category: "Frontend Design",
+    blurb:
+      "Production front-end builds using React, Next.js, and TypeScript - server-rendered for speed, accessible by default, and scored 90+ on Lighthouse.",
   },
 ];
 
@@ -445,6 +471,33 @@ export const SERVICES_FAQ: Faq[] = [
   },
 ];
 
+export const CONTACT_FAQ: Faq[] = [
+  {
+    q: "How quickly will I hear back?",
+    a: "I reply to every serious enquiry within 24 hours, and usually the same working day. If you message me on WhatsApp you will typically get a reply much faster than email.",
+  },
+  {
+    q: "What information should I include in my message?",
+    a: "The more detail you give, the more accurate my first reply will be. Useful details include the type of website or application you need, whether you already have a domain and hosting, your target launch date, your approximate budget range, and examples of sites you like the look of.",
+  },
+  {
+    q: "Do you work with clients outside Gilgit and Pakistan?",
+    a: "Yes. I work remotely with clients across Pakistan and internationally. Because everything is handled online - design, development, reviews, and deployment - distance does not affect the process. I keep you updated with progress throughout, and every timezone I have worked with so far has worked well.",
+  },
+  {
+    q: "Do I need to have a website brief or design ready?",
+    a: "No. Most of my clients come to me with an idea rather than a finished brief. I will help you clarify the goals, structure the pages, and design the interface. If you already have a brand identity or preferred style, I will build around that instead.",
+  },
+  {
+    q: "What happens after I get in touch?",
+    a: "We start with a free consultation to understand your goals and budget. From there I put together a detailed proposal with a clear scope, a delivery timeline, and a fixed price. Nothing starts until you approve it, and I typically begin within a week of approval.",
+  },
+  {
+    q: "Do you offer free consultations?",
+    a: "Yes. The first conversation and the project proposal are completely free, with no obligation. You are welcome to explore my work first and come back when you are ready.",
+  },
+];
+
 // ===== JSON-LD helpers =====
 
 export function personJsonLd() {
@@ -504,7 +557,7 @@ export function faqJsonLd(faq: Faq[]) {
   };
 }
 
-export function reviewsJsonLd() {
+export function businessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -512,36 +565,65 @@ export function reviewsJsonLd() {
         "@type": "ProfessionalService",
         "@id": `${SITE.url}/#professional-service`,
         name: SITE.studio,
+        alternateName: SITE.name,
         url: `${SITE.url}/`,
         description: `Web design, web development, custom web applications, SaaS and UI/UX services by ${SITE.name}, ${SITE.role} in ${SITE.location}.`,
+        image: {
+          "@type": "ImageObject",
+          url: `${SITE.url}/images/tashfeen-riaz-portrait.webp`,
+          width: SITE.portraitW,
+          height: SITE.portraitH,
+        },
+        logo: `${SITE.url}/faviconn.webp`,
         telephone: SITE.phoneRaw,
         email: SITE.email,
         priceRange: "$$",
+        currenciesAccepted: "PKR",
         address: {
           "@type": "PostalAddress",
           addressLocality: SITE.locality,
           addressRegion: SITE.region,
           addressCountry: SITE.country,
         },
-        areaServed: { "@type": "Country", name: "Pakistan" },
+        geo: {
+          "@type": "GeoCoordinates",
+          address: SITE.location,
+        },
+        areaServed: [
+          { "@type": "Country", name: "Pakistan" },
+          { "@type": "AdministrativeArea", name: SITE.region },
+        ],
         founder: {
           "@type": "Person",
           name: SITE.name,
           url: `${SITE.url}/about`,
         },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5",
-          bestRating: "5",
-          worstRating: "1",
-          reviewCount: TESTIMONIALS.length,
+        employee: {
+          "@type": "Person",
+          name: SITE.name,
+          jobTitle: SITE.role,
+          url: `${SITE.url}/about`,
         },
-        review: TESTIMONIALS.map((t) => ({
-          "@type": "Review",
-          itemReviewed: { "@id": `${SITE.url}/#professional-service` },
-          author: { "@type": "Person", name: t.name, sameAs: t.href },
-          reviewBody: t.quote,
-        })),
+        knowsLanguage: ["en", "ur", "scl"],
+        sameAs: [SITE.instagram, SITE.linkedin, SITE.maps],
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "sales",
+            email: SITE.email,
+            telephone: SITE.phoneRaw,
+            availableLanguage: ["English", "Urdu"],
+            areaServed: "PK",
+          },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Web Services",
+          itemListElement: SERVICES.map((s) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: s.title, description: s.desc },
+          })),
+        },
       },
     ],
   };

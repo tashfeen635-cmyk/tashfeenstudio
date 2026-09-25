@@ -6,17 +6,25 @@ import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
 import {
   SITE,
+  OG_IMAGE,
   SERVICES,
   SERVICES_FAQ,
   faqJsonLd,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services in Gilgit - Senior Full Stack Web Developer",
+  title: "Web Design & Development Services in Gilgit, Pakistan",
   description:
-    "Web design, full stack development, custom web applications, SaaS and UI/UX services by Tashfeen Riaz, a web developer in Gilgit, Pakistan.",
+    "Web design, UI/UX, full stack development, custom web apps, e-commerce, and SaaS services by Tashfeen Riaz, a web developer in Gilgit, Pakistan. Free quote.",
   alternates: { canonical: "/services" },
-  openGraph: { url: `${SITE.url}/services`, type: "website" },
+  openGraph: {
+    url: `${SITE.url}/services`,
+    type: "website",
+    title: "Web Design & Development Services in Gilgit, Pakistan",
+    description:
+      "Web design, UI/UX, full stack development, custom web apps, e-commerce, and SaaS services by Tashfeen Riaz in Gilgit, Pakistan.",
+    images: [OG_IMAGE],
+  },
 };
 
 function servicesJsonLd() {
@@ -51,6 +59,15 @@ export default function ServicesPage() {
       <section className="section" style={{ paddingTop: 20 }}>
         <div className="container">
           <SectionHeading tag="Services" title="What I Can Build For You" />
+          <p className="section-lead">
+            I design and build websites end to end, from the first wireframe to
+            the deployed application. Whether you need a{" "}
+            <Link href="/work">portfolio or business site</Link>, a full{" "}
+            <Link href="/skills">front-end and back-end build</Link>, or a
+            multi-tenant SaaS platform, the process is the same: understand the
+            goal, design it properly, then engineer it to last. I work with
+            businesses in Gilgit, across Pakistan, and with clients overseas.
+          </p>
           <div className="features-grid">
             {SERVICES.map((s) => (
               <div className="feature-card" key={s.title}>
@@ -97,9 +114,18 @@ export default function ServicesPage() {
           <SectionHeading tag="FAQ" title="Service Questions" />
           <FaqList items={SERVICES_FAQ} />
           <JsonLd data={faqJsonLd(SERVICES_FAQ)} />
+          <p className="section-lead">
+            Still not sure which service fits? Have a look at the{" "}
+            <Link href="/work">projects I have delivered</Link> or read more
+            about <Link href="/about">me and my process</Link> - then ask me
+            directly, the first conversation is free.
+          </p>
           <div className="cta-row">
             <Link className="btn" href="/contact">
               Get a Free Quote
+            </Link>
+            <Link className="btn" href="/work">
+              See My Work
             </Link>
           </div>
         </div>

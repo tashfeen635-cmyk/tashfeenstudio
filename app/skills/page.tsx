@@ -1,27 +1,95 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import SkillsShowcase from "@/components/SkillsShowcase";
-import { SITE } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { SITE, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Skills - Tashfeen Riaz, Senior Full Stack Web Developer in Gilgit",
+  title: "Web Developer Skills & Tech Stack in Gilgit, Pakistan",
   description:
-    "Technologies Tashfeen Riaz uses to build real products: React, Next.js, TypeScript, Node.js, PHP, Laravel, Django, PostgreSQL, MongoDB, Docker, web security, and AI & LLM integration.",
+    "Technical skills of full stack web developer Tashfeen Riaz: React, Next.js, TypeScript, Node.js, Laravel, Django, PostgreSQL, MongoDB, Docker, and AI integration.",
   alternates: { canonical: "/skills" },
-  openGraph: { url: `${SITE.url}/skills`, type: "website" },
+  openGraph: {
+    url: `${SITE.url}/skills`,
+    type: "website",
+    title: "Web Developer Skills & Tech Stack in Gilgit, Pakistan",
+    description:
+      "React, Next.js, TypeScript, Node.js, Laravel, Django, PostgreSQL, MongoDB, Docker, and AI integration skills behind every full stack project.",
+    images: [OG_IMAGE],
+  },
 };
+
+function skillsJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: `${SITE.url}/skills`,
+    name: "Technical Skills of Tashfeen Riaz",
+    mainEntity: {
+      "@type": "Person",
+      name: SITE.name,
+      jobTitle: SITE.role,
+      url: `${SITE.url}/about`,
+      knowsAbout: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Bootstrap",
+        "Node.js",
+        "Express.js",
+        "PHP",
+        "Laravel",
+        "Django",
+        "REST API Design",
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL",
+        "Prisma",
+        "Docker",
+        "Git",
+        "GitHub",
+        "Vercel",
+        "Web Security",
+        "API Security",
+        "Figma",
+        "UI/UX Design",
+        "Design Systems",
+        "AI & LLM Integration",
+        "AI Chatbots",
+        "SaaS Development",
+      ],
+    },
+  };
+}
 
 export default function SkillsPage() {
   return (
     <>
+      <JsonLd data={skillsJsonLd()} />
+
       <PageHeader
-        title="What I Build With"
-        lead="Technologies I use to design, build, integrate, secure, and ship modern web applications."
+        title="Skills &amp; Technologies"
+        lead="The technical skills behind every project - front-end, back-end, databases, design, DevOps, and AI integration."
       />
 
       <section className="section" style={{ paddingTop: 20 }}>
         <div className="container">
+          <p className="section-lead">
+            I am a full stack web developer, which means I can take a project
+            from the first wireframe all the way to a deployed, secure,
+            production database. Most of my{" "}
+            <Link href="/work">client work</Link> uses the stack below, and I
+            adapt the choice to the problem rather than the other way round - a
+            brochure site does not need a microservices architecture, and a SaaS
+            dashboard certainly does. See how each of these fits into a{" "}
+            <Link href="/services">concrete deliverable</Link>.
+          </p>
           <SkillsShowcase />
         </div>
       </section>
@@ -53,6 +121,52 @@ export default function SkillsPage() {
                 <p>{s.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeading tag="Standards" title="Non-Negotiables" />
+          <div className="stories-grid">
+            {[
+              {
+                t: "Performance First",
+                d: "Server-rendered pages, optimised images, and minimal client JavaScript. I target 90+ on Google Lighthouse and a Largest Contentful Paint under 2.5 seconds, because speed is a ranking factor and a conversion factor.",
+              },
+              {
+                t: "Search Engine Ready",
+                d: "Every project ships with clean semantic markup, XML sitemaps, robots configuration, canonical URLs, Open Graph tags, and structured data - not bolted on afterwards, but built in from the start.",
+              },
+              {
+                t: "Mobile & Accessible",
+                d: "Mobile-first layouts designed and tested across real device widths, with semantic HTML, keyboard navigation, and sufficient colour contrast so the site works for everyone.",
+              },
+              {
+                t: "Secure by Default",
+                d: "Input validation on every input, parameterised queries against SQL injection, hashed credentials, environment-based secrets, and dependency audits - reviewed against OWASP guidance.",
+              },
+            ].map((p) => (
+              <div className="story-card" key={p.t}>
+                <div className="story-body">
+                  <h3>{p.t}</h3>
+                  <p>{p.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="section-lead">
+            Questions about whether a specific technology fits your project? Ask
+            me directly, or read more about{" "}
+            <Link href="/about">how I work with clients</Link> before we start.
+          </p>
+          <div className="cta-row">
+            <Link className="btn" href="/contact">
+              Discuss Your Project
+            </Link>
+            <Link className="btn" href="/work">
+              See The Work
+            </Link>
           </div>
         </div>
       </section>
