@@ -13,13 +13,15 @@ import {
   faqJsonLd,
   personJsonLd,
   businessJsonLd,
+  webPageJsonLd,
+  pageAlternates,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Full Stack Web Developer in Pakistan",
   description:
     "Tashfeen Riaz is a senior full stack web developer in Pakistan, based in Gilgit. 50+ websites and web apps delivered. MERN, Laravel, React, Next.js, Node.js. Free quote.",
-  alternates: { canonical: "/full-stack-web-developer-pakistan" },
+  alternates: pageAlternates("/full-stack-web-developer-pakistan"),
   openGraph: {
     url: `${SITE.url}/full-stack-web-developer-pakistan`,
     type: "website",
@@ -73,73 +75,42 @@ const PROCESS = [
 ];
 
 function pakistanPageJsonLd() {
+  const path = "/full-stack-web-developer-pakistan";
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE.url}/full-stack-web-developer-pakistan#webpage`,
-        url: `${SITE.url}/full-stack-web-developer-pakistan`,
+      ...webPageJsonLd({
+        path,
         name: "Full Stack Web Developer in Pakistan - Tashfeen Riaz",
         description:
           "Tashfeen Riaz is a senior full stack web developer in Pakistan, based in Gilgit, Gilgit-Baltistan, with 50+ websites and web applications delivered.",
-        inLanguage: "en",
-        dateModified: "2026-09-26",
-        primaryImageOfPage: {
-          "@type": "ImageObject",
-          url: `${SITE.url}/images/tashfeen-riaz-portrait.webp`,
-          width: SITE.portraitW,
-          height: SITE.portraitH,
-        },
-        about: { "@id": `${SITE.url}/#professional-service` },
-        mainEntity: { "@id": `${SITE.url}/#tashfeen-riaz` },
-        breadcrumb: {
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Home",
-              item: `${SITE.url}/`,
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: "Full Stack Web Developer in Pakistan",
-              item: `${SITE.url}/full-stack-web-developer-pakistan`,
-            },
-          ],
-        },
-      },
-      {
-        ...personJsonLd(),
-        "@id": `${SITE.url}/#tashfeen-riaz`,
-        url: `${SITE.url}/about`,
-        jobTitle: "Senior Full Stack Web Developer",
-        nationality: { "@type": "Country", name: "Pakistan" },
-        country: "Pakistan",
-        worksFor: { "@id": `${SITE.url}/#professional-service` },
-        knowsAbout: [
-          "Full Stack Web Development",
-          "MERN Stack",
-          "React",
-          "Next.js",
-          "TypeScript",
-          "Node.js",
-          "Express.js",
-          "PHP",
-          "Laravel",
-          "REST API Design",
-          "PostgreSQL",
-          "MongoDB",
-          "Docker",
-          "Web Security",
-          "UI/UX Design",
-          "AI & LLM Integration",
-          "SaaS Development",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Full Stack Developer in Pakistan", path },
         ],
-      },
+      })["@graph"],
+      { ...personJsonLd(), url: `${SITE.url}/about` },
       businessJsonLd()["@graph"][0],
+      {
+        "@type": "Service",
+        "@id": `${SITE.url}${path}#service`,
+        name: "Full Stack Web Development in Pakistan",
+        serviceType: SERVICES.map((s) => s.title),
+        description: `End-to-end full stack web development, e-commerce, and SaaS development for clients across Pakistan by ${SITE.name}, based in ${SITE.location}.`,
+        url: `${SITE.url}${path}`,
+        provider: { "@id": `${SITE.url}/#professional-service` },
+        areaServed: [
+          { "@type": "Country", name: SITE.countryName },
+          { "@type": "City", name: SITE.locality },
+          { "@type": "AdministrativeArea", name: SITE.region },
+        ],
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: `${SITE.url}/contact`,
+          servicePhone: SITE.phoneRaw,
+        },
+      },
       faqJsonLd(PAKISTAN_FAQ),
     ],
   };
@@ -153,6 +124,11 @@ export default function PakistanPage() {
       <PageHeader
         title="Full Stack Web Developer in Pakistan"
         lead="Tashfeen Riaz - a senior full stack web developer in Gilgit, Gilgit-Baltistan, building custom websites, web applications, and SaaS platforms for businesses across Pakistan and worldwide."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Full Stack Developer in Pakistan", path: "/full-stack-web-developer-pakistan" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>
@@ -322,9 +298,9 @@ export default function PakistanPage() {
           <FaqList items={PAKISTAN_FAQ} />
           <p className="section-lead">
             Based in Gilgit rather than a major city? My{" "}
-            <Link href="/about">local page</Link> covers the same services for
-            businesses in Gilgit and Gilgit-Baltistan specifically, including
-            on-site meetings.
+            <Link href="/web-developer-in-gilgit">web developer in Gilgit page</Link>{" "}
+            covers the same services for businesses in Gilgit and Gilgit-Baltistan
+            specifically, including in-person meetings and local pricing.
           </p>
           <div className="cta-row">
             <Link className="btn" href="/contact">

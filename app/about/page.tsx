@@ -5,19 +5,27 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import JsonLd from "@/components/JsonLd";
 import Testimonials from "@/components/Testimonials";
-import { SITE, OG_IMAGE, personJsonLd } from "@/lib/site";
+import {
+  SITE,
+  OG_IMAGE,
+  LAST_MODIFIED,
+  PERSON_ID,
+  personJsonLd,
+  webPageJsonLd,
+  pageAlternates,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Me - Full Stack Web Developer in Gilgit, Pakistan",
+  title: "About — Full Stack Developer in Gilgit",
   description:
-    "Meet Tashfeen Riaz, a senior full stack web developer and UI/UX designer from Gilgit, Pakistan, and founder of Tashu's Studio. 50+ websites and applications delivered.",
-  alternates: { canonical: "/about" },
+    "Meet Tashfeen Riaz, a senior full stack web developer and UI/UX designer from Gilgit, Pakistan. 50+ websites and applications delivered.",
+  alternates: pageAlternates("/about"),
   openGraph: {
     url: `${SITE.url}/about`,
     type: "profile",
     title: "About Tashfeen Riaz - Full Stack Web Developer in Gilgit, Pakistan",
     description:
-      "Tashfeen Riaz is a senior full stack web developer and UI/UX designer from Gilgit, Pakistan, and founder of Tashu's Studio.",
+      "Tashfeen Riaz is a senior full stack web developer and UI/UX designer from Gilgit, Pakistan. 50+ websites and applications delivered.",
     images: [OG_IMAGE],
   },
 };
@@ -46,45 +54,33 @@ const INTERESTS = [
 ];
 
 function aboutPageJsonLd() {
+  const pageGraph = webPageJsonLd({
+    path: "/about",
+    name: "About Tashfeen Riaz - Full Stack Web Developer in Gilgit, Pakistan",
+    description:
+      "Tashfeen Riaz is a senior full stack web developer and UI/UX designer from Gilgit, Pakistan, with 50+ websites and applications delivered.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "About", path: "/about" },
+    ],
+  })["@graph"];
+
   return {
-    ...personJsonLd(),
-    "@type": "AboutPage",
-    url: `${SITE.url}/about`,
-    mainEntity: {
-      "@type": "Person",
-      name: SITE.name,
-      alternateName: SITE.names,
-      jobTitle: SITE.role,
-      url: `${SITE.url}/about`,
-      email: SITE.email,
-      telephone: SITE.phoneRaw,
-      worksFor: { "@type": "Organization", name: SITE.studio },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: SITE.locality,
-        addressRegion: SITE.region,
-        addressCountry: SITE.country,
+    "@context": "https://schema.org",
+    "@graph": [
+      { ...pageGraph[0], "@type": "AboutPage", mainEntity: { "@id": PERSON_ID } },
+      pageGraph[1],
+      { ...personJsonLd(), url: `${SITE.url}/about` },
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE.url}/about#profilepage`,
+        url: `${SITE.url}/about`,
+        name: "Tashfeen Riaz - Profile",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        mainEntity: { "@id": PERSON_ID },
+        dateModified: LAST_MODIFIED,
       },
-      knowsAbout: [
-        "Full Stack Web Development",
-        "Web Design",
-        "UI/UX Design",
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "PHP",
-        "Laravel",
-        "Django",
-        "REST API Design",
-        "PostgreSQL",
-        "MongoDB",
-        "Docker",
-        "Web Security",
-        "AI & LLM Integration",
-        "SaaS Development",
-      ],
-    },
+    ],
   };
 }
 
@@ -96,6 +92,10 @@ export default function AboutPage() {
       <PageHeader
         title="About Tashfeen Riaz"
         lead="Senior Full Stack Web Developer & Designer from Gilgit, Pakistan. I help businesses grow with fast, secure, professionally engineered websites."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

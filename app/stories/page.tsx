@@ -4,13 +4,20 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import StoriesGrid from "@/components/StoriesGrid";
 import JsonLd from "@/components/JsonLd";
-import { SITE, OG_IMAGE, articlesJsonLd } from "@/lib/site";
+import {
+  SITE,
+  OG_IMAGE,
+  PERSON_ID,
+  articlesJsonLd,
+  webPageJsonLd,
+  pageAlternates,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Stories From Gilgit-Baltistan - Photos & Writing",
+  title: "Stories From Gilgit-Baltistan",
   description:
     "Photography and short essays on the peaks, glaciers, lakes, and mountain people of Gilgit-Baltistan, Pakistan, by Tashfeen Riaz, a developer and designer from Gilgit.",
-  alternates: { canonical: "/stories" },
+  alternates: pageAlternates("/stories"),
   openGraph: {
     url: `${SITE.url}/stories`,
     type: "website",
@@ -24,13 +31,28 @@ export const metadata: Metadata = {
 function storiesPageJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    url: `${SITE.url}/stories`,
-    name: "Stories From Gilgit-Baltistan",
-    description:
-      "Photography and short essays about the mountains, glaciers, lakes, and people of Gilgit-Baltistan, Pakistan.",
-    author: { "@type": "Person", name: SITE.name, url: `${SITE.url}/about` },
-    hasPart: articlesJsonLd()["@graph"],
+    "@graph": [
+      ...webPageJsonLd({
+        path: "/stories",
+        name: "Stories From Gilgit-Baltistan",
+        description:
+          "Photography and short essays about the mountains, glaciers, lakes, and people of Gilgit-Baltistan, Pakistan.",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "Stories", path: "/stories" },
+        ],
+      })["@graph"],
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE.url}/stories#collection`,
+        url: `${SITE.url}/stories`,
+        name: "Stories From Gilgit-Baltistan",
+        description:
+          "Photography and short essays about the mountains, glaciers, lakes, and people of Gilgit-Baltistan, Pakistan.",
+        author: { "@id": PERSON_ID },
+        hasPart: articlesJsonLd()["@graph"],
+      },
+    ],
   };
 }
 
@@ -40,8 +62,12 @@ export default function StoriesPage() {
       <JsonLd data={storiesPageJsonLd()} />
 
       <PageHeader
-        title="Stories From Gilgit"
+        title="Stories From Gilgit-Baltistan"
         lead="A visual and written journey through the mountains, people, and landscapes that inspire my work."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Stories", path: "/stories" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

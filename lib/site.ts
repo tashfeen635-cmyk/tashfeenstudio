@@ -8,6 +8,7 @@ export const ROUTES = [
   "stories",
   "work",
   "contact",
+  "web-developer-in-gilgit",
   "full-stack-web-developer-pakistan",
 ] as const;
 
@@ -20,7 +21,7 @@ export const OG_IMAGE = {
 
 export const SITE = {
   url: "https://tashfeenriaz.site",
-  title: "Tashfeen Riaz | Senior Full Stack Web Developer in Gilgit, Pakistan",
+  title: "Tashfeen Riaz | Full Stack Web Developer in Gilgit, Pakistan",
   description:
     "Tashfeen Riaz - Senior Full Stack Web Developer in Gilgit, Pakistan. Building fast, scalable websites and web apps - custom development, SaaS, and UI/UX design with clean, production-grade code.",
   keywords: [
@@ -42,23 +43,56 @@ export const SITE = {
   author: "Tashfeen Riaz",
   name: "Tashfeen Riaz",
   names: ["Tashfeen", "Tashfeen bin Riaz", "Tashu"],
+  aliases: ["Tashfeen Studio", "Tashu's Studio"],
   role: "Senior Full Stack Web Developer",
   studio: "Tashu's Studio",
+  businessName: "Tashfeen Riaz Web Development",
   email: "tashfeen635@gmail.com",
   phone: "+92 3170885816",
   phoneRaw: "+923170885816",
   whatsapp: "https://wa.me/923170885816",
-  location: "Gilgit, Gilgit-Baltistan, Pakistan",
+  location: "Freelancing Hub, Jutial, Gilgit, Gilgit-Baltistan, Pakistan",
+  streetAddress: "Freelancing Hub, Jutial",
   locality: "Gilgit",
   region: "Gilgit-Baltistan",
   country: "PK",
+  countryName: "Pakistan",
+  geoRegion: "PK-GB",
+  geoPlace: "Freelancing Hub, Jutial, Gilgit, Gilgit-Baltistan, Pakistan",
+  coordinates: { lat: 35.9228, lng: 74.3089 },
+  languages: ["English", "Urdu", "Shina"],
+  timeZone: "Pakistan Standard Time (UTC+5)",
   instagram: "https://www.instagram.com/tashfeen460/",
   linkedin: "https://www.linkedin.com/in/tashfeen-riaz-39b1a2396/",
-  maps: "https://www.google.com/maps/search/?api=1&query=Tashu%27s+Studio+Gilgit",
+  github: "https://github.com/tashfeen635-cmyk",
+  placeId: "ChIJQZglrrNJ5jgRPp5WHW7fd8A",
+  gbpName: "Tashfeen Bin Riaz",
+  maps: "https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQZglrrNJ5jgRPp5WHW7fd8A",
+  gbpReview: "https://g.page/r/CT6eVh1u33fAEAI/review",
   portrait: "/images/tashfeen-riaz-portrait.webp",
   portraitW: 1607,
   portraitH: 1791,
 };
+
+export const PROFILE_LINKS: { rel: string; href: string; label: string }[] = [
+  { rel: "me", href: SITE.github, label: "GitHub" },
+  { rel: "me", href: SITE.linkedin, label: "LinkedIn" },
+  { rel: "me", href: SITE.instagram, label: "Instagram" },
+  { rel: "me", href: SITE.maps, label: "Google Business Profile" },
+  { rel: "me", href: `mailto:${SITE.email}`, label: "Email" },
+];
+
+export function pageAlternates(path: string) {
+  const url = `${SITE.url}${path}`;
+  return {
+    canonical: path,
+    languages: { en: url, "x-default": url },
+    types: { "text/plain": `${SITE.url}/llms.txt` },
+  };
+}
+
+export const SKILL_SUMMARY =
+  "React, Next.js, TypeScript, Node.js, Express.js, PHP, Laravel, Django, PostgreSQL, MongoDB, Prisma, REST API Design, Docker, Git, CI/CD, Vercel, Web Security, UI/UX Design, Figma, LLM Integration";
 
 
 
@@ -442,8 +476,8 @@ export const HOME_FAQ: Faq[] = [
     a: "Tashfeen Riaz is based in Gilgit, Gilgit-Baltistan, Pakistan, and works with clients locally in Gilgit and across Pakistan.",
   },
   {
-    q: "What services does Tashu's Studio offer?",
-    a: "Tashu's Studio offers web design, UI/UX design, full stack web development, custom web applications, e-commerce stores, and SaaS / MVP development.",
+    q: "What services does Tashfeen Riaz offer?",
+    a: "Tashfeen Riaz offers web design, UI/UX design, full stack web development, custom web applications, e-commerce stores, and SaaS / MVP development. He delivers all of these himself as the founder of Tashu's Studio, rather than outsourcing or subcontracting them.",
   },
   {
     q: "Is Tashfeen Riaz available for freelance projects?",
@@ -487,6 +521,49 @@ export const PAKISTAN_FAQ: Faq[] = [
   {
     q: "Is it cheaper to hire a web developer in Pakistan than in the US or UK?",
     a: "Yes, substantially. A comparable senior full stack developer typically bills anywhere from 50 to 70 percent less than equivalent freelancers in the United States or United Kingdom, largely due to cost of living. The trade-off is time zone and communication, which for most projects is manageable - though clients who need real-time collaboration during US business hours should confirm availability before starting.",
+  },
+];
+
+export const GILGIT_FAQ: Faq[] = [
+  {
+    q: "Who is the best web developer in Gilgit?",
+    a: "There is no single best web developer in Gilgit, and the right choice depends on your project and budget. What matters is whether one person can own the project end to end - front-end, back-end, database, deployment, and maintenance. Tashfeen Riaz is a senior full stack web developer based in Gilgit, Gilgit-Baltistan, with 50+ websites and web applications delivered. He works directly with clients rather than through an agency, and every project ships with technical SEO, structured data, and performance tuning included as standard.",
+  },
+  {
+    q: "How much does a website cost in Gilgit, Pakistan?",
+    a: "A business or portfolio website built by an experienced developer in Gilgit typically costs between PKR 150,000 and PKR 400,000 depending on page count and functionality. A custom e-commerce store usually starts around PKR 350,000, and a custom web application or SaaS platform with user accounts, dashboards, and integrations starts around PKR 600,000. Every project is priced individually after a free consultation, with a fixed quote agreed before any work begins.",
+  },
+  {
+    q: "How long does it take to build a website in Gilgit?",
+    a: "A standard business or portfolio website takes 2 to 3 weeks from the first consultation to launch. A larger e-commerce store usually takes 4 to 6 weeks, and a custom web application or multi-tenant SaaS platform takes 6 to 12 weeks depending on scope, integrations, and how quickly content and feedback are supplied. Because I work in the same time zone as local clients, approvals happen the same day rather than waiting a day for each round of feedback.",
+  },
+  {
+    q: "Do you offer on-site meetings in Gilgit?",
+    a: "Yes. Because I am based in Gilgit itself, clients in Gilgit and across Gilgit-Baltistan can meet in person for the initial consultation, design review, and launch handover, either at my location or at yours. Clients elsewhere get the same process and the same responsiveness over video call. If you would prefer to start with a call, a free consultation can be arranged online first.",
+  },
+  {
+    q: "Can you help a tourism, hotel, or trekking business in Gilgit-Baltistan?",
+    a: "Yes, and it is a large part of my local client work. Gilgit Adventure Treks, a trekking and adventure operator in Gilgit, is a client I designed and developed a website for. Their founder specifically noted the attention paid to SEO, performance, mobile responsiveness, and user experience. I build tourism sites with itinerary pages, photo and video galleries, booking enquiries, and structured data that helps them appear in Google and in AI answers for trekking, hiking, and expedition searches.",
+  },
+  {
+    q: "Do you work with local businesses in Gilgit-Baltistan, or only remotely?",
+    a: "Both. A significant share of my work is with local businesses in Gilgit-Baltistan, and the rest is remote work with clients across Pakistan and abroad. Maqsood Ahmed & Sons, a construction and engineering company, is a local client whose website I built to present their services, experience, and projects clearly and professionally. Because I am a solo developer working directly with you, you get the same person for every project regardless of where you are.",
+  },
+  {
+    q: "Can you build an online store to sell Gilgit products?",
+    a: "Yes. E-commerce development is one of my core services, covering product catalogues, secure checkout and payment integration, order management, shipping logic, and inventory. This works well for Gilgit-based businesses selling handicrafts, dried food, Gilgit-developed items, outdoor and trekking gear, or regional products to customers in Pakistan and overseas. I can also advise on international payment gateways and shipping providers that actually work for cross-border orders out of Pakistan.",
+  },
+  {
+    q: "Do you build websites in Urdu, Shina, or Balti?",
+    a: "My primary working language is English, and I also work in Urdu and Shina. Most Gilgit-Baltistan businesses benefit from an English-primary site, often with selected sections in Urdu for local customers. If your audience needs a different language, discuss it during the consultation and it can be built in - either as a second language or a fully separate localised version of the site.",
+  },
+  {
+    q: "Do you provide website maintenance and support after launch?",
+    a: "Yes. A website is not a finished deliverable - it needs updates, backups, security patches, and performance monitoring to stay fast and secure. Ongoing maintenance and support are available as a monthly retainer after launch, covering updates, backups, security patches, uptime monitoring, and priority support for changes.",
+  },
+  {
+    q: "What technologies do you use for web development in Gilgit?",
+    a: "The primary stack is the MERN and PERN range - React, Next.js, TypeScript, Node.js, Express, PostgreSQL, and MongoDB - alongside PHP and Laravel for the local WordPress and PHP ecosystem, and Django for Python work. Infrastructure is Docker, Git, GitHub, and CI/CD with deployment to Vercel or other cloud providers. For AI and automation work I integrate LLM APIs, retrieval-augmented generation, and chatbots. Every project also ships with technical SEO, structured data, and Core Web Vitals optimisation.",
   },
 ];
 
@@ -546,31 +623,68 @@ export const CONTACT_FAQ: Faq[] = [
 
 // ===== JSON-LD helpers =====
 
+export const PERSON_ID = `${SITE.url}/#tashfeen-riaz`;
+export const BUSINESS_ID = `${SITE.url}/#professional-service`;
+export const WEBSITE_ID = `${SITE.url}/#website`;
+
+export function occupationJsonLd() {
+  return {
+    "@type": "Occupation",
+    name: SITE.role,
+    description: `Designs, builds, and deploys websites, web applications, and SaaS platforms for businesses in ${SITE.region}, Pakistan, and remote clients worldwide.`,
+    occupationLocation: [
+      {
+        "@type": "City",
+        name: SITE.locality,
+        containedInPlace: {
+          "@type": "AdministrativeArea",
+          name: SITE.region,
+        },
+      },
+      { "@type": "Country", name: SITE.countryName },
+    ],
+    skills: SKILL_SUMMARY,
+    experienceRequirements: {
+      "@type": "OccupationalExperience",
+      experienceRequired: "5+ years of professional web development experience",
+    },
+  };
+}
+
 export function personJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": PERSON_ID,
     name: SITE.name,
-    alternateName: SITE.names,
+    alternateName: [...SITE.names, ...SITE.aliases, SITE.gbpName],
     url: `${SITE.url}/`,
+    description: `${SITE.name} is a ${SITE.role.toLowerCase()} and digital designer based in ${SITE.location}. He has delivered 50+ websites and web applications for tourism, corporate, and local businesses across Pakistan and overseas, and works directly with clients rather than through an agency.`,
     image: {
       "@type": "ImageObject",
-      url: `${SITE.url}/images/tashfeen-riaz-portrait.webp`,
+      url: `${SITE.url}${SITE.portrait}`,
       width: SITE.portraitW,
       height: SITE.portraitH,
-      caption: "Tashfeen Riaz - Senior Full Stack Web Developer from Gilgit, Pakistan",
+      caption: `${SITE.name} - ${SITE.role} from ${SITE.location}`,
     },
     jobTitle: SITE.role,
-    worksFor: { "@type": "Organization", name: SITE.studio },
+    worksFor: { "@id": BUSINESS_ID },
+    hasOccupation: occupationJsonLd(),
     address: {
       "@type": "PostalAddress",
+      streetAddress: SITE.streetAddress,
       addressLocality: SITE.locality,
       addressRegion: SITE.region,
       addressCountry: SITE.country,
     },
     email: SITE.email,
     telephone: SITE.phoneRaw,
-    nationality: "Pakistani",
+    nationality: { "@type": "Country", name: SITE.countryName },
+    knowsLanguage: SITE.languages.map((code) => ({
+      "@type": "Language",
+      name: code,
+      alternateName: code,
+    })),
     knowsAbout: [
       "Web Design",
       "Web Development",
@@ -587,7 +701,23 @@ export function personJsonLd() {
       "SaaS",
       "UI/UX Design",
     ],
-    sameAs: [SITE.instagram, SITE.linkedin],
+    sameAs: PROFILE_LINKS.map((p) => p.href),
+  };
+}
+
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    url: `${SITE.url}/`,
+    name: `${SITE.name} — ${SITE.role} in ${SITE.locality}`,
+    alternateName: [...SITE.names, ...SITE.aliases],
+    description: SITE.description,
+    inLanguage: "en-PK",
+    dateModified: LAST_MODIFIED,
+    publisher: { "@id": PERSON_ID },
+    about: { "@id": PERSON_ID },
   };
 }
 
@@ -603,20 +733,69 @@ export function faqJsonLd(faq: Faq[]) {
   };
 }
 
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE.url}${item.path}`,
+    })),
+  };
+}
+
+export function webPageJsonLd(opts: {
+  path: string;
+  name: string;
+  description: string;
+  breadcrumbs: { name: string; path: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${SITE.url}${opts.path}#webpage`,
+        url: `${SITE.url}${opts.path}`,
+        name: opts.name,
+        description: opts.description,
+        inLanguage: "en-PK",
+        dateModified: LAST_MODIFIED,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE.url}${SITE.portrait}`,
+          width: SITE.portraitW,
+          height: SITE.portraitH,
+        },
+        breadcrumb: { "@id": `${SITE.url}${opts.path}#breadcrumb` },
+      },
+      {
+        ...breadcrumbJsonLd(opts.breadcrumbs),
+        "@id": `${SITE.url}${opts.path}#breadcrumb`,
+      },
+    ],
+  };
+}
+
 export function businessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "ProfessionalService",
-        "@id": `${SITE.url}/#professional-service`,
-        name: SITE.studio,
-        alternateName: SITE.name,
+        "@id": BUSINESS_ID,
+        name: SITE.businessName,
+        alternateName: [...SITE.aliases, SITE.name, SITE.gbpName],
         url: `${SITE.url}/`,
+        hasMap: SITE.maps,
         description: `Web design, web development, custom web applications, SaaS and UI/UX services by ${SITE.name}, ${SITE.role} in ${SITE.location}.`,
         image: {
           "@type": "ImageObject",
-          url: `${SITE.url}/images/tashfeen-riaz-portrait.webp`,
+          url: `${SITE.url}${SITE.portrait}`,
           width: SITE.portraitW,
           height: SITE.portraitH,
         },
@@ -627,31 +806,26 @@ export function businessJsonLd() {
         currenciesAccepted: "PKR",
         address: {
           "@type": "PostalAddress",
+          streetAddress: SITE.streetAddress,
           addressLocality: SITE.locality,
           addressRegion: SITE.region,
           addressCountry: SITE.country,
         },
         geo: {
           "@type": "GeoCoordinates",
-          address: SITE.location,
+          latitude: SITE.coordinates.lat,
+          longitude: SITE.coordinates.lng,
         },
         areaServed: [
-          { "@type": "Country", name: "Pakistan" },
+          { "@type": "City", name: SITE.locality },
           { "@type": "AdministrativeArea", name: SITE.region },
+          { "@type": "Country", name: SITE.countryName },
         ],
-        founder: {
-          "@type": "Person",
-          name: SITE.name,
-          url: `${SITE.url}/about`,
-        },
-        employee: {
-          "@type": "Person",
-          name: SITE.name,
-          jobTitle: SITE.role,
-          url: `${SITE.url}/about`,
-        },
-        knowsLanguage: ["en", "ur", "scl"],
-        sameAs: [SITE.instagram, SITE.linkedin, SITE.maps],
+        serviceType: SERVICES.map((s) => s.title),
+        founder: { "@id": PERSON_ID },
+        employee: { "@id": PERSON_ID },
+        knowsLanguage: SITE.languages,
+        sameAs: PROFILE_LINKS.map((p) => p.href),
         contactPoint: [
           {
             "@type": "ContactPoint",
@@ -659,7 +833,7 @@ export function businessJsonLd() {
             email: SITE.email,
             telephone: SITE.phoneRaw,
             availableLanguage: ["English", "Urdu"],
-            areaServed: "PK",
+            areaServed: ["PK", SITE.region],
           },
         ],
         hasOfferCatalog: {
@@ -681,11 +855,7 @@ export function articlesJsonLd() {
     "@graph": STORIES.map((s) => ({
       "@type": "Article",
       headline: s.title,
-      author: {
-        "@type": "Person",
-        name: SITE.name,
-        url: `${SITE.url}/about`,
-      },
+      author: { "@id": PERSON_ID },
       image: `${SITE.url}${s.image}`,
       description: s.excerpt,
       url: `${SITE.url}/stories`,

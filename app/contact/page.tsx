@@ -5,17 +5,26 @@ import SectionHeading from "@/components/SectionHeading";
 import FaqList from "@/components/FaqList";
 import ContactSection from "@/components/ContactSection";
 import JsonLd from "@/components/JsonLd";
-import { SITE, OG_IMAGE, CONTACT_FAQ, faqJsonLd } from "@/lib/site";
+import {
+  SITE,
+  OG_IMAGE,
+  CONTACT_FAQ,
+  PERSON_ID,
+  BUSINESS_ID,
+  faqJsonLd,
+  webPageJsonLd,
+  pageAlternates,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact - Hire a Web Developer in Gilgit, Pakistan",
+  title: "Contact — Hire a Web Developer",
   description:
     "Hire a web developer in Gilgit, Pakistan. Contact Tashfeen Riaz for web design, full stack development, custom web apps, e-commerce, and SaaS. Free consultation and quote.",
-  alternates: { canonical: "/contact" },
+  alternates: pageAlternates("/contact"),
   openGraph: {
     url: `${SITE.url}/contact`,
     type: "website",
-    title: "Contact - Hire a Web Developer in Gilgit, Pakistan",
+    title: "Contact — Hire a Web Developer in Gilgit, Pakistan",
     description:
       "Contact Tashfeen Riaz for web design, full stack development, custom web apps, e-commerce, and SaaS. Free consultation and quote.",
     images: [OG_IMAGE],
@@ -44,35 +53,29 @@ const BRIEF_POINTS = [
 function contactPageJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact Tashfeen Riaz",
-    url: `${SITE.url}/contact`,
-    description:
-      "Contact page for Tashfeen Riaz, senior full stack web developer and designer in Gilgit, Pakistan.",
-    mainEntity: {
-      "@type": "Person",
-      name: SITE.name,
-      email: SITE.email,
-      telephone: SITE.phoneRaw,
-      jobTitle: SITE.role,
-      url: `${SITE.url}/about`,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: SITE.locality,
-        addressRegion: SITE.region,
-        addressCountry: SITE.country,
+    "@graph": [
+      ...webPageJsonLd({
+        path: "/contact",
+        name: "Contact Tashfeen Riaz - Hire a Web Developer in Gilgit, Pakistan",
+        description:
+          "Contact page for Tashfeen Riaz, senior full stack web developer and designer in Gilgit, Pakistan.",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ],
+      })["@graph"],
+      {
+        "@type": "ContactPage",
+        "@id": `${SITE.url}/contact#contactpage`,
+        url: `${SITE.url}/contact`,
+        name: "Contact Tashfeen Riaz",
+        description:
+          "Contact page for Tashfeen Riaz, senior full stack web developer and designer in Gilgit, Pakistan.",
+        mainEntity: { "@id": PERSON_ID },
+        about: { "@id": BUSINESS_ID },
       },
-      contactPoint: [
-        {
-          "@type": "ContactPoint",
-          contactType: "sales",
-          email: SITE.email,
-          telephone: SITE.phoneRaw,
-          availableLanguage: ["English", "Urdu"],
-          areaServed: ["PK", "GB", "US", "AE", "CA", "AU"],
-        },
-      ],
-    },
+      faqJsonLd(CONTACT_FAQ),
+    ],
   };
 }
 
@@ -80,11 +83,14 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={contactPageJsonLd()} />
-      <JsonLd data={faqJsonLd(CONTACT_FAQ)} />
 
       <PageHeader
-        title="Contact Me"
+        title="Hire a Web Developer in Gilgit"
         lead="Hiring a web developer in Gilgit, Pakistan? Tell me about your project and I will reply with a free, no-obligation proposal."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

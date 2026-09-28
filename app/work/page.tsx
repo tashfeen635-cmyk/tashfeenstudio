@@ -4,17 +4,24 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import WorkGallery from "@/components/WorkGallery";
 import JsonLd from "@/components/JsonLd";
-import { SITE, OG_IMAGE, PORTFOLIO } from "@/lib/site";
+import {
+  SITE,
+  OG_IMAGE,
+  PORTFOLIO,
+  PERSON_ID,
+  webPageJsonLd,
+  pageAlternates,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Portfolio - Gilgit, Pakistan",
+  title: "Portfolio — Web Projects Delivered",
   description:
-    "Selected web design, UI/UX, brand identity, and full stack development work by Tashfeen Riaz, a senior web developer in Gilgit, Pakistan.",
-  alternates: { canonical: "/work" },
+    "Selected web design, UI/UX, brand identity, and full stack development work by Tashfeen Riaz, a senior full stack web developer in Gilgit, Pakistan.",
+  alternates: pageAlternates("/work"),
   openGraph: {
     url: `${SITE.url}/work`,
     type: "website",
-    title: "Web Design & Development Portfolio - Gilgit, Pakistan",
+    title: "Web Design & Development Portfolio — Tashfeen Riaz",
     description:
       "Selected web design, UI/UX, brand identity, packaging, and full stack development work by Tashfeen Riaz, a senior web developer in Gilgit, Pakistan.",
     images: [OG_IMAGE],
@@ -24,20 +31,37 @@ export const metadata: Metadata = {
 function worksJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Portfolio of Tashfeen Riaz",
-    itemListElement: PORTFOLIO.map((w, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "CreativeWork",
-        name: w.title,
-        description: w.blurb,
-        genre: w.category,
-        image: `${SITE.url}${w.src}`,
-        creator: { "@type": "Person", name: SITE.name, url: `${SITE.url}/about` },
+    "@graph": [
+      ...webPageJsonLd({
+        path: "/work",
+        name: "Web Design & Development Portfolio - Tashfeen Riaz",
+        description:
+          "Selected web design, UI/UX, brand identity, and full stack development work by Tashfeen Riaz, a senior full stack web developer in Gilgit, Pakistan.",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "Portfolio", path: "/work" },
+        ],
+      })["@graph"],
+      {
+        "@type": "ItemList",
+        "@id": `${SITE.url}/work#itemlist`,
+        name: "Portfolio of Tashfeen Riaz",
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        numberOfItems: PORTFOLIO.length,
+        itemListElement: PORTFOLIO.map((w, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "CreativeWork",
+            name: w.title,
+            description: w.blurb,
+            genre: w.category,
+            image: `${SITE.url}${w.src}`,
+            creator: { "@id": PERSON_ID },
+          },
+        })),
       },
-    })),
+    ],
   };
 }
 
@@ -47,8 +71,12 @@ export default function WorkPage() {
       <JsonLd data={worksJsonLd()} />
 
       <PageHeader
-        title="My Portfolio"
+        title="Web Design & Development Portfolio"
         lead="Selected design and development work by Tashfeen Riaz - brand identity, web design, UI/UX, packaging, and full stack web development."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Portfolio", path: "/work" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

@@ -9,14 +9,17 @@ import {
   OG_IMAGE,
   SERVICES,
   SERVICES_FAQ,
+  BUSINESS_ID,
   faqJsonLd,
+  webPageJsonLd,
+  pageAlternates,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services in Gilgit, Pakistan",
+  title: "Web Design & Dev Services in Gilgit",
   description:
     "Web design, UI/UX, full stack development, custom web apps, e-commerce, and SaaS services by Tashfeen Riaz, a web developer in Gilgit, Pakistan. Free quote.",
-  alternates: { canonical: "/services" },
+  alternates: pageAlternates("/services"),
   openGraph: {
     url: `${SITE.url}/services`,
     type: "website",
@@ -30,19 +33,42 @@ export const metadata: Metadata = {
 function servicesJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: SITE.studio,
-    url: `${SITE.url}/services`,
-    founder: { "@type": "Person", name: SITE.name, url: `${SITE.url}/about` },
-    areaServed: { "@type": "Country", name: "Pakistan" },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Web Services",
-      itemListElement: SERVICES.map((s) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.title, description: s.desc },
-      })),
-    },
+    "@graph": [
+        ...webPageJsonLd({
+          path: "/services",
+          name: "Web Design & Development Services in Gilgit, Pakistan",
+          description:
+            "Web design, UI/UX, full stack development, custom web apps, e-commerce, and SaaS services by Tashfeen Riaz, a web developer in Gilgit, Pakistan.",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ],
+        })["@graph"],
+
+      {
+        "@type": "Service",
+        "@id": `${SITE.url}/services#service`,
+        name: "Web Design and Development Services",
+        serviceType: SERVICES.map((s) => s.title),
+        description: `Web design, UI/UX, full stack development, e-commerce, and SaaS development in ${SITE.location}.`,
+        url: `${SITE.url}/services`,
+        provider: { "@id": BUSINESS_ID },
+        areaServed: [
+          { "@type": "City", name: SITE.locality },
+          { "@type": "AdministrativeArea", name: SITE.region },
+          { "@type": "Country", name: SITE.countryName },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Web Services",
+          itemListElement: SERVICES.map((s) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: s.title, description: s.desc },
+          })),
+        },
+      },
+      faqJsonLd(SERVICES_FAQ),
+    ],
   };
 }
 
@@ -52,8 +78,12 @@ export default function ServicesPage() {
       <JsonLd data={servicesJsonLd()} />
 
       <PageHeader
-        title="Services"
+        title="Web Design & Development Services in Gilgit"
         lead="Professional web design, development, and digital services for businesses in Gilgit, across Pakistan, and worldwide."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>
@@ -113,7 +143,6 @@ export default function ServicesPage() {
         <div className="container">
           <SectionHeading tag="FAQ" title="Service Questions" />
           <FaqList items={SERVICES_FAQ} />
-          <JsonLd data={faqJsonLd(SERVICES_FAQ)} />
           <p className="section-lead">
             Still not sure which service fits? Have a look at the{" "}
             <Link href="/work">projects I have delivered</Link> or read more

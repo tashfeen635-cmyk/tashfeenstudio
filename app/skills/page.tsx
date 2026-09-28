@@ -4,13 +4,20 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import SkillsShowcase from "@/components/SkillsShowcase";
 import JsonLd from "@/components/JsonLd";
-import { SITE, OG_IMAGE } from "@/lib/site";
+import {
+  SITE,
+  OG_IMAGE,
+  LAST_MODIFIED,
+  PERSON_ID,
+  webPageJsonLd,
+  pageAlternates,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Developer Skills & Tech Stack in Gilgit, Pakistan",
+  title: "Full Stack Skills & Tech Stack",
   description:
     "Technical skills of full stack web developer Tashfeen Riaz: React, Next.js, TypeScript, Node.js, Laravel, Django, PostgreSQL, MongoDB, Docker, and AI integration.",
-  alternates: { canonical: "/skills" },
+  alternates: pageAlternates("/skills"),
   openGraph: {
     url: `${SITE.url}/skills`,
     type: "website",
@@ -24,47 +31,27 @@ export const metadata: Metadata = {
 function skillsJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    url: `${SITE.url}/skills`,
-    name: "Technical Skills of Tashfeen Riaz",
-    mainEntity: {
-      "@type": "Person",
-      name: SITE.name,
-      jobTitle: SITE.role,
-      url: `${SITE.url}/about`,
-      knowsAbout: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "Bootstrap",
-        "Node.js",
-        "Express.js",
-        "PHP",
-        "Laravel",
-        "Django",
-        "REST API Design",
-        "MongoDB",
-        "MySQL",
-        "PostgreSQL",
-        "Prisma",
-        "Docker",
-        "Git",
-        "GitHub",
-        "Vercel",
-        "Web Security",
-        "API Security",
-        "Figma",
-        "UI/UX Design",
-        "Design Systems",
-        "AI & LLM Integration",
-        "AI Chatbots",
-        "SaaS Development",
-      ],
-    },
+    "@graph": [
+      ...webPageJsonLd({
+        path: "/skills",
+        name: "Technical Skills of Tashfeen Riaz",
+        description:
+          "Technical skills of full stack web developer Tashfeen Riaz: React, Next.js, TypeScript, Node.js, Laravel, Django, PostgreSQL, MongoDB, Docker, and AI integration.",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "Skills", path: "/skills" },
+        ],
+      })["@graph"],
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE.url}/skills#profilepage`,
+        url: `${SITE.url}/skills`,
+        name: "Technical Skills of Tashfeen Riaz",
+        isPartOf: { "@id": `${SITE.url}/#website` },
+        mainEntity: { "@id": PERSON_ID },
+        dateModified: LAST_MODIFIED,
+      },
+    ],
   };
 }
 
@@ -74,8 +61,12 @@ export default function SkillsPage() {
       <JsonLd data={skillsJsonLd()} />
 
       <PageHeader
-        title="Skills &amp; Technologies"
+        title="Full Stack Developer Skills & Tech Stack"
         lead="The technical skills behind every project - front-end, back-end, databases, design, DevOps, and AI integration."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Skills", path: "/skills" },
+        ]}
       />
 
       <section className="section" style={{ paddingTop: 20 }}>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { SITE } from "@/lib/site";
 
-export const alt = `${SITE.name} - ${SITE.role} in ${SITE.locality}, ${SITE.country === "PK" ? "Pakistan" : SITE.country}`;
+export const alt = `${SITE.name} — ${SITE.role} in ${SITE.locality}, ${SITE.countryName}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
               textTransform: "uppercase",
             }}
           >
-            {SITE.studio}
+            {SITE.businessName}
           </div>
         </div>
 
@@ -68,7 +68,7 @@ export default function OpengraphImage() {
               lineHeight: 1.25,
             }}
           >
-            Senior Full Stack Web Developer
+            {SITE.role}
           </div>
           <div
             style={{
@@ -78,7 +78,7 @@ export default function OpengraphImage() {
               color: "#cccccc",
             }}
           >
-            Web Design - UI/UX - SaaS &amp; Custom Web Apps
+            Web Design · UI/UX · SaaS &amp; Custom Web Apps
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ display: "flex" }}>{SITE.location}</div>
-          <div style={{ display: "flex", color: "#ffffff" }}>tashfeenriaz.site</div>
+          <div style={{ display: "flex", color: "#ffffff" }}>{SITE.url.replace("https://", "")}</div>
         </div>
       </div>
     ),

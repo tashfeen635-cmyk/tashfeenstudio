@@ -16,10 +16,11 @@ import {
   faqJsonLd,
   personJsonLd,
   businessJsonLd,
+  pageAlternates,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: pageAlternates("/"),
 };
 
 export default function HomePage() {
@@ -40,7 +41,7 @@ export default function HomePage() {
             {SITE.name}
             <span className="hero-kw">Full Stack Web Developer in Gilgit, Pakistan</span>
           </h1>
-          <p className="hero-sub">Senior Full Stack Web Developer &amp; Designer — Founder of {SITE.studio}</p>
+          <p className="hero-sub">{SITE.role} &amp; Designer — Hiring for websites, web apps, and SaaS in {SITE.region} and worldwide</p>
           <p className="hero-tags">
             Custom Development · SaaS · UI/UX Design
           </p>
@@ -106,7 +107,10 @@ export default function HomePage() {
               process is the same — understand the goal, design it properly, then build it to last. See the{" "}
               <Link href="/work">projects I have delivered</Link> and the{" "}
               <Link href="/skills">technologies I build with</Link> to see what that looks like in
-              practice.
+              practice. If you are hiring locally, my{" "}
+              <Link href="/web-developer-in-gilgit">web developer in Gilgit</Link>{" "}
+              page covers local pricing, on-site meetings, and the industries I
+              build for across {SITE.region}.
             </p>
             <ul className="about-facts">
               <li>
