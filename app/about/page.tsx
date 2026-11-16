@@ -214,12 +214,14 @@ export default function AboutPage() {
         <div className="container">
           <SectionHeading tag="Testimonials" title="What Clients Say" />
           <Testimonials />
-          <p className="section-lead">
-            Curious what the work actually involves? Read through my{" "}
-            <Link href="/services">services and pricing</Link>, the{" "}
-            <Link href="/skills">technologies I build with</Link>, or browse the{" "}
-            <Link href="/work">portfolio</Link> before you decide.
-          </p>
+            <p className="section-lead">
+              Curious what the work actually involves? Read through my{" "}
+              <Link href="/services">services and pricing</Link>, the{" "}
+              <Link href="/skills">technologies I build with</Link>, browse the{" "}
+              <Link href="/work">portfolio</Link>, or see how I approach{" "}
+              <Link href="/most-expensive-web-developer-in-pakistan">premium, high-value website development in Pakistan</Link>{" "}
+              before you decide.
+            </p>
           <div className="cta-row">
             <Link className="btn" href="/contact">
               Start a Project

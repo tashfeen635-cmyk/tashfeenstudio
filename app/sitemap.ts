@@ -5,6 +5,7 @@ const PRIORITY: Record<string, { priority: number; changeFrequency: "always" | "
   "": { priority: 1.0, changeFrequency: "weekly" },
   "web-developer-in-gilgit": { priority: 0.9, changeFrequency: "monthly" },
   "full-stack-web-developer-pakistan": { priority: 0.9, changeFrequency: "monthly" },
+  "most-expensive-web-developer-in-pakistan": { priority: 0.8, changeFrequency: "monthly" },
   services: { priority: 0.8, changeFrequency: "monthly" },
   work: { priority: 0.8, changeFrequency: "monthly" },
   about: { priority: 0.7, changeFrequency: "monthly" },

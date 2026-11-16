@@ -1292,3 +1292,139 @@ textarea.form-control {
   border-radius: 20px;
   text-transform: uppercase;
 }
+
+/* ===== Premium landing page ===== */
+.premium-hero {
+  padding-top: 20px;
+}
+
+.premium-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.premium-hero-copy .badge {
+  margin-bottom: 18px;
+}
+
+.premium-lead {
+  color: var(--muted);
+  font-size: var(--text-md);
+  line-height: 1.8;
+  margin: 0 0 16px;
+  max-width: 100%;
+  text-align: left;
+}
+
+.premium-cta-row {
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.premium-hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.premium-disclaimer {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  border-left: 3px solid var(--accent);
+  padding-left: 14px;
+  margin: 18px 0 0;
+  line-height: 1.7;
+}
+
+.premium-prose p {
+  color: var(--muted);
+  font-size: var(--text-md);
+  margin-bottom: 16px;
+}
+
+.premium-prose a,
+.premium-project-card a,
+.premium-contact-links a {
+  color: var(--accent);
+}
+
+.premium-section-note {
+  margin-top: 28px;
+}
+
+.premium-subsection {
+  margin-top: 40px;
+}
+
+.premium-subheading {
+  margin-bottom: 16px;
+  font-size: var(--text-xl);
+  letter-spacing: 1px;
+}
+
+.premium-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.premium-project-card {
+  background: #0b0b0b;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.premium-project-card h3 {
+  margin-bottom: 10px;
+}
+
+.premium-project-card p {
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.premium-project-meta {
+  color: var(--text);
+}
+
+.premium-sample-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+
+.premium-sample-card .badge {
+  margin-bottom: 10px;
+}
+
+.premium-final-cta {
+  text-align: center;
+}
+
+.premium-final-cta .cta-row {
+  justify-content: center;
+}
+
+.premium-contact-links {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: var(--text-base);
+}
+
+@media (max-width: 991.98px) {
+  .premium-hero-grid,
+  .premium-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-cta-row {
+    justify-content: flex-start;
+  }
+}

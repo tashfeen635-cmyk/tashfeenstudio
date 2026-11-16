@@ -5,6 +5,7 @@ const PAGE_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/web-developer-in-gilgit", label: "Web Developer in Gilgit" },
   { href: "/full-stack-web-developer-pakistan", label: "Full Stack Developer in Pakistan" },
+  { href: "/most-expensive-web-developer-in-pakistan", label: "Premium Developer in Pakistan" },
   { href: "/work", label: "Portfolio" },
   { href: "/skills", label: "Skills & Stack" },
   { href: "/about", label: "About" },

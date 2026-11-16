@@ -10,6 +10,7 @@ export const ROUTES = [
   "contact",
   "web-developer-in-gilgit",
   "full-stack-web-developer-pakistan",
+  "most-expensive-web-developer-in-pakistan",
 ] as const;
 
 export const OG_IMAGE = {
